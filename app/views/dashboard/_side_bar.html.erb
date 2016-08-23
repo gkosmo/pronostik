@@ -1,19 +1,19 @@
-<% @randque.each do |que| %>
-<div class="panel panel-success">
-  <%= link_to question_path(que) do %>
-
-   <div class="panel-header">
+<% if @randque.empty? %>
+  <% @randque.each do |que|  %>
+  <div class="panel panel-success">
+    <%= link_to question_path(que) do %>
+    <div class="panel-header">
       <%= que.content  %>
-   </div>
-  <div class="panel-body">
-    <ul>
-
-      <% que.scenarios.each do |scen| %>
-      <li> <%= scen.content %> </li>
-      <% end %>
-
-    </ul>
+    </div>
+    <div class="panel-body">
+      <ul>
+        <% que.scenarios.each do |scen| %>
+        <li> <%= scen.content %> </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
+  <%end%>
+
 <%end%>

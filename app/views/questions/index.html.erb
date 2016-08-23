@@ -2,18 +2,23 @@
 <p>Find me in app/views/questions/index.html.erb</p>
 
 
-
 <h3>Questions:</h3>
-
 
 <div class="wrapper">
   <div class="container">
 
     <div class="row">
       <% @questions.each do |question| %>
-        <%= render 'question', question: @question %>
+
+        <div class="question-card">
+            <p><%= question.content%> </p>
+        </div>
+
     </div>
     <% end %>
 
   </div>
 </div>
+
+
+

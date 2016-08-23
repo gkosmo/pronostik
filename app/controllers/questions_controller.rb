@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question
+  before_action :set_question, only: [:show]
 
   def index
     @questions = Question.all
@@ -23,8 +23,8 @@ class QuestionsController < ApplicationController
     @bets.each do |bet|
       @certainties << bet.estimation
     end
-    @certainties
-    @average_certainty = @certainties.inject{ |s, e| s + e }.to_f / @certainties.size
+    @certainties = @certainties.select { |e| e if e != nil }
+    @average_certainty = @certainties.inject{ |s, e| s + e }.to_f / @certainties.size unless @certainties.nil?
 
 
   end

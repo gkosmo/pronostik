@@ -4,11 +4,6 @@ class QuestionsController < ApplicationController
     @questions = Question.all
   end
 
-  def new
-  end
-
-  def create
-  end
 
   def show
   end

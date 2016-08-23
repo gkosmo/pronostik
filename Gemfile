@@ -10,6 +10,7 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'redis'
 gem 'omniauth-facebook'
 gem "chartkick"
+gem 'faker'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -29,5 +30,3 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-
-

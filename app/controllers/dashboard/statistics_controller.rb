@@ -1,4 +1,6 @@
 class Dashboard::StatisticsController < ApplicationController
+  before_action :set_randque
+
   def index
 
     @user = current_user
@@ -12,6 +14,12 @@ class Dashboard::StatisticsController < ApplicationController
     current_user.statistics.each do |stat|
       question_score  << stat.query_score
     end
-
   end
+
+
+  private
+
+   def set_randque
+     @randque = Question.all.sample(10)
+   end
 end

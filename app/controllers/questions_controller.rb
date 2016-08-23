@@ -2,7 +2,6 @@ class QuestionsController < ApplicationController
 
   def index
   end
-
   def show
     @bet = Bet.new
     @scenarios = @question.scenarios

@@ -31,3 +31,10 @@ a.save
 b.save
 c.save
 d.save
+
+
+scenario_a_first = Scenario.new(question_id: a.id, happened: false, content: "No, Erdogan will be overtrown by 2017")
+scenario_a_second = Scenario.new(question_id: a.id, happened: false, content: "Yes, Erdogan will still be in power by 2017")
+
+scenario_a_first.save
+scenario_a_second.save

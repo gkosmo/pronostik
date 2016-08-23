@@ -1,0 +1,62 @@
+<%= render 'dashboard/top_bar' %>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5 col-sm-offset-1">
+      <div class="panel panel-info">
+        <div class="panel-header">
+          <div class="nav nav-success  inline-block">
+            <div class="navbar-header ">
+              <div class="span2">
+              </div>
+            </div>
+            <ul class="nav navbar-nav list-inline">
+              <li class ='nav-pill'>
+                <%= link_to 'statistics', dashboard_statistics_path  %>
+              </li>
+
+              <li class ='nav-pill'>
+                <%= link_to 'questions', dashboard_questions_path %>
+              </li>
+              <li class ='nav-pill'>
+                <%= link_to 'justifications', dashboard_bets_path %>
+              </li>
+              <li class ='nav-pill'>
+                <%= link_to 'history', dashboard_history_path %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="panel-body">
+
+            <% @queries.each do |query| %>
+            <div class="panel panel-default panel-boredered">
+
+            <ul>
+
+              <div class="panel-header">
+
+                  <strong> <%= query.content %> </strong>
+                </div>
+              <%    query.scenarios.each do |scen| %>
+                <li>    <%= scen.content %> </li>
+              <% end %>
+
+            </ul>
+          </div>
+
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-footer">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-sm-offset-1">
+
+      <%= render 'dashboard/side_bar' %>
+    </div>
+  </div>
+</div>

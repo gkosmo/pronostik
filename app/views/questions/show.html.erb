@@ -1,13 +1,38 @@
 <h1>Question</h1>
 <p>question.content</p>
+
+<%if user_signed_in? && !@existing_bet %>
 <h2>Scenarios</h2>
+<p>Bet on a scenario to see what other users bet on and the stats</p>
+
 <% @scenarios.each do |scenario|%>
-  <p><%=scenario.content%></p>
+  <%#= link_to scenario.id, '#', class: "js-scenario-choice", data: { id: scenario.id } %>
+  <%= scenario.id %>
+    <%= simple_form_for @bet, url: question_bets_path(@question) do |f| %>
+    <%= f.hidden_field :scenario_id, value: scenario.id%>
+    <%= f.number_field :estimation %>
+    <%= f.submit %>
+    <%end%>
+  <% end %>
 <%end%>
 
+<%if @existing_bet%>
+  <h2>Scenario and Stats</h2>
+  <div><%=@choosen_scenario.id%> | Number of bets: <%=@bets.count%> | Bets for this scenario: <%=@choosen_scenario.bets.count%> | Average certainty level: <%= @average_certainty%></div>
 
-<h3>Other Users Justification</h3>
-
-<% if %>
-  <p>Choose an answer above to unlock </p>
+  <%if @existing_bet.justification.nil? %>
+    <h3>Justify your bet</h3>
+    <%= simple_form_for @existing_bet, url: question_bet_path(@question, @existing_bet) do |f| %>
+    <%= f.input :justification, placeholder: 'Why did you bet on this scenario?'%>
+    <%= f.input :Url, placeholder: 'What source did you use the most?'%>
+    <%= f.submit %>
+    <%end%>
+  <%end%>
+  <%if @existing_bet.justification.nil? == false%>
+  <h3>Other Users Justification</h3>
+    <% @justifications_and_source.each do |bet| %>
+        <p><%=bet.scenario_id %> | <%=bet.justification%> | <%bet.Url%></p>
+    <%end%>
+  <%end%>
 <%end%>
+

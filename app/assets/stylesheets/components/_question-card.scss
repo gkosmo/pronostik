@@ -1,0 +1,35 @@
+
+.question-card {
+  color: white;
+  background-color: $gray-light;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px;
+  background: linear-gradient(-180deg, $gray-light 0%, $gray-light 100%);
+  border: 1px solid $gray-light;
+}
+
+.panel-default > .panel-heading {
+  color: white;
+  background: none;
+}
+
+.panel-group#accordion{
+  //text-decoration: none;
+  margin-bottom: 0px;
+}
+
+.panel{
+  text-decoration: none;
+  margin-bottom: 0px;
+  background: none;
+  border: none;
+
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+}
+
+
+

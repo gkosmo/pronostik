@@ -1,2 +1,21 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
+
+<h3>Search: ...</h3>
+
+<h3>Questions list:</h3>
+
+<div class="wrapper">
+  <div class="container">
+
+
+      <% @questions.each do |question| %>
+      <div class="row">
+        <%= render 'question', question: question %>
+      </div>
+      <% end %>
+
+
+  </div>
+</div>
+
+
+

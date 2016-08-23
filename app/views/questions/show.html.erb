@@ -1,2 +1,13 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+<h1>Question</h1>
+<p>question.content</p>
+<h2>Scenarios</h2>
+<% @scenarios.each do |scenario|%>
+  <p><%=scenario.content%></p>
+<%end%>
+
+
+<h3>Other Users Justification</h3>
+
+<% if %>
+  <p>Choose an answer above to unlock </p>
+<%end%>

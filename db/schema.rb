@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160823085931) do
+ActiveRecord::Schema.define(version: 20160823090525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20160823085931) do
     t.boolean  "happened"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.text     "content"
     t.index ["question_id"], name: "index_scenarios_on_question_id", using: :btree
   end
 

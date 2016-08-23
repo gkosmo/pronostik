@@ -10,10 +10,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822133535) do
+ActiveRecord::Schema.define(version: 20160822171856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "scenario_id"
+    t.integer  "estimation"
+    t.float    "scenario_score"
+    t.text     "justification"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "Url"
+    t.index ["scenario_id"], name: "index_bets_on_scenario_id", using: :btree
+    t.index ["user_id"], name: "index_bets_on_user_id", using: :btree
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "just_upvotes", force: :cascade do |t|
+    t.integer  "bet_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bet_id"], name: "index_just_upvotes_on_bet_id", using: :btree
+    t.index ["user_id"], name: "index_just_upvotes_on_user_id", using: :btree
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.date     "event_date"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_questions_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
+  end
+
+  create_table "questions_tags", id: false, force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "tag_id"
+    t.index ["question_id"], name: "index_questions_tags_on_question_id", using: :btree
+    t.index ["tag_id"], name: "index_questions_tags_on_tag_id", using: :btree
+  end
+
+  create_table "scenarios", force: :cascade do |t|
+    t.integer  "question_id"
+    t.boolean  "happened"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_scenarios_on_question_id", using: :btree
+  end
+
+  create_table "statistics", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "fc_score"
+    t.integer  "query_score"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_statistics_on_user_id", using: :btree
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +96,23 @@ ActiveRecord::Schema.define(version: 20160822133535) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "facebook_picture_url"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "token"
+    t.datetime "token_expiry"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "bets", "scenarios"
+  add_foreign_key "bets", "users"
+  add_foreign_key "just_upvotes", "bets"
+  add_foreign_key "just_upvotes", "users"
+  add_foreign_key "questions", "categories"
+  add_foreign_key "questions", "users"
+  add_foreign_key "scenarios", "questions"
+  add_foreign_key "statistics", "users"
 end

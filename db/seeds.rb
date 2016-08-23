@@ -31,8 +31,8 @@ b = Question.new( user_id: User.all.sample.id,  category_id: Category.all.sample
 c = Question.new( user_id: User.all.sample.id,  category_id: Category.all.sample.id, event_date: "Mon, 23 Jan 2017", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Will the UK take home the most Olympic Medals this year?")
 d = Question.new( user_id: User.all.sample.id,  category_id: Category.all.sample.id, event_date: "Mon, 23 Jan 2017", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Shall the auto-free zone around the Beurs continue be preserved?")
 
-a.scenarios.build(content: 'yes')
-a.scenarios.build(content: 'no')
+a.scenarios.build(content: "No, Erdogan will be overtrown by 2017")
+a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
 
 b.scenarios.build(content: 'yes')
 b.scenarios.build(content: 'no')
@@ -50,3 +50,4 @@ a.save!
 b.save!
 c.save!
 d.save!
+

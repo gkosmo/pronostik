@@ -1,0 +1,21 @@
+
+
+
+
+  <div id="<%= question.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
+
+          <% if question.scenarios.any? %>
+            <ul>
+              <% question.scenarios.each do |scenario| %>
+                <li>
+                  <%= scenario.content%>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+
+      </div>
+
+
+
+

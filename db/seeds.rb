@@ -27,13 +27,14 @@ cat.save!
 
 
 
-
 a = Question.new( user_id: User.all.sample.id, category_id: Category.all.sample.id, event_date: "Mon, 01 Jan 2018", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Will Erdogan still be in power in the end of 2017 ?")
 b = Question.new( user_id: User.all.sample.id,  category_id: Category.all.sample.id, event_date: "Mon, 23 Jan 2017", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Shall Trump backout of the election ?")
 c = Question.new( user_id: User.all.sample.id,  category_id: Category.all.sample.id, event_date: "Mon, 23 Sep 2016", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Will the UK take home the most Olympic Medals this year ?")
 d = Question.new( user_id: User.all.sample.id,  category_id: Category.all.sample.id, event_date: "Mon, 23 Jan 2021", created_at: "Tue, 23 Aug 2015 09:43:25 UTC +00:00", content: "Shall the auto-free zone around the Beurs be preserved in the next 5 years ? ")
-a.scenarios.build(content: 'yes')
-a.scenarios.build(content: 'no')
+
+a.scenarios.build(content: "No, Erdogan will be overtrown by 2017")
+a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
+
 b.scenarios.build(content: 'yes')
 b.scenarios.build(content: 'no')
 c.scenarios.build(content: 'yes')
@@ -49,7 +50,6 @@ a.save!
 b.save!
 c.save!
 d.save!
-
 
 
 

@@ -5,11 +5,15 @@
 
 <div class="wrapper">
   <div class="container">
-    <div class="row">
+
+
       <% @questions.each do |question| %>
+      <div class="row">
         <%= render 'question', question: question %>
-    <% end %>
-    </div>
+      </div>
+      <% end %>
+
+
   </div>
 </div>
 

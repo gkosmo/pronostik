@@ -24,7 +24,7 @@
         <%= scenario.content %>
         <%= simple_form_for @bet, url: question_bets_path(@question) do |f| %>
         <%= f.hidden_field :scenario_id, value: scenario.id%>
-        <%= f.number_field :estimation %>
+        <%= f.number_field :estimation, style: 'color: red' %>
         <%= f.submit %>
       <%end%>
     <%end%>
@@ -34,5 +34,3 @@
 <div class="row">
   <div class="col-sm-12"> <h2>Bet on a Scenario to unlock other users' justifications</h2></div>
 </div>
-
-

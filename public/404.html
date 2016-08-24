@@ -9,19 +9,21 @@
 <body>
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div id='test'>
-      <img src='error.png' >
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+      <div class="container">
+        <div class="row">
+          <div id='test'>
+
+
+        </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
   <script>
 
-   for (var i = 0; i < 10 ; i ++ ) {
+   for (var i = 0; i < 100 ; i ++ ) {
     var a = document.getElementById('test');
     var b = document.createElement('img');
-    b.src = 'error.png';
+    b.backgroud-image = 'error.png';
     a.appendChild(b);
   }
   </script>

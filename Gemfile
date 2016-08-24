@@ -7,18 +7,21 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', github: 'plataformatec/devise'
+
 gem 'redis'
 gem 'omniauth-facebook'
 gem "chartkick"
 gem 'faker'
-
-gem 'sass-rails'
+gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails'
 gem 'uglifier'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
 gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
+
+
+
 
 group :development, :test do
   gem 'binding_of_caller'

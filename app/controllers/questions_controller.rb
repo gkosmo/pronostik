@@ -16,7 +16,7 @@ class QuestionsController < ApplicationController
     @existing_bet = current_user.bets.
       joins(scenario: :question).
       where(questions: { id: @question.id }).
-      first
+      first unless current_user.nil?
 
     @choosen_scenario = @existing_bet.scenario unless @existing_bet.nil?
 

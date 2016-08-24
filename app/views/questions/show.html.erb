@@ -1,5 +1,5 @@
 <h1>Question</h1>
-<p>question.content</p>
+<p><%=@question.content%></p>
 
 <%if user_signed_in? && !@existing_bet %>
 <h2>Scenarios</h2>
@@ -7,7 +7,7 @@
 
 <% @scenarios.each do |scenario|%>
   <%#= link_to scenario.id, '#', class: "js-scenario-choice", data: { id: scenario.id } %>
-  <%= scenario.id %>
+  <%= scenario.content %>
     <%= simple_form_for @bet, url: question_bets_path(@question) do |f| %>
     <%= f.hidden_field :scenario_id, value: scenario.id%>
     <%= f.number_field :estimation %>
@@ -18,7 +18,7 @@
 
 <%if @existing_bet%>
   <h2>Scenario and Stats</h2>
-  <div><%=@choosen_scenario.id%> | Number of bets: <%=@bets.count%> | Bets for this scenario: <%=@choosen_scenario.bets.count%> | Average certainty level: <%= @average_certainty%></div>
+  <div><%=@choosen_scenario.content%> | Number of bets: <%=@bets.count%> | Bets for this scenario: <%=@choosen_scenario.bets.count%> | Average certainty level: <%= @average_certainty%></div>
 
   <%if @existing_bet.justification.nil? %>
     <h3>Justify your bet</h3>

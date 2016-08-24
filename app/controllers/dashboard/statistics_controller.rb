@@ -18,7 +18,6 @@ class Dashboard::StatisticsController < ApplicationController
 
 
   private
-
    def set_randque
      @randque = Question.all.sample(10)
    end

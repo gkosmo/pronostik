@@ -1,9 +1,71 @@
-<% if @randque.empty? %>
-  <% @randque.each do |que|  %>
-  <div class="panel panel-success">
+<% unless @randque.nil? %>
+<br>
+<% @randque.each do |que|  %>
+  <% if que.bets.where(user_id: current_user.id).empty? %>
+  <div class="panel">
     <%= link_to question_path(que) do %>
-    <div class="panel-header">
-      <%= que.content  %>
+
+    <div class="panel-heading">
+      <h3 class="panel-title"> <%= que.content  %> </h3>
+    </div>
+    <div class="panel-body"> <ul>
+      <% que.scenarios.each do |scen| %>
+      <li> <%= scen.content %> </li>
+      <% end %>
+    </ul>
+    <ul>
+      <% que.tags.each do |tag| %>
+      <div class="label label-info">
+        <%= tag.title %>
+      </div>
+      <% end %>
+    </ul>
+  </div>
+
+  <% end %>
+
+  <div class="text-muted text-right">
+     <%= que.event_date %>
+  </div>
+  <div class="panel-footer">
+    <%= que.category.title %>
+  </div>
+</div>
+
+
+
+<% elsif  que.event_date < DateTime.now.to_date %>
+
+<div class="panel panel-striped panel-danger"></div>
+<div class="">
+  <%= link_to question_path(que) do %>
+  <div class="panel-heading">
+    <h2 class="panel-title"><%= que.content  %> </h2>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% que.scenarios.each do |scen| %>
+      <li> <%= scen.content %> </li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+
+<div class="text-muted text-right">
+   <%= que.event_date %>
+</div>
+<div class="panel-footer">
+  <%= que.category.title %>
+</div>
+</div>
+
+<% else  %>
+<div class="panel panel-info">
+  <div class="">
+    <%= link_to question_path(que) do %>
+    <div class="panel-heading">
+      <h2 class="panel-title">  <%= que.content  %> </h2>
     </div>
     <div class="panel-body">
       <ul>
@@ -14,6 +76,17 @@
     </div>
     <% end %>
   </div>
-  <%end%>
-
+  <div class="text-muted text-right">
+     <%= que.event_date %>
+  </div>
+  <div class="panel-footer">
+    <div class="text-footer">
+      <%= que.category.title %>
+    </div>
+  </div>
+</div>
+<%end%>
+<br>
+<% end %>
+<br>
 <%end%>

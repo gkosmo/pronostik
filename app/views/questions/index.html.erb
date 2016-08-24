@@ -7,12 +7,15 @@
     </div>
   </div>
 
+
   <% @questions.each do |question| %>
     <div class="card-wrapper">
       <div class="row">
+
+      <% @questions.each do |question| %>
+
         <%= render 'question', question: question %>
       </div>
     </div>
   <% end %>
 </div>
-

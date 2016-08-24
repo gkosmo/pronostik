@@ -9,12 +9,22 @@
 <body>
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
+    <div id='test'>
       <img src='/app/images/logo.png' >
       <h1>The page you were looking for doesn't exist.</h1>
       <p>You may have mistyped the address or the page may have moved.</p>
     </div>
     <p>If you are the application owner check the logs for more information.</p>
   </div>
+  <script>
+
+   for (var i = 0; i < 10 ; i ++ ) {
+    var a = document.getElementById('test');
+    var b = document.createElement('img');
+    b.src = '/app/images/logo.png';
+    a.appendChild(b);
+  }
+  </script>
+
 </body>
 </html>

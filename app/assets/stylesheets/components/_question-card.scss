@@ -4,15 +4,27 @@
 
 .card-wrapper{
   background-color: $gray-light;
+  background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%);
   color: white;
   border-radius: 5px;
   margin-bottom: 15px;
   padding: 20px;
   }
 
+.card-row {
+  display: flex;
+  align-items: center;
+}
+
+.question-upvotes, .question-creator, .question-links {
+  text-align: center;
+}
+
+.arrow, .link-to-bet{
+  margin-bottom: 25px;
+}
+
 .question-card {
-  color: white;
-  background-color: $gray-light;
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
@@ -39,18 +51,30 @@ a:hover, a:focus {
   text-decoration: none;
 }
 
-// .upvotes_per_question{
-//   vertical-align: middle;
-//   position: relative;
-// }
+// social shares css extra
+.social-shares{
+  text-decoration: none;
+}
 
-// .upvotes_per_question .arrow{
-//   position: absolute;
-//   margin: 20px;
-// }
+.social-shares a{
+  color: black;
+  text-decoration: none;
+}
 
+.social-shares i {
+  font-size: 30px;
+  transition-duration: 3ms;
+}
 
-// .upvotes_per_question .votes{
-//   position: absolute;
-//   margin-left: 20px;
-// }
+.social-shares i:hover{
+  color:yellow;
+}
+
+.link-to-bet {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: white;
+  padding: 10px;
+  text-decoration: none;
+}
+

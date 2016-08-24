@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_question, only: [:show]
   before_action :set_question, only: [:show]
   before_action :set_randque, only: [:show]
@@ -13,10 +14,14 @@ class QuestionsController < ApplicationController
     @bets = @question.bets
     @justifications_and_source = @bets.where.not(justification: nil)
 
-    @existing_bet = current_user.bets.
-      joins(scenario: :question).
-      where(questions: { id: @question.id }).
-      first
+    @existing_bet = nil
+
+    if user_signed_in?
+      @existing_bet = current_user.bets.
+        joins(scenario: :question).
+        where(questions: { id: @question.id }).
+        first
+    end
 
     @choosen_scenario = @existing_bet.scenario unless @existing_bet.nil?
 

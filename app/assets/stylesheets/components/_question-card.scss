@@ -1,12 +1,21 @@
 
+// question-card = question incl dropdown scenario's
+// card-wrapper = question-card + upvotes & avatar & social-shares
+
+.card-wrapper{
+  background-color: $gray-light;
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 20px;
+  }
+
 .question-card {
   color: white;
   background-color: $gray-light;
   border-radius: 5px;
   padding: 10px;
   margin: 5px;
-  background: linear-gradient(-180deg, $gray-light 0%, $gray-light 100%);
-  border: 1px solid $gray-light;
 }
 
 .panel-default > .panel-heading {
@@ -24,12 +33,24 @@
   margin-bottom: 0px;
   background: none;
   border: none;
-
 }
 
 a:hover, a:focus {
   text-decoration: none;
 }
 
+// .upvotes_per_question{
+//   vertical-align: middle;
+//   position: relative;
+// }
+
+// .upvotes_per_question .arrow{
+//   position: absolute;
+//   margin: 20px;
+// }
 
 
+// .upvotes_per_question .votes{
+//   position: absolute;
+//   margin-left: 20px;
+// }

@@ -1,43 +1,59 @@
+    <div class="col-xs-12 col-sm-12" >
+      <div class="container">
+        <div class="row ">
 
-<div class="card-wrapper">
-  <div class="col-sm-1">
-        <div class="upvotes_per_question">
-           <p>Upvotes: <%= question.scenarios.count%> </p>
+          <div class="col-xs-6 col-sm-1">
+            <div class="upvotes_per_question">
+              <div class="arrow">
+                <%= image_tag("upvote_version1.png", class: "avatar", :alt => "upvote-arrow") %>
+              </div>
+              <div class="votes">
+                <p><%= question.bets.count%> </p>
+              </div>
+           </div>
+         </div>
+
+
+
+         <div class="hidden-xs col-sm-2">
+
+
+            <div class="question-creator">
+              <%= image_tag("user.jpg", class: "avatar-extra-large", :alt => "user") %>
+            </div>
+
+             <div class="name_creator">
+               <p>name: <%= question.user.first_name%></p>
+             </div>
+
         </div>
-  </div>
 
+        <div class="col-xs-12 col-sm-8">
+          <div class="question-card">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
 
-  <div class="col-sm-1">
-        <div class="avatar">
-          <%= image_tag("user.jpg", class: "avatar", :alt => "user") %>
-        </div>
-  </div>
+                      <p>Content: <%= question.content%> </p>
+                      <p>Event: <%= question.event_date%> </p>
 
-  <div class="col-sm-8">
-        <div class="question-card">
-          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                  <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                      <%= render 'scenario', question: question %>
 
-                    <p>Content: <%= question.content%> </p>
-                    <p>Event: <%= question.event_date%> </p>
-                    <p>user_first_name: <%= question.user.first_name%> </p>
-
-                    <%= render 'scenario', question: question %>
-
-                  </a>
-                </h4>
+                    </a>
+                  </h4>
+                </div>
               </div>
             </div>
           </div>
         </div>
-  </div>
 
-  <div class="col-sm-2">
-        <div class="link_to_bet_and_social_shares">
-          <%= link_to 'Bet', question_path(question) %>
+        <div class="col-xs-12 col-sm-1">
+          <div class="link_to_bet_and_social_shares">
+            <%= link_to 'Bet', question_path(question) %>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-</div>

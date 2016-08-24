@@ -8,7 +8,7 @@
 
 
       <% @questions.each do |question| %>
-      <div class="row">
+      <div class="row alert alert-warning">
         <%= render 'question', question: question %>
       </div>
       <% end %>
@@ -16,6 +16,3 @@
 
   </div>
 </div>
-
-
-

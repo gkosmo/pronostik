@@ -213,7 +213,7 @@ DEPENDENCIES
   autoprefixer-rails
   better_errors
   binding_of_caller
-  bootstrap-sass
+  bootstrap-sass (~> 3.3.6)
   chartkick
   devise!
   faker
@@ -229,7 +229,7 @@ DEPENDENCIES
   puma
   rails (= 5.0.0.1)
   redis
-  sass-rails
+  sass-rails (>= 3.2)
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

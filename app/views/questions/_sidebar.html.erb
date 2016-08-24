@@ -1,0 +1,20 @@
+  <div class="row">
+    <div class="col-sm-12">
+      <% @randque.each do |que|  %>
+      <div class="panel panel-success">
+        <%= link_to question_path(que) do %>
+        <div class="panel-header">
+          <%= que.content  %>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% que.scenarios.each do |scen| %>
+            <li> <%= scen.content %> </li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+      </div>
+      <%end%>
+    </div>
+  </div>

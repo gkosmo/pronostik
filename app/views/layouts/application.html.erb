@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TODO</title>
+    <title>Pronostik</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "chartkick.js" %>
+    <%= javascript_include_tag "https://www.google.com/jsapi" %>
   </head>
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+
     <%= javascript_include_tag "https://www.google.com/jsapi" %>
     <%= javascript_include_tag 'application.js' %>
     <script src="https://www.google.com/jsapi"></script>
+    <br>
+    <br>
+    <br>
+    <%= render 'shared/footer' %>
   </body>
 </html>

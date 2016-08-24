@@ -1,18 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Search: ...</h3>
 
-<h3>Search: ...</h3>
+      <h3>Questions list:</h3>
+    </div>
+  </div>
 
-<h3>Questions list:</h3>
 
-<div class="wrapper">
-  <div class="container">
-
+  <% @questions.each do |question| %>
+    <div class="card-wrapper">
+      <div class="row">
 
       <% @questions.each do |question| %>
-      <div class="row alert alert-warning">
+
         <%= render 'question', question: question %>
       </div>
-      <% end %>
-
-
-  </div>
+    </div>
+  <% end %>
 </div>

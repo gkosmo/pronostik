@@ -1,0 +1,5 @@
+    <%= simple_form_for @existing_bet, url: question_bet_path(@question, @existing_bet) do |f| %>
+    <%= f.input :justification, placeholder: 'Why did you bet on this scenario?'%>
+    <%= f.input :Url, placeholder: 'What source did you use the most?'%>
+    <%= f.submit %>
+    <%end%>

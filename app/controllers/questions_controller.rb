@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show]
-
+  before_action :set_question, only: [:show]
+  before_action :set_randque, only: [:show]
   def index
     @questions = Question.all
   end
@@ -19,19 +20,65 @@ class QuestionsController < ApplicationController
 
     @choosen_scenario = @existing_bet.scenario unless @existing_bet.nil?
 
-    @certainties = []
-    @bets.each do |bet|
-      @certainties << bet.estimation
+    # computations
+    @scenarios_certainties = compute_scenarios_certainties
+    @bets_count = compute_bets_count
+
+    # charts stats
+    @bar_chart = @scenarios_certainties.map do |scenario|
+      [scenario.content, scenario.certainty.to_f.round(2)]
     end
-    @certainties = @certainties.select { |e| e if e != nil }
-    @average_certainty = @certainties.inject{ |s, e| s + e }.to_f / @certainties.size unless @certainties.nil?
 
-
+    @column_chart = @bets_count.map do |scenario|
+      [scenario.content, scenario.bets_count]
+    end
   end
 
   private
 
+  def compute_bets_count
+    # hash_new = {}
+    # @scenarios.each do |scenario|
+    #   index = 0
+    #   content = scenario.content
+    #   hash_new[content] = @average_certainty[index]
+    #   index += 1
+    # end
+    # hash_new
+
+    return @question.scenarios.
+      select("scenarios.id, content, COUNT(bets.id) AS bets_count").
+      joins("LEFT OUTER JOIN bets ON bets.scenario_id = scenarios.id").
+      group("scenarios.id")
+  end
+
+  def compute_scenarios_certainties
+    # @certainties = []
+    # @individual_average_c = []
+    # @scenario_name = []
+
+    # @scenarios.each do |scenario|
+    #   @scenario_name << scenario.content
+
+    #   scenario.bets.each do |bet|
+    #     @certainties << bet.estimation
+    #   end
+    #     @certainties = @certainties.select { |e| e if e != nil }
+    #     @individual_average_c << @certainties.inject{ |s, e| s + e }.to_f / @certainties.size unless @certainties.nil?
+    # end
+    # @individual_average_c
+    # @scenario_name
+
+    return @question.scenarios.
+      select("scenarios.id, content, AVG(estimation) AS certainty").
+      joins("LEFT OUTER JOIN bets ON bets.scenario_id = scenarios.id").
+      group("scenarios.id")
+  end
+
   def set_question
     @question = Question.find(params[:id])
+  end
+  def set_randque
+     @randque = Question.all.sample(2)
   end
 end

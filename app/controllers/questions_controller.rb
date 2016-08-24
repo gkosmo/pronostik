@@ -14,12 +14,7 @@ class QuestionsController < ApplicationController
     @bets = @question.bets
     @justifications_and_source = @bets.where.not(justification: nil)
 
-<<<<<<< HEAD
-    @existing_bet = current_user.bets.
-      joins(scenario: :question).
-      where(questions: { id: @question.id }).
-      first unless current_user.nil?
-=======
+
     @existing_bet = nil
 
     if user_signed_in?
@@ -28,7 +23,6 @@ class QuestionsController < ApplicationController
         where(questions: { id: @question.id }).
         first
     end
->>>>>>> 3bf5f1e2a44317e8a0f02224f4b34ca0cc9a13f4
 
     @choosen_scenario = @existing_bet.scenario unless @existing_bet.nil?
 

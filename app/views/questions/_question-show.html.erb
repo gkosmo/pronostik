@@ -15,15 +15,16 @@
 
     <div class="col-sm-8">
           <div class="question-card">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="headingOne">
+            <div class="panel-group" id="<%= question.id %>" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default" id = "blablawhite">
+                <div class="panel-heading" role="tab" id="<%= question.id %>">
                   <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                    <a role="button" data-toggle="collapse" data-parent="#<%= question.id %>" href="#<%= question.id %>" aria-expanded="false" aria-controls="<%= question.id %>" class="collapsed">
+
 
                       <p>Content: <%= question.content%> </p>
-                      <p>Event: <%= question.event_date%> </p>
                       <p>user_first_name: <%= question.user.first_name%> </p>
+                      <p>Event: <%= question.event_date%> </p>
 
                     </a>
                   </h4>

@@ -2,9 +2,29 @@ class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_question, only: [:show]
   before_action :set_randque, only: [:show]
+
+
+
   def index
-    @questions = Question.all
+  #input van de search
+    @search = params[:search_term]
+    @category = params[:category]
+    @searched_questions = Question.all
+
+    @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
+      joins(:questions).
+      group("tags.id").
+      order("questions_count DESC").
+      limit(5)
+
+    if @category.present?
+      @searched_questions = @searched_questions.where(category_id: params[:category])
+    end
+    if @search.present?
+        @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
+    end
   end
+
   def make_pending
     @question = Question.find(params[:question_id])
     q = QuestionsUsersPending.new()
@@ -13,6 +33,7 @@ class QuestionsController < ApplicationController
     q.save
     redirect_to dashboard_statistics_path
   end
+
   def show
     @bet = Bet.new
 
@@ -30,7 +51,7 @@ class QuestionsController < ApplicationController
     end
     if user_signed_in?
       @pending =  QuestionsUsersPending.where(user_id: current_user.id, question_id: @question.id)
-    end 
+    end
     @choosen_scenario = @existing_bet.scenario unless @existing_bet.nil?
 
     # computations

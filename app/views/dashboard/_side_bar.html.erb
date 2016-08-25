@@ -2,7 +2,7 @@
 <br>
 <% @randque.each do |que|  %>
   <% if que.bets.where(user_id: current_user.id).empty? %>
-  <div class="panel">
+  <div class="panel" style="border: solid 1px green">
     <%= link_to question_path(que) do %>
 
     <div class="panel-heading">
@@ -36,7 +36,7 @@
 
 <% elsif  que.event_date < DateTime.now.to_date %>
 
-<div class="panel panel-striped panel-danger"></div>
+<div class="panel panel-striped panel-danger" style="border: solid 1px purple"></div>
 <div class="">
   <%= link_to question_path(que) do %>
   <div class="panel-heading">
@@ -61,7 +61,7 @@
 </div>
 
 <% else  %>
-<div class="panel panel-info">
+<div class="panel panel-info" style="border: solid 1px blue">
   <div class="">
     <%= link_to question_path(que) do %>
     <div class="panel-heading">

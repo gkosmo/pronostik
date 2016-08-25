@@ -4,6 +4,10 @@
       <div class="col-sm-9">
         <%if user_signed_in? && !@existing_bet %>
         <%= render 'before-bet', question: @question %>
+
+        <% if @pending.empty? && user_signed_in? %>
+        <%= button_to 'bet later', question_makepending_path(@question), method: :patch%>
+        <% end %>
         <%end%>
         <%if @existing_bet%>
         <%= render 'after-bet', question: @question %>
@@ -15,5 +19,3 @@
     </div>
   </div>
 </div>
-
-

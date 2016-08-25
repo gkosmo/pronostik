@@ -1,6 +1,10 @@
 <%= render 'dashboard/top_bar' %>
 <br><br>
 <div class="container">
+<%  if @today %>
+<%= render 'dashboard/announce-new-score' %>
+<% end %>
+
   <div class="row">
     <div class="col-sm-5 col-sm-offset-1">
       <div class="panel panel-info">

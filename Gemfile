@@ -21,6 +21,9 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 
 
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 
 
 group :development, :test do

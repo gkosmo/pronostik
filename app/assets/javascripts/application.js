@@ -3,4 +3,6 @@
 //= require bootstrap-sprockets
 //= require Chart.bundle
 //= require chartkick
-//= require_tree .
+//= require cable.js
+//= require users.js
+//= require questions.js

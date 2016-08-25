@@ -4,7 +4,11 @@ class Dashboard::QuestionsController < ApplicationController
 
   def index
     @user = current_user
-    @queries = current_user.questions
+    @pending_queries = QuestionsUsersPending.where(user_id: current_user.id)
+    @queries = []
+    @pending_queries.each do |q|
+        @queries << Question.find_by_id(q.question.id)
+    end
   end
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825084432) do
+ActiveRecord::Schema.define(version: 20160825100208) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,15 @@ ActiveRecord::Schema.define(version: 20160825084432) do
     t.index ["tag_id"], name: "index_questions_tags_on_tag_id", using: :btree
   end
 
+  create_table "questions_users_pendings", force: :cascade do |t|
+    t.integer  "question_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["question_id"], name: "index_questions_users_pendings_on_question_id", using: :btree
+    t.index ["user_id"], name: "index_questions_users_pendings_on_user_id", using: :btree
+  end
+
   create_table "scenarios", force: :cascade do |t|
     t.integer  "question_id"
     t.boolean  "happened"
@@ -130,6 +139,8 @@ ActiveRecord::Schema.define(version: 20160825084432) do
   add_foreign_key "just_upvotes", "users"
   add_foreign_key "questions", "categories"
   add_foreign_key "questions", "users"
+  add_foreign_key "questions_users_pendings", "questions"
+  add_foreign_key "questions_users_pendings", "users"
   add_foreign_key "scenarios", "questions"
   add_foreign_key "statistics", "users"
 end

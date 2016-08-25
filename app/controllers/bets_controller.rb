@@ -7,6 +7,7 @@ class BetsController < ApplicationController
     @bet = Bet.new(bet_params)
     @bet.user_id = current_user.id
     @bet.save
+     QuestionsUsersPending.destroy_all(user_id: current_user.id,question_id: @bet.scenario.question.id)
     redirect_to question_path(@question)
   end
   def update

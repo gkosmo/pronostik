@@ -9,7 +9,7 @@ ActiveAdmin.register Scenario do
 #
  permit_params do
    permitted = [:permitted, :attributes]
-   permitted << :other if params[:action] == 'create' && current_user.admin?
+   permitted << :other if params[:action] == current_user.admin?
    permitted
  end
 

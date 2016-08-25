@@ -1,19 +1,63 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>Search: ...</h3>
 
-      <h3>Questions list:</h3>
-    </div>
-  </div>
+<!-- <if no search: display all
+  if search :
+    > -->
 
+<!-- <SEARCH> -->
+<div class="wrapper" id="search-wrapper">
+  <div class="container">
+     <div class="row">
+      <div class="col-xs-12">
 
-  <% @questions.each do |question| %>
-    <div class="card-wrapper">
-      <div class="row">
-        <%= render 'question', question: question %>
+        <%= form_tag questions_path, method: "get" do %>
+
+        <!-- <top-tags> -->
+          <% @top_tags.each do |tag| %>
+              <div class= 'btn btn-default' id="top-tag-btn">
+                <%= link_to tag.title, questions_path(search_term: tag.title) %>
+             </div>
+          <% end %>
+
+          <div class="row" style="color:black;">
+             <!-- <input-field-for tags> -->
+            <div class="col-lg-4">
+              <%= text_field_tag(:search_term, @search, placeholder: "topic?") %>
+            </div>
+            <!-- <category-dropdown> -->
+                <div class="dropdown col-lg-4">
+                   <%= collection_select nil, :category, Category.all, :id, :title, prompt: "All categories", selected: params[:category] %>
+                </div>
+          </div>
+            <!-- <button> -->
+            <%= submit_tag("Search", class: 'btn btn-default btn-lg', id: "search-btn") %>
+        <% end %>
+
       </div>
     </div>
-  <% end %>
+  </div>
+</div>
 
+
+
+<!-- <questions.all> -->
+<div class="wrapper" id="question-home-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+
+
+        <h3>Questions list:</h3>
+      </div>
+    </div>
+
+
+    <% @searched_questions.each do |question| %>
+      <div class="card-wrapper">
+        <div class="row">
+          <%= render 'question', question: question %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
 </div>

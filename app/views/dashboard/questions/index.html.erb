@@ -14,7 +14,6 @@
               <li class ='nav-pill'>
                 <%= link_to 'statistics', dashboard_statistics_path  %>
               </li>
-
               <li class ='nav-pill'>
                 <%= link_to 'questions', dashboard_questions_path %>
               </li>
@@ -28,33 +27,40 @@
           </div>
         </div>
         <div class="panel-body">
-
-          <% @queries.each do |query| %>
-          <div class="panel panel-default panel-boredered">
-
-          <ul>
-
-            <div class="panel-header">
-
-                <strong> <%= query.content %> </strong>
+          <% @queries.each do |que| %>
+          <div class="panel" style="border: solid 1px green">
+            <%= link_to question_path(que) do %>
+            <div class="panel-heading">
+              <h3 class="panel-title"> <%= que.content  %> </h3>
+            </div>
+            <div class="panel-body"> <ul>
+              <% que.scenarios.each do |scen| %>
+              <li> <%= scen.content %> </li>
+              <% end %>
+            </ul>
+            <ul>
+              <% que.tags.each do |tag| %>
+              <div class="label label-info">
+                <%= tag.title %>
               </div>
-            <%    query.scenarios.each do |scen| %>
-              <li>    <%= scen.content %> </li>
-            <% end %>
-
-          </ul>
-        </div>
-
+              <% end %>
+            </ul>
+          </div>
           <% end %>
+          <div class="text-muted text-right">
+            <%= que.event_date %>
+          </div>
+          <div class="panel-footer">
+            <%= que.category.title %>
+          </div>
         </div>
-        <div class="panel-footer">
-
-        </div>
+        <% end %>
       </div>
     </div>
-    <div class="col-sm-3 col-sm-offset-1">
-
-      <%= render 'dashboard/side_bar', randque: @randque %>
-    </div>
   </div>
+  <div class="col-sm-3 col-sm-offset-1">
+
+    <%= render 'dashboard/side_bar', randque: @randque %>
+  </div>
+</div>
 </div>

@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160825100208) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "content"
+    t.boolean  "happened"
     t.index ["category_id"], name: "index_questions_on_category_id", using: :btree
     t.index ["user_id"], name: "index_questions_on_user_id", using: :btree
   end

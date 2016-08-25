@@ -14,7 +14,6 @@ class QuestionsController < ApplicationController
     @bets = @question.bets
     @justifications_and_source = @bets.where.not(justification: nil)
 
-
     @existing_bet = nil
 
     if user_signed_in?

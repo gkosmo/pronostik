@@ -1,5 +1,6 @@
 class BetsController < ApplicationController
   before_action :set_question, only: [:create, :update]
+
   def new
   end
 
@@ -9,6 +10,7 @@ class BetsController < ApplicationController
     @bet.save
     redirect_to question_path(@question)
   end
+
   def update
     @bet = current_user.bets.find(params[:id])
     @bet.update(bet_params_update)

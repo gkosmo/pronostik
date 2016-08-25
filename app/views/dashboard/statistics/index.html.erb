@@ -28,6 +28,23 @@
           </div>
         </div>
         <div class="panel-body">
+          <div class="panel-body">
+
+            <h3>Your Forecast Score is : <%= @fc_score%></h3>
+            <h3>Your total accuracy : <%= @accuracy%> %</h3>
+            <div>
+            <h3>What you bet the most on:</h3>
+            <%= pie_chart @bets_per_cat %>
+            </div>
+            <div>
+            <h3>Your accuracy for each category (in %)  </h3>
+            <%= column_chart @accuracy_per_cat%>
+            </div>
+            <h3>Recommendation:</h3>
+            <p> Bet more on questions related to <%= @recommendation %> ! </p>
+
+
+          </div>
         </div>
 
         <div class="panel-footer">

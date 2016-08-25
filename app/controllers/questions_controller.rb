@@ -6,17 +6,23 @@ class QuestionsController < ApplicationController
 
 
   def index
-
-
-#input van de search
+  #input van de search
     @search = params[:search_term]
     @category = params[:category]
     @searched_questions = Question.all
 
+    @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
+      joins(:questions).
+      group("tags.id").
+      order("questions_count DESC").
+      limit(5)
+
     if @category.present?
       @searched_questions = @searched_questions.where(category_id: params[:category])
     end
-
+    if @search.present?
+        @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
+    end
   end
 
   def make_pending

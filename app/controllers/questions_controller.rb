@@ -81,9 +81,9 @@ class QuestionsController < ApplicationController
     # hash_new
 
     return @question.scenarios.
-    select("scenarios.id, content, COUNT(bets.id) AS bets_count").
-    joins("LEFT OUTER JOIN bets ON bets.scenario_id = scenarios.id").
-    group("scenarios.id")
+      select("scenarios.id, content, COUNT(bets.id) AS bets_count").
+      joins("LEFT OUTER JOIN bets ON bets.scenario_id = scenarios.id").
+      group("scenarios.id")
   end
 
   def compute_scenarios_certainties

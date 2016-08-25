@@ -22,6 +22,7 @@ ActiveAdmin.register Scenario do
 
     redirect_to resource_path, notice: "Happened!"
   end
+
   action_item :happened, only: :show do
     unless scenario.happened
       link_to 'happened', happened_admin_scenario_path(scenario), method: :put

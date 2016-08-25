@@ -2,3 +2,9 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+#search-wrapper, #question-home-wrapper{
+  background-color: $gray-lighter;
+  margin-bottom: 5px;
+}
+

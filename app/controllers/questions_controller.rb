@@ -3,9 +3,23 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show]
   before_action :set_question, only: [:show]
   before_action :set_randque, only: [:show]
+
+
+
   def index
-    @questions = Question.all
+
+
+#input van de search
+    @search = params[:search_term]
+    @category = params[:category]
+    @searched_questions = Question.all
+
+    if @category.present?
+      @searched_questions = @searched_questions.where(category_id: params[:category])
+    end
+
   end
+
 
   def show
     @bet = Bet.new

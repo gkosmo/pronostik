@@ -1,12 +1,13 @@
 <%= render 'question-show', question: question %>
 <div class="row">
-  <div class="col-sm-offset-3 col-sm-8">
+  <div class="col-sm-12">
+    <div class="card-sean">
 
     <h2>Scenario and Stats</h2>
-    <div>You Choose : <%=@choosen_scenario.content%></div>
+    <h2>You Choose : <%=@choosen_scenario.content%></h2>
   </div>
 </div>
-
+</div>
 <div class="row">
 
   <div class="col-sm-6">
@@ -22,6 +23,8 @@
 <%if @existing_bet.justification.nil? %>
   <div class="row">
     <div class="col-sm-12">
+      <div class="card-sean">
+
       <h2>Justify your bet</h2>
         <%= simple_form_for @existing_bet, url: question_bet_path(@question, @existing_bet) do |f| %>
         <%= f.input :justification, placeholder: 'Why did you bet on this scenario?'%>
@@ -29,20 +32,23 @@
         <%= f.submit %>
         <%end%>
     </div>
+    </div>
   </div>
 <%end%>
 
   <%#if @existing_bet.justification.nil? == false%>
 <div class="row">
   <div class="col-sm-12">
+      <div class="card-sean">
+
   <h2>Other Users Justification</h2>
-    <div class="card-wrapper">
       <p> Upvotes | Username | Scenario | Justification | Source </p>
         <% @all_bets.each do |bet| %>
             <p><%= bet.just_upvotes.count %> | <%=bet.user.first_name %> | <%=bet.scenario.content %> | <%=bet.justification%> | <%=bet.Url%> | <% if bet.just_upvotes.where(bet_id: bet.id, user_id: current_user.id).empty? %> <%= link_to "Upvote", question_bet_just_upvotes_path(bet.scenario.question, bet), :method=> :post,  class: "btn-large btn-primary" %><%end%></p>
         <%end%>
       </div>
     </div>
+  </div>
+
   <%#end%>
-</div>
 

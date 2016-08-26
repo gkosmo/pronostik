@@ -39,7 +39,7 @@ class QuestionsController < ApplicationController
 
     @scenarios = @question.scenarios
     @bets = @question.bets
-    @justifications_and_source = @bets.where.not(justification: nil)
+    @all_bets = @bets.where.not(justification: nil)
 
     @existing_bet = nil
 

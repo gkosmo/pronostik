@@ -1,9 +1,10 @@
 
-    <div class="col-xs-9 col-sm-9">
-      <!-- <div class="container"> -->
-                          <div class="card-wrapper">
+<div class="col-xs-9 col-sm-9">
+<!-- <div class="container"> -->
+  <div class="card-wrapper"">
+    <div class="row card-row">
 
-        <div class="row card-row">
+  <!-- <upvotes-column> -->
           <div class="hidden-xs col-sm-1 question-upvotes">
             <div class="arrow">
               <%= image_tag("upvote_version1.png", class: "avatar", :alt => "upvote-arrow") %>
@@ -11,14 +12,14 @@
             <div class="votes">
               <p><%= question.bets.count%> </p>
             </div>
-         </div>
-
+          </div>
+ <!-- <avatar-column> -->
          <div class="hidden-xs col-sm-2 question-creator">
             <%= image_tag("user.jpg", class: "avatar-extra-large", :alt => "user") %>
             <p>name: <%= question.user.first_name%></p>
           </div>
-
-          <div class="col-xs-12 col-sm-7">
+ <!-- <card-column> -->
+          <div class="col-xs-12 col-sm-6">
             <div class="question-card">
               <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
@@ -38,26 +39,23 @@
               </div>
             </div>
           </div>
-
-        <div class="col-xs-12 col-sm-2 question-links">
-
-         
+ <!-- <bet&socialshar-column> -->
+        <div class="col-xs-12 col-sm-3 question-links">
               <%= link_to 'Bet', question_path(question), class: 'link-to-bet' %>
-            
           <p>
-          <div class="social-shares" style="margin-top: 20px">
-            <ul class="list-inline">
-              <li>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-              </li>
-              <li>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-              </li>
-            </ul>
-          </div>
+            <div class="social-shares" style="margin-top: 20px">
+              <ul class="list-inline">
+                <li>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                </li>
+              </ul>
+            </div>
           </p>
         </div>
       </div>
     <!-- </div> -->
   </div>
-  </div>
+</div>

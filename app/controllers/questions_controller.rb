@@ -4,13 +4,11 @@ class QuestionsController < ApplicationController
   before_action :set_randque, only: [:index, :show]
 
 
-
   def index
   #input van de search
     @search = params[:search_term]
     @category = params[:category]
     @searched_questions = Question.all.order('id DESC')
-
 
     @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
       joins(:questions).
@@ -24,7 +22,6 @@ class QuestionsController < ApplicationController
     end
     if @search.present?
       @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
-
 
     end
   end
@@ -43,7 +40,7 @@ class QuestionsController < ApplicationController
 
     @scenarios = @question.scenarios
     @bets = @question.bets
-    @justifications_and_source = @bets.where.not(justification: nil)
+    @all_bets = @bets.where.not(justification: nil)
 
     @existing_bet = nil
 

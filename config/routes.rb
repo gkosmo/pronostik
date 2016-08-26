@@ -8,13 +8,17 @@ Rails.application.routes.draw do
   get 'faq', to: 'pages#faq'
   resources :questions, only: [:index, :show] do
     patch 'makepending', to: 'questions#make_pending'
-    resources :bets, only: [:new, :create, :update]
+    resources :bets, only: [:new, :create, :update] do
+      resources :just_upvotes, only: [:new, :create]
+    end
   end
 
   namespace :dashboard do
+      get 'dashboard' => 'dashboard#statistics'
       resources :statistics
       resources :questions
       resources :bets
+      resources :notifications
       get 'history', to: 'histories#index'
     end
 

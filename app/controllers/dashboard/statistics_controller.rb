@@ -63,8 +63,7 @@ class Dashboard::StatisticsController < ApplicationController
     #Total Accuracy : successful bets / total bets
     @successful_bets = @user.bets.joins(:scenario).where(scenarios: {happened: true}).count
     @total_bets = @user.bets.count
-    @accuracy = @total_bets == 0 ? 0 : @successful_bets / @total_bets * 100
-
+    @accuracy = @total_bets == 0 ? 0 : @successful_bets.to_f / @total_bets * 100
     #recommendation
     @sorted = @success_bets_per_cat.sort_by { |element| element[1]}
     @recommendation = @sorted[0][0] unless @sorted.empty?

@@ -3,12 +3,13 @@
 // card-wrapper = question-card + upvotes & avatar & social-shares
 
 .card-wrapper{
-  color: white;
+  color: $gray-darker;
   border-radius: 5px;
   margin-bottom: 15px;
   padding: 20px;
   margin-right: -110px;
-  border-style: $gray;
+  border-style: solid;
+  border-color: $gray-darker;
   }
 
 .card-row {

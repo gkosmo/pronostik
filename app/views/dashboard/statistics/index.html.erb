@@ -42,9 +42,10 @@
             <%= column_chart @accuracy_per_cat%>
             </div>
             <h3>Recommendation:</h3>
+            <% unless @recommendation.empty? do %>
             <p> Bet more on questions related to <%= @recommendation %> ! </p>
-
-
+	     <% end %>
+			
           </div>
         </div>
 

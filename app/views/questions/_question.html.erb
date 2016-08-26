@@ -41,11 +41,11 @@
 
         <div class="col-xs-12 col-sm-2 question-links">
 
-          <div class="link-to-bet">
-              <%= link_to 'Bet', question_path(question)%>
-          </div>
-
-          <div class="social-shares">
+         
+              <%= link_to 'Bet', question_path(question), class: 'link-to-bet' %>
+            
+          <p>
+          <div class="social-shares" style="margin-top: 20px">
             <ul class="list-inline">
               <li>
                 <a href="#"><i class="fa fa-twitter"></i></a>
@@ -55,6 +55,7 @@
               </li>
             </ul>
           </div>
+          </p>
         </div>
       </div>
     <!-- </div> -->

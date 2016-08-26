@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825153835) do
+ActiveRecord::Schema.define(version: 20160826095723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 20160825153835) do
     t.datetime "updated_at", null: false
     t.index ["bet_id"], name: "index_just_upvotes_on_bet_id", using: :btree
     t.index ["user_id"], name: "index_just_upvotes_on_user_id", using: :btree
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notifications_on_user_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
@@ -144,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160825153835) do
   add_foreign_key "bets", "users"
   add_foreign_key "just_upvotes", "bets"
   add_foreign_key "just_upvotes", "users"
+  add_foreign_key "notifications", "users"
   add_foreign_key "questions", "categories"
   add_foreign_key "questions", "users"
   add_foreign_key "questions_users_pendings", "questions"

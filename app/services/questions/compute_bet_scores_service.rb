@@ -13,10 +13,22 @@ class Questions::ComputeBetScoresService
     @question.bets.each do |bet|
       score = compute_bet_score(bet)
       bet.update!(scenario_score: score)
+      send_mess_bet_changed(bet)
     end
+
   end
 
   private
+
+  def send_mess_bet_changed(bet)
+
+  ##        TO DO !!
+  user = bet.user
+  mess = Notification.new(user: user, title: 'New Score')
+  mess.content = 'You have a new Score for the question #{bet.question}'
+  mess.save!
+  end
+
 
   def compute_bet_score(bet)
     if bet.scenario_id == @happened_scenario.id # id important HERE

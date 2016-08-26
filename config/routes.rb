@@ -12,9 +12,11 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
+      get 'dashboard' => 'dashboard#statistics'
       resources :statistics
       resources :questions
       resources :bets
+      resources :notifications
       get 'history', to: 'histories#index'
     end
 

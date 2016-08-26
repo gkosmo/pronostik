@@ -12,7 +12,7 @@ ActiveAdmin.register Scenario do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-
+ actions :all
   permit_params :happened, :content
 
 

@@ -16,7 +16,6 @@ ActiveAdmin.register Scenario do
 
   form do |f|
     inputs 'Details' do
-
       input :question 
       input :content
       actions

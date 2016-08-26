@@ -39,7 +39,6 @@
               <% @searched_questions.each do |question| %>
 
 
-                <% if question.event_date < DateTime.now.to_date %>
                     <%= render 'question-purple', question: question %>
 
                 <%else %>

@@ -27,6 +27,8 @@ a = Question.new( user_id: User.all.sample.id, category: cat_politics, event_dat
 b = Question.new( user_id: User.all.sample.id,  category: cat_politics, event_date: "Mon, 23 Jan 2017", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Shall Trump backout of the election ?")
 c = Question.new( user_id: User.all.sample.id,  category: cat_sports, event_date: "Mon, 23 Sep 2016", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Will the UK take home the most Olympic Medals this year ?")
 d = Question.new( user_id: User.all.sample.id,  category: cat_tech, event_date: "Mon, 23 Jan 2021", created_at: "Tue, 23 Aug 2015 09:43:25 UTC +00:00", content: "Shall the auto-free zone around the Beurs be preserved in the next 5 years ? ")
+e = Question.new( user_id: User.all.sample.id,  category: cat_society, event_date: "Mon, 20 Jun 2016", created_at: "Tue, 28 Jun 2016 09:43:25 UTC +00:00", content: "Will Anneesens neighbourhood become gentrified? ")
+f = Question.new( user_id: User.all.sample.id,  category: cat_tech, event_date: "Mon, 4 Apr 2016", created_at: "Tue, 31 May 2016 09:43:25 UTC +00:00", content: "Will more bourkini-bans be installed in Europe (outside of France? ")
 
 a.scenarios.build(content: "No, Erdogan will be overtrown by 2017")
 a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
@@ -37,16 +39,28 @@ c.scenarios.build(content: 'yes')
 c.scenarios.build(content: 'no')
 d.scenarios.build(content: 'yes')
 d.scenarios.build(content: 'no')
+e.scenarios.build(content: 'yes')
+e.scenarios.build(content: 'no')
+f.scenarios.build(content: 'yes')
+f.scenarios.build(content: 'no')
+
 
 d.tags.build(title: 'BELGIUM')
 c.tags.build(title: 'UK')
 b.tags.build(title: 'USA')
 c.tags.build(title: 'TURKEY')
+
+e.tags.build(title: 'EU')
+f.tags.build(title: 'BRUSSELS')
+e.tags.build(title: 'FRANCE')
+e.tags.build(title: 'RELIGION')
+
 a.save!
 b.save!
 c.save!
 d.save!
-
+e.save!
+f.save!
 
 bet = Scenario.first
 bet = Bet.new(scenario_id: bet.id, estimation: 44, user_id: User.all.sample.id)

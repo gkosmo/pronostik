@@ -9,7 +9,8 @@ class QuestionsController < ApplicationController
   #input van de search
     @search = params[:search_term]
     @category = params[:category]
-    @searched_questions = Question.all
+    @searched_questions = Question.all.order('id DESC')
+
 
     @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
       joins(:questions).
@@ -19,9 +20,12 @@ class QuestionsController < ApplicationController
 
     if @category.present?
       @searched_questions = @searched_questions.where(category_id: params[:category])
+
     end
     if @search.present?
-        @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
+      @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
+
+
     end
   end
 

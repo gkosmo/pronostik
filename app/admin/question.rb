@@ -7,7 +7,9 @@ ActiveAdmin.register Question do
 #
 # or
 #
- permit_params :create, :update
-  action :all
+
+ permit_params :category_id, :user_id, :event_date, :content
+
+
 
 end

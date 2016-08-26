@@ -39,16 +39,8 @@
               <% @searched_questions.each do |question| %>
 
 
-                <% if question.event_date < DateTime.now.to_date %>
                     <%= render 'question-purple', question: question %>
 
-                <% elsif question.bets.where(user_id: current_user)%>
-                  <%= render 'question-blue', question: question %>
-
-                <% else %>
-                  <%= render 'question-green', question: question %>
-
-                <% end %>
 
               <% end %>
 

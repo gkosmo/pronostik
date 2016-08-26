@@ -28,3 +28,33 @@
 .heigth-vote {
   border-radius: 50%;
 }
+
+.white-back {
+  background-color: white;
+  padding: 5px;
+  color: black;
+  margin-top: 2px;
+  border-radius: 5px;
+}
+
+.justification-positionning {
+  display: flex;
+  justify-content: space-between;
+}
+
+.justification-flex-item {
+  padding: 10px;
+  border: solid 1px lightgrey;
+  flex: 0, 0, 20%;
+}
+
+.justification-flex-body {
+  padding: 10px;
+  border: solid 1px lightgrey;
+  flex: 1, 0, auto;
+}
+
+
+
+
+

@@ -5,20 +5,42 @@
 
 #search-wrapper, #question-home-wrapper{
   background-color: $gray-lighter;
-  margin-bottom: 5px;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
+#search-engine form{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
+  #top-tags-display, #search-and-btn-display{
+  flex: 0 0 auto;
+  }
+}
 
-.top-tag-btn{
+#top-tag-btn{
   border-style: solid;
   border-radius: 5px;
   border-color: white;
   padding: 5px;
   text-decoration: none;
-}
-
-.top-tag-btn a{
+ a {
   text-decoration: none;
   color: black;
+  }
 }
+
+#search_term {
+    border-radius: 5px;
+    border-color: white;
+  }
+
+#search-btn{
+    border-color: white;
+    width: 96px;
+    border-radius: 15%;
+}
+
+

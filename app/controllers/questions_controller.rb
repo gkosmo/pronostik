@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_question, only: [:show]
-  before_action :set_randque, only: [:show]
+  before_action :set_randque, only: [:index, :show]
 
 
 
@@ -113,6 +113,6 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
   def set_randque
-    @randque = Question.all.sample(2)
+    @randque = Question.all.sample(4)
   end
 end

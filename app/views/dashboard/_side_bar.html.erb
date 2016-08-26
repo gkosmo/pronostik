@@ -9,7 +9,7 @@
        This color: voted
      </div>
    </p>
-@
+
   <% @randque.each do |que|  %>
     <% if que.bets.where(user_id: current_user.id).empty? %>
     <div class="panel" style="border: solid 1px green">

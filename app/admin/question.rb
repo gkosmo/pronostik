@@ -8,6 +8,6 @@ ActiveAdmin.register Question do
 # or
 #
  permit_params :create, :update
-
+  action :all
 
 end

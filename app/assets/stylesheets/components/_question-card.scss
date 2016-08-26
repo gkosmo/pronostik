@@ -77,16 +77,23 @@ a:hover, a:focus {
      a {
   text-decoration: none;
   color: black;
-  }
+    }
 }
+#pending-results, #end-results {
+  border-style: none;
+  text-decoration: none;
+  color: black;
+
+    }
 
 #randque-home-page{
-  background-color: white;
-  border-color: $gray-dark;
+  padding-left: 10px;
+  border-color: $gray-light;
   border-style: solid;
   border-radius: 5px;
     a {
     text-decoration: none;
     }
 }
+
 

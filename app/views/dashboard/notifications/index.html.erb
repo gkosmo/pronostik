@@ -1,0 +1,50 @@
+<%= render 'dashboard/top_bar' %>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-7">
+      <div class="panel panel-info" style="border: solid 1px black" >
+        <div class="panel-header">
+          <div class="nav nav-success inline-block">
+            <div class="navbar-header list-inline">
+              <%= render 'dashboard/perso_nav' %>
+
+            </div>
+          </div>
+        </div>
+        <div class="panel-body">
+
+          <h1>Message to User</h1>
+
+          <table class="table table-bordered table-responsive">
+            <thead>
+              <tr>
+                <th class="active">Title</th>
+                <th class="success">Content</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @notifs.each do |messtouser| %>
+              <tr>
+                <td class="warning"><%= messtouser.title %></td>
+                <td class="danger"><%= messtouser.content %></td>
+                <td>    <%= link_to 'Delete This Message', dashboard_notification_path(messtouser), method: :delete, data: { confirm: "sure you wanna do that Bro?" }, class: "btn btn-primary", style: "border-radius: 5px; padding: 10px;" %> </td>
+              </tr>
+              <% end %>
+
+            </tbody>
+          </table>
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-sm-offset-1">
+
+      <%= render 'dashboard/side_bar', randque: @randque %>
+    </div>
+  </div>
+</div>

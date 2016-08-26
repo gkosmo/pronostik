@@ -3,29 +3,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-5 col-sm-offset-1">
-      <div class="panel panel-info">
+    <div class="col-sm-7">
+      <div class="panel panel-info" style="border: solid 1px black">
         <div class="panel-header">
-          <div class="nav nav-success  inline-block">
-            <div class="navbar-header ">
-              <div class="span2">
-              </div>
+          <div class="nav nav-success inline-block">
+            <div class="navbar-header list-inline">
+              <%= render 'dashboard/perso_nav' %>
             </div>
-            <ul class="nav navbar-nav list-inline">
-              <li class ='nav-pill'>
-                <%= link_to 'statistics', dashboard_statistics_path  %>
-              </li>
-
-              <li class ='nav-pill'>
-                <%= link_to 'questions', dashboard_questions_path %>
-              </li>
-              <li class ='nav-pill'>
-                <%= link_to 'justifications', dashboard_bets_path %>
-              </li>
-              <li class ='nav-pill'>
-                <%= link_to 'history', 'history' %>
-              </li>
-            </ul>
           </div>
         </div>
         <div class="panel-body">
@@ -34,18 +18,18 @@
             <h3>Your Forecast Score is : <%= @fc_score%></h3>
             <h3>Your total accuracy : <%= @accuracy%> %</h3>
             <div>
-            <h3>What you bet the most on:</h3>
-            <%= pie_chart @bets_per_cat %>
+              <h3>What you bet the most on:</h3>
+              <%= pie_chart @bets_per_cat %>
             </div>
             <div>
-            <h3>Your accuracy for each category (in %)  </h3>
-            <%= column_chart @accuracy_per_cat%>
+              <h3>Your accuracy for each category (in %)  </h3>
+              <%= column_chart @accuracy_per_cat%>
             </div>
             <h3>Recommendation:</h3>
             <% unless @recommendation.nil? || @recommendation.empty? %>
             <p> Bet more on questions related to <%= @recommendation %> ! </p>
-	     <% end %>
-			
+            <% end %>
+
           </div>
         </div>
 

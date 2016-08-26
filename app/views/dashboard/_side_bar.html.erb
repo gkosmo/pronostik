@@ -1,6 +1,13 @@
 <% unless @randque.nil? %>
 <br>
-
+   <p>
+     <div class="text" style="color: green">
+       This color: not voted yet
+     </div>
+     <div class="text" style="color: blue">
+       This color: voted
+     </div>
+   </p>
 
   <% @randque.each do |que|  %>
     <% if que.bets.where(user_id: current_user.id).empty? %>

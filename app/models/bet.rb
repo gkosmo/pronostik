@@ -4,5 +4,6 @@ class Bet < ApplicationRecord
   belongs_to :scenario
 
   validates :justification, length: { maximum: 3000, too_long: '%{count} is the max number of characters'}
+  validates :estimation, presence: true
 end
 

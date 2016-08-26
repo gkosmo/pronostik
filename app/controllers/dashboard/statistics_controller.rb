@@ -67,7 +67,7 @@ class Dashboard::StatisticsController < ApplicationController
 
     #recommendation
     @sorted = @success_bets_per_cat.sort_by { |element| element[1]}
-    @recommendation = @sorted[0][0]
+    @recommendation = @sorted[0][0] unless @sorted.empty?
 
     #accuracy per month
     # @successful_bets = @user.bets.joins(:scenario).where(scenarios: {happened: true}).group("DATE_TRUNC('month', created_at)").count

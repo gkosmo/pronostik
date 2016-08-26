@@ -25,7 +25,7 @@ class Questions::ComputeBetScoresService
   ##        TO DO !!
   user = bet.user
   mess = Notification.new(user: user, title: 'New Score')
-  mess.content = 'You have a new Score for the question #{bet.question}'
+  mess.content = "You have a new Score for the question:  #{bet.scenario.question.content} "
   mess.save!
   end
 

@@ -3,19 +3,22 @@
 
 <div class="row">
   <div class="col-sm-3">
-    <div class="card-wrapper">
+    <div class="card-sean" id="sean">
       <h2>Resources</h2>
-
+      <% if @bets.empty? %>
+      <div>| See what are the most used resources </div>
+      <div>| No resources yet</div>
+      <% end %>
       <ol> <% @bets.each do |bet| %>
         <li>
-          <%= link_to 'Source 1', bet.Url %>
+          | <%= link_to 'Source 1', bet.Url %>
         </li>
         <%end%>
       </ol>
     </div>
   </div>
   <div class="col-sm-9">
-    <div class="card-wrapper">
+    <div class="card-sean">
       <h2>Scenarios</h2>
       <p>Bet on a scenario to see what other users bet on and the stats</p>
 
@@ -24,13 +27,16 @@
         <%= scenario.content %>
         <%= simple_form_for @bet, url: question_bets_path(@question) do |f| %>
         <%= f.hidden_field :scenario_id, value: scenario.id%>
-        <%= f.number_field :estimation, style: 'color: red' %>
-        <%= f.submit %>
+        <%= f.number_field :estimation, style: 'color: blue' %>
+        <%= f.submit%>
       <%end%>
     <%end%>
     </div>
   </div>
 </div>
 <div class="row">
-  <div class="col-sm-12"> <h2>Bet on a Scenario to unlock other users' justifications</h2></div>
+  <div class="col-sm-12">
+    <div class="card-sean">
+  <h2>Bet on a Scenario to unlock other users' justifications</h2></div>
+  </div>
 </div>

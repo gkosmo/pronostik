@@ -42,16 +42,21 @@
                 <% if question.event_date < DateTime.now.to_date %>
                     <%= render 'question-purple', question: question %>
 
-                <% elsif question.bets.where(user_id: current_user)%>
-                  <%= render 'question-blue', question: question %>
+                <%else %>
 
-                <% else %>
+                <% if current_user %>
+
+                  <% if question.bets.where(user_id: current_user.id).empty?%>
                   <%= render 'question-green', question: question %>
+                  <% else %>
+                  <%= render 'question-blue', question: question %>
+                  <% end %>
 
+                <%else%>
+                  <%= render 'question-green', question: question %>
                 <% end %>
-
               <% end %>
-
+             <% end %>
         </div>
 
         <div class="col-xs-3 col-sm-3">

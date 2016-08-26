@@ -1,10 +1,21 @@
 // Your footer style
 
-#footer{
-    background-color: lime;
+#footer {
+    background-color: $gray-dark;
     bottom: 0;
     height: 100px;
     left: 0;
     position: absolute;
     right: 0;
+}
+
+#footer-pronostik{
+  background-color: $gray-dark;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+#foo-pro{
+  margin-top: -78px;
+
 }

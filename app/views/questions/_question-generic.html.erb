@@ -25,10 +25,10 @@
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed" id="question-card-content">
 
                         <p>Content: <%= question.content%> </p>
-                        <p>Event: <%= question.event_date%> </p>
+                        <p>End Date: <%= question.event_date%> </p>
 
                         <%= render 'scenario', question: question %>
 

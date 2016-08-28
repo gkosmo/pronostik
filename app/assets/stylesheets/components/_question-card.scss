@@ -49,6 +49,10 @@
   border: none;
 }
 
+#question-card-content{
+  color: black;
+}
+
 a:hover, a:focus {
   text-decoration: none;
 }
@@ -65,9 +69,10 @@ a:hover, a:focus {
     transition-duration: 3ms;
     }
     i:hover{
-    color:yellow;
+    color: $brand-color;
     }
 }
+
 
 .link-to-bet {
   border-style: solid;

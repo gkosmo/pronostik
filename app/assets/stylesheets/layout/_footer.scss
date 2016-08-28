@@ -7,6 +7,11 @@
     left: 0;
     position: absolute;
     right: 0;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
 }
 
 #footer-pronostik{
@@ -16,6 +21,9 @@
 }
 
 #foo-pro{
-  margin-top: -78px;
-
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
+

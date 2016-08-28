@@ -1,0 +1,27 @@
+.devise-card{
+  border-style:solid;
+  border-color: $gray-darker;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px #ECECEC;
+  margin: 50px;
+  color: $gray-darker;
+}
+
+.links-to-other-options{
+  margin-top: 20px;
+    a {
+  text-decoration:none;
+  color: $gray-darker;
+ }
+}
+// .sign-in-form h1 {
+//   font-size: 22px;
+//   margin-bottom: 30px;
+//   font-weight: bold;
+//   text-align: center;
+// }
+// .sign-in-form .btn {
+//   width: 100%;
+//   line-height: 30px;
+// }

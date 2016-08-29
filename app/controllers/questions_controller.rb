@@ -1,8 +1,28 @@
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_question, only: [:show]
-  before_action :set_randque, only: [:index, :show]
+  before_action :set_randque, only: [:index, :show, :new_index, :good_index]
 
+
+  def new_index
+    @searched_questions = Question.all.where(status: 'new')
+  @searched_questions.where({created_at: 10.days.ago..DateTime.now.to_date})
+      @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
+          joins(:questions).
+          group("tags.id").
+          order("questions_count DESC").
+          limit(5)
+  end
+
+  def good_index
+
+        @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
+          joins(:questions).
+          group("tags.id").
+          order("questions_count DESC").
+          limit(5)
+    @searched_questions = Question.all.where(status: 'good')
+  end
 
   def index
   #input van de search
@@ -17,10 +37,10 @@ class QuestionsController < ApplicationController
       limit(5)
 
     if @category.present?
-      @searched_questions = @searched_questions.where(category_id: params[:category])
+      @searched_questions = @searched_questions.where(category_id: params[:category]).uniq
     end
     if @search.present?
-      @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
+      @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
     end
   end
 
@@ -35,16 +55,13 @@ class QuestionsController < ApplicationController
 
   def show
     @bet = Bet.new
-
     @scenarios = @question.scenarios
     @bets = @question.bets
     @all_bets = @bets.where.not(justification: nil)
-
     @existing_bet = nil
 
     #recommendation based on weighted algoritm
     @prediction = @question.scenarios.sort_by { |scenario| scenario.bets.size }.reverse[0].content
-
     if user_signed_in?
       @existing_bet = current_user.bets.
       joins(scenario: :question).
@@ -55,16 +72,13 @@ class QuestionsController < ApplicationController
       @pending =  QuestionsUsersPending.where(user_id: current_user.id, question_id: @question.id)
     end
     @choosen_scenario = @existing_bet.scenario unless @existing_bet.nil?
-
     # computations
     @scenarios_certainties = compute_scenarios_certainties
     @bets_count = compute_bets_count
-
     # charts stats
     @bar_chart = @scenarios_certainties.map do |scenario|
       [scenario.content, scenario.certainty.to_f.round(2)]
     end
-
     @column_chart = @bets_count.map do |scenario|
       [scenario.content, scenario.bets_count]
     end
@@ -135,4 +149,6 @@ class QuestionsController < ApplicationController
   def set_randque
     @randque = Question.all.sample(4)
   end
+
+
 end

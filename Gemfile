@@ -12,6 +12,7 @@ gem 'redis'
 gem 'omniauth-facebook'
 gem "chartkick"
 gem 'faker'
+gem 'groupdate'
 gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -20,6 +21,8 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'country_select'
+gem 'will_paginate', '~> 3.1.0'
+
 
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'

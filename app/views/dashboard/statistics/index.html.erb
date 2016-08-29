@@ -14,10 +14,11 @@
         </div>
         <div class="panel-body">
           <div class="panel-body">
-            <div>
+
             <h3>Your Forecast Score is : <%= @fc_score%></h3>
             <h3>Your total accuracy : <%= @accuracy%> %</h3>
-            </div>
+            <%= scatter_chart @user.bets.pluck(:scenario_score, :created_at)%>
+
             <div>
               <h3>What you bet the most on:</h3>
               <%= pie_chart @bets_per_cat %>

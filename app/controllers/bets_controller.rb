@@ -66,5 +66,4 @@ class BetsController < ApplicationController
     params.require(:bet).permit(:justification, :Url)
   end
 
-
 end

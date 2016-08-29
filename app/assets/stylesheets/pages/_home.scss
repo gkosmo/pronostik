@@ -4,8 +4,7 @@
  * ------------------------------------- */
 
 #search-wrapper, #question-home-wrapper{
-  background-color: $gray-lighter;
-
+  background-color: white;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -32,15 +31,36 @@
   }
 }
 
+#_category{
+    border-radius: 5px;
+    border-style: solid;
+    border-color:  $gray-light;
+    color: $gray-light;
+    background: white;
+    width: 110px;
+    height: 47px;
+
+}
+
 #search_term {
     border-radius: 5px;
-    border-color: white;
+    border-style: solid;
+    border-color:  $gray-light;
+    padding-left: 20px;
+    line-height: 40px;
+    color: $gray-light;
+    background: white;
+    right: 14px;
+    top: -2px;
+    z-index: 1;
   }
 
 #search-btn{
-    border-color: white;
     width: 96px;
-    border-radius: 15%;
+    border-radius: 5px;
+    border-style: solid;
+    border-color:  $gray-light;
 }
+
 
 

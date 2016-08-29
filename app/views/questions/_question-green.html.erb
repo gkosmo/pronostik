@@ -16,7 +16,7 @@
  <!-- <avatar-column> -->
          <div class="hidden-xs col-sm-2 question-creator">
             <%= image_tag("user.jpg", class: "avatar-extra-large", :alt => "user") %>
-            <p>name: <%= question.user.first_name%></p>
+            <p><%= question.user.first_name%></p>
           </div>
  <!-- <card-column> -->
           <div class="col-xs-12 col-sm-6">
@@ -25,10 +25,10 @@
                 <div class="panel panel-default">
                   <div class="panel-heading" role="tab" id="headingOne">
                     <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed" id="question-card-content">
 
-                        <p>Content: <%= question.content%> </p>
-                        <p>Event: <%= question.event_date%> </p>
+                        <p><%= question.content%> </p>
+                        <p>End Date: <%= question.event_date%> </p>
 
                         <%= render 'scenario', question: question %>
 
@@ -41,7 +41,11 @@
           </div>
  <!-- <bet&socialshar-column> -->
         <div class="col-xs-12 col-sm-3 question-links">
-              <%= link_to 'Bet', question_path(question), class: 'link-to-bet' %>
+              <div class="link-to-bet">
+                <%= link_to question_path(question) do %>
+                  <%= image_tag "bet-now.jpg", class: "avatar-extra-large", alt: "bet-now" %>
+                <% end %>
+              </div>
           <p>
             <div class="social-shares" style="margin-top: 20px">
               <ul class="list-inline">

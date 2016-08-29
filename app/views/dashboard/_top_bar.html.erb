@@ -1,18 +1,26 @@
-<br>
-
 <div class="container">
-
   <div class="row">
     <div class="col-sm-12">
-        <div class="nav navbar-default text-center">
-          <div>
+      <div class="dashboard-topbar text-center">
+          <h2>
             Hi <span><%= current_user.first_name %></span>, Welcome to your Dashboard.
-          </div>
+          </h2>
           <div><%= link_to "Create a Question", new_dashboard_question_path, class: "btn btn-primary"  %></div>
-          <h1 class="fa fa-wheelchair-alt"></h1>
-        </div>
+          <p>Have a look around, you'll have an awesome time.</p>
+      </div>
+          <div class="text-center bordered">
+          <% if current_user.country.nil? %>
+          <h3>Help us improve our predictions. Which country have you lived the most? </h3>
+
+            <%= simple_form_for current_user, url: edit_user_registration_path, method: :put do |f| %>
+            <%= f.country_select :country %>
+            <%= f.submit %>
+            <%end%>
+          <h4>Once answered, it will disappear and we won't bother you again.</h3>
+          <%end%>
+
+
+          </div>
     </div>
-
   </div>
-
 </div>

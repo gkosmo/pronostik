@@ -68,6 +68,24 @@ class QuestionsController < ApplicationController
     @column_chart = @bets_count.map do |scenario|
       [scenario.content, scenario.bets_count]
     end
+
+
+    #@users = User.all.group(:country).joinwhere(bet_id: @question.id).count
+    @countries = []
+    @hash = {}
+
+    @bets.each do |bet|
+      @countries << bet.user.country
+    end
+    @countries
+    @result = @countries.each_with_object(Hash.new(0)) { |word,counts| counts[word] += 1 }
+
+    # @countries.each do |country|
+    #   hash[country] += "1"
+    # end
+    # @hash
+
+
   end
 
   private

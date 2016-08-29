@@ -22,5 +22,4 @@ Rails.application.routes.draw do
       resources :notifications
       get 'history', to: 'histories#index'
     end
-
 end

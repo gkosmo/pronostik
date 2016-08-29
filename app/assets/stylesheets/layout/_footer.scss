@@ -7,6 +7,11 @@
     left: 0;
     position: absolute;
     right: 0;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    width: 100%;
 }
 
 #footer-pronostik{

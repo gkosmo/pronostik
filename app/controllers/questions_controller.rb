@@ -42,6 +42,9 @@ class QuestionsController < ApplicationController
 
     @existing_bet = nil
 
+    #recommendation based on weighted algoritm
+    @prediction = @question.scenarios.sort_by { |scenario| scenario.bets.size }.reverse[0].content
+
     if user_signed_in?
       @existing_bet = current_user.bets.
       joins(scenario: :question).

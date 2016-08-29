@@ -1,5 +1,5 @@
 class Bet < ApplicationRecord
-  has_many :just_upvotes
+  has_many :just_upvotes, dependent: :destroy
   belongs_to :user
   belongs_to :scenario
 

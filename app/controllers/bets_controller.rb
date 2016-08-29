@@ -1,6 +1,37 @@
 class BetsController < ApplicationController
   before_action :set_question, only: [:create, :update]
 
+  def index
+    @users = User.all
+
+    #total score by users
+    @scores = []
+    @statistics = []
+    @users_name = []
+
+    @users.each do |user|
+      @users_name << user.first_name
+      user.bets.each do |bet|
+        if bet.scenario_score.nil?
+          @scores << 0
+        else
+          @scores << bet.scenario_score
+        end
+      end
+      @statistics << @scores.inject { |sum, el| sum + el } unless @scores.nil?
+    end
+    @users_name
+    @statistics
+    @final_hash = Hash[@users_name.zip(@statistics)]
+
+    #score per week per users
+    @index = 0
+
+
+  end
+
+
+
   def new
   end
 

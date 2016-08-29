@@ -3,15 +3,14 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-12 ">
-         <div class="nav navbar-default text-center">
-              <h1 class="fa fa-wheelchair-alt">
-            </h1>
-
-        <span>
-           <%= current_user.first_name %>
-        </span>
-         </div>
+    <div class="col-sm-12">
+        <div class="nav navbar-default text-center">
+          <div>
+            Hi <span><%= current_user.first_name %></span>, Welcome to your Dashboard.
+          </div>
+          <div><%= link_to "Create a Question", new_dashboard_question_path, class: "btn btn-primary"  %></div>
+          <h1 class="fa fa-wheelchair-alt"></h1>
+        </div>
     </div>
 
   </div>

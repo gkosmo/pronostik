@@ -1,0 +1,57 @@
+
+<div class="container">
+<% if current_user.admin %>
+<div class="row">
+<div class="col-sm-offset-4 col-sm-4">
+<div class="text-center">
+
+
+<h2> THE RANKING </h2>
+<div>
+
+<ul>
+<% unless @final_hash.nil?   %>
+<% @final_hash.each do |key, value| %>
+<li>
+  <%= key %> : <%= value %>
+</li>
+<% end %>
+<% end %>
+
+
+</ul>
+</div>
+</div>
+</div>
+</div>
+<% end %>
+
+
+<%# @weeks.each do |week| %>
+<div class="row">
+  <div class="col-sm-offset-2 col-sm-8">
+    <h2>Week <%#= @index + @weeks.size %> 1</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Score</th>
+          <th>Justification Upvotes</th>
+          <th>Question Upvotes</th>
+        </tr>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.first_name%></td>
+            <td></td>
+          </tr>
+          <% end %>
+        </tbody>
+       </thead>
+    </table>
+  </div>
+</div>
+<% @index += 1 %>
+<%# end %>
+</div>
+

@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   root to: 'questions#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'faq', to: 'pages#faq'
+  get 'questions/new_index'
+  get 'questions/good_index'
   resources :questions, only: [:index, :show] do
     patch 'makepending', to: 'questions#make_pending'
     resources :bets, only: [:new, :create, :update] do
       resources :just_upvotes, only: [:new, :create]
     end
   end
+  resources :bets, only: [:index]
 
   namespace :dashboard do
       get 'dashboard' => 'dashboard#statistics'

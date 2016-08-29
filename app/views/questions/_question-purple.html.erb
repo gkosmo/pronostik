@@ -21,11 +21,12 @@
  <!-- <card-column> -->
           <div class="col-xs-12 col-sm-6">
             <div class="question-card">
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+              <div class="panel-group" id="accordion-<%= question.id %>" role="tablist" aria-multiselectable="true">
                 <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne">
+                  <div class="panel-heading" role="tab" id="heading-<%= question.id %>">
                     <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                      <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion-<%= question.id %>" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapse-<%= question.id %>" >
 
                         <p>Content: <%= question.content%> </p>
                         <p>Event: <%= question.event_date%> </p>

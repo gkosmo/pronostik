@@ -2,22 +2,36 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-
-#search-wrapper, #question-home-wrapper{
+#search-wrapper{
   background-color: $gray-lighter;
-
   padding-top: 15px;
   padding-bottom: 15px;
+
+}
+
+#info-homepage{
+
+}
+
+#search-engine{
+      display:flex;
+      flex-direction: column;
 }
 
 #search-engine form{
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
 
-  #top-tags-display, #search-and-btn-display{
-  flex: 0 0 auto;
-  }
+  #top-tags-display {
+  flex: 0 0 50%;
+  background-color:yellow;
+}
+
+#search-and-btn-display {
+  background-color:red;
+   flex: 0 0 50%;
 }
 
 #top-tag-btn{
@@ -43,4 +57,8 @@
     border-radius: 15%;
 }
 
-
+#question-home-wrapper{
+  background-color: $gray-lighter;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}

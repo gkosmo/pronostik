@@ -17,10 +17,10 @@ class QuestionsController < ApplicationController
       limit(5)
 
     if @category.present?
-      @searched_questions = @searched_questions.where(category_id: params[:category])
+      @searched_questions = @searched_questions.where(category_id: params[:category]).uniq
     end
     if @search.present?
-      @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
+      @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
     end
   end
 

@@ -3,7 +3,7 @@ class Dashboard::BetsController < ApplicationController
 
   def index
     @bets = current_user.bets
-
+    @bets = @bets.paginate(:page => params[:page])
   end
 
 private

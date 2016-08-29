@@ -1,0 +1,20 @@
+.dashboard-topbar {
+ height: 200px;
+ background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%);
+  color: black;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-topbar h2 {
+  margin-bottom: 15px;
+}
+
+.dashboard-topbar p {
+  margin-top : 15px;
+}

@@ -1,25 +1,32 @@
 <%= render 'question-show', question: question %>
 <div class="row">
   <div class="col-sm-12">
-    <div class="card-sean">
-
-    <h2>Scenario and Stats</h2>
-    <h2>You Choose : <%=@choosen_scenario.content.capitalize %></h2>
-  </div>
+    <h2>Quick Stats Overview. You bet on : <%=@choosen_scenario.content.capitalize %></h2>
 </div>
 </div>
-<div class="row">
 
-  <div class="col-sm-6">
-    <h3># of Bets for each scenario</h3>
-    <%= column_chart @column_chart %>
-  </div>
-
-  <div class="col-sm-6">
-    <h3>Average certainty for each scenario</h3>
-    <%= bar_chart @bar_chart %>
+<div class="bordered padded-chart">
+  <div class="row">
+    <div class="col-sm-6">
+      <h3># of Bets for each scenario</h3>
+        <%= column_chart @column_chart %>
+      </div>
+    <div class="col-sm-6">
+      <h3>Average certainty for each scenario</h3>
+      <%= bar_chart @bar_chart %>
+    </div>
   </div>
 </div>
+
+<div class="padded-chart text-center bordered">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Where do people who bet come from ?</h2>
+      <h3><%= geo_chart @result%></h3>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-sm-12">
     <div class="bordered text-center">
@@ -35,7 +42,7 @@
       <div class="card-sean">
 
       <h2>Justify your bet</h2>
-        <%= simple_form_for @existing_bet, url: question_bet_path(@question, @existing_bet) do |f| %>
+        <%= simple_form_for @existing_bet, remote: true, url: question_bet_path(@question, @existing_bet) do |f| %>
         <%= f.input :justification, placeholder: 'Why did you bet on this scenario?'%>
         <%= f.input :Url, placeholder: 'What source did you use the most?'%>
         <%= f.submit %>
@@ -54,7 +61,7 @@
         <% @all_bets.each do |bet| %>
           <div class="white-back">
           <div class="justification-positionning">
-          <div class="justification-flex-item text-center">
+          <div class="justification-flex-item1 text-center">
             <p> <strong>Upvotes</strong></p>
             <p><%= bet.just_upvotes.count %></p>
             <p><% if bet.just_upvotes.where(bet_id: bet.id, user_id: current_user.id).empty? %> <%= link_to "Upvote !", question_bet_just_upvotes_path(bet.scenario.question, bet), :method=> :post,  class: "btn btn-primary" %><%end%></p>
@@ -63,7 +70,7 @@
             <p>  <strong><%=bet.user.first_name.capitalize %></strong></p>
             <p><%=bet.justification %></p>
           </div>
-          <div class="justification-flex-item">
+          <div class="justification-flex-item2">
             <p>  <strong>Source</strong></p>
             <p><%=bet.Url.capitalize%></p>
           </div>

@@ -43,17 +43,20 @@
 }
 
 .justification-flex-item {
-  padding: 10px;
+  padding: 3px;
   border: solid 1px lightgrey;
   flex: 0, 0, 20%;
 }
 
 .justification-flex-body {
-  padding: 10px;
+  padding: 3px;
   border: solid 1px lightgrey;
   flex: 1, 0, auto;
 }
 
+.bordered {
+  border: solid 1px lightgrey;
+}
 
 
 

@@ -1,0 +1,64 @@
+<div class="wrapper">
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-offset-4 col-sm-4">
+      <strong> Hi <%= current_user.first_name %> </strong>, you want to create a question right ? Let's go !
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <%= form_for @question, url: dashboard_questions_path do |f| %>
+
+        <div class="text-center form-margin">Question</div>
+
+        <div class="row">
+          <div class="col-sm-offset-4 col-sm-4">
+            <%= f.text_area :content, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="text-center form-margin">Category</div>
+
+        <div class="row">
+          <div class="col-sm-offset-4 col-sm-4">
+          <%= f.collection_select(:category_id, Category.all, :id, :title) %>
+          </div>
+        </div>
+
+        <div class="text-center form-margin">When will the event occur ?</div>
+
+        <div class="row">
+          <div class="col-sm-offset-4 col-sm-4">
+            <%= date_field(:question, :event_date) %>
+          </div>
+        </div>
+
+        <div class="text-center form-margin">Scenarios</div>
+        <ul>
+          <%= f.fields_for :scenarios do |scenarios_form| %>
+            <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+            <li>
+              <%= scenarios_form.label :scenario %>
+              <%= scenarios_form.text_field :content %>
+            </li>
+            </div>
+            </div>
+          <% end %>
+        </ul>
+
+        <div class="text-center form-margin">All Set ?</div>
+
+            <div class="actions text-center">
+              <%=  f.submit "Create Question", :class => 'btn btn-primary' %>
+            </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+</div>
+

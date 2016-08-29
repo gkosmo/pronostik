@@ -2,9 +2,8 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
-<<<<<<< HEAD
 #search-wrapper{
-  background-color: $gray-lighter;
+  background-color: white;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -26,11 +25,9 @@
 
   #top-tags-display {
   flex: 0 0 50%;
-  background-color:yellow;
 }
 
 #search-and-btn-display {
-  background-color:red;
    flex: 0 0 50%;
 }
 
@@ -79,7 +76,7 @@
 
 
 #question-home-wrapper{
-  background-color: $gray-lighter;
+  background-color: white;
   padding-top: 15px;
   padding-bottom: 15px;
 }

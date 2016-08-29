@@ -1,0 +1,60 @@
+.background {
+  background: grey;
+}
+
+#sean {
+  background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%);
+  color: white;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 10px;
+  margin-right: 20px;
+  background-color: red;
+}
+
+.card-sean {
+ background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%);
+ color: blue;
+ border-radius: 5px;
+ margin-bottom: 15px;
+ padding: 10px;
+ margin-right: 10px;
+ margin-top: 30px;
+}
+.card-sean h2 {
+ color: white;
+}
+
+.heigth-vote {
+  border-radius: 50%;
+}
+
+.white-back {
+  background-color: white;
+  padding: 5px;
+  color: black;
+  margin-top: 2px;
+  border-radius: 5px;
+}
+
+.justification-positionning {
+  display: flex;
+  justify-content: space-between;
+}
+
+.justification-flex-item {
+  padding: 10px;
+  border: solid 1px lightgrey;
+  flex: 0, 0, 20%;
+}
+
+.justification-flex-body {
+  padding: 10px;
+  border: solid 1px lightgrey;
+  flex: 1, 0, auto;
+}
+
+
+
+
+

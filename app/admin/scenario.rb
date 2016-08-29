@@ -12,10 +12,15 @@ ActiveAdmin.register Scenario do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
- actions :all
-  permit_params :happened, :content
+  permit_params :question_id, :content
 
-
+  form do |f|
+    inputs 'Details' do
+      input :question 
+      input :content
+      actions
+    end
+  end
   member_action :happened, method: :put do
     resource.update(happened: true)
     Questions::ComputeBetScoresService.new(resource.question).call

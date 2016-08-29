@@ -1,12 +1,12 @@
 class QuestionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index]
   before_action :set_question, only: [:show]
   before_action :set_randque, only: [:index, :show]
 
 
   def index
   #input van de search
-    @search = params[:search_term]
+    @search = params[:search_term] if  !params[:search_term].nil?
     @category = params[:category]
     @searched_questions = Question.all.order('id DESC')
 
@@ -18,11 +18,9 @@ class QuestionsController < ApplicationController
 
     if @category.present?
       @searched_questions = @searched_questions.where(category_id: params[:category])
-
     end
     if @search.present?
       @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%")
-
     end
   end
 

@@ -10,9 +10,18 @@ User.create(first_name: 'Bob')
 Bet.destroy_all
 
 Question.destroy_all
-
+User.destroy_all
 Category.destroy_all
 Tag.destroy_all
+Scenario.destroy_all
+
+400.times do
+  u = User.new(email: Faker::Internet.email,first_name: Faker::Pokemon.name, password: 'bobbob')
+  u.save
+end
+
+
+
 
 cat_politics      = Category.create!(title: 'Politics')
 cat_sports        = Category.create!(title: 'Sports')
@@ -20,7 +29,6 @@ cat_tech          = Category.create!(title: 'Technology')
 cat_entertainment = Category.create!(title: 'Entertainment')
 cat_science       = Category.create!(title: 'Science')
 cat_society       = Category.create!(title: 'Society')
-
 
 
 a = Question.new( user_id: User.all.sample.id, category: cat_politics, event_date: "Mon, 01 Jan 2018", created_at: "Tue, 23 Aug 2016 09:43:25 UTC +00:00", content: "Will Erdogan still be in power in the end of 2017 ?")
@@ -32,6 +40,25 @@ f = Question.new( user_id: User.all.sample.id,  category: cat_tech, event_date: 
 
 a.scenarios.build(content: "No, Erdogan will be overtrown by 2017")
 a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
+
+
+500.times.each do
+  atr =  {
+  user_id: User.all.sample.id,
+  category_id: Category.all.sample.id,
+  event_date:Faker::Date.between_except(2.year.ago, 8.year.from_now, Date.today),
+  created_at: Faker::Time.between(2.year.ago, DateTime.now),
+  content: "#{Faker::ChuckNorris.fact } ? "
+}
+  a = Question.create!(atr)
+  rand(2..6).times do
+    a.scenarios.build(content: Faker::Hacker.say_something_smart)
+  end
+  a.save
+end
+
+
+
 
 b.scenarios.build(content: 'yes')
 b.scenarios.build(content: 'no')
@@ -51,9 +78,37 @@ b.tags.build(title: 'USA')
 c.tags.build(title: 'TURKEY')
 
 e.tags.build(title: 'EU')
+
+
+
+
 f.tags.build(title: 'BRUSSELS')
 e.tags.build(title: 'FRANCE')
 e.tags.build(title: 'RELIGION')
+
+400.times do
+  Tag.create(title: Faker::Hipster.word)
+
+end
+
+2000.times do
+  a = Question.all.sample
+  a.tags << Tag.all.sample
+  a.save
+end
+
+
+5000.times do
+   user = User.all.sample
+
+   user.bets.build(
+   scenario_id: Scenario.all.sample.id,
+   estimation: Faker::Number.between(0, 100),
+   justification: Faker::Company.bs,
+  scenario_score: Faker::Number.between(0, 100) )
+  user.save
+end
+
 
 a.save!
 b.save!
@@ -62,6 +117,14 @@ d.save!
 e.save!
 f.save!
 
-bet = Scenario.first
-bet = Bet.new(scenario_id: bet.id, estimation: 44, user_id: User.all.sample.id)
-bet.save
+
+
+
+
+Question.all.each do |qu|
+  if qu.event_date  < DateTime.now.to_date
+    scene = qu.scenarios.sample
+    scene.happened = true unless scene == nil
+    Questions::ComputeBetScoresService.new(qu).call
+  end
+end

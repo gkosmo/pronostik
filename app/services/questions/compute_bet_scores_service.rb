@@ -5,6 +5,7 @@ class Questions::ComputeBetScoresService
   end
 
   def call
+    @question.scenarios.sample.happened = true if @question.scenarios.where(happened: true).first == nil
     @happened_scenario = @question.scenarios.where(happened: true).first
     @number_of_bets    = @question.bets.count
     @correct_bets      = @happened_scenario.bets.count
@@ -43,11 +44,10 @@ class Questions::ComputeBetScoresService
   def compute_average_certainty
     results = @happened_scenario.bets.select("AVG(estimation) AS certainty")
     results[0].certainty.to_f
-
     # certainties = @happened_scenario.bets.map do |bet|
     #   certainties << bet.estimation
     # end
-
     # return certainties.inject { |sum, certainty| sum + certainty } / @correct_bets
   end
+
 end

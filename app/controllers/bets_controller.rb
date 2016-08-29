@@ -29,4 +29,5 @@ class BetsController < ApplicationController
   def bet_params_update
     params.require(:bet).permit(:justification, :Url)
   end
+
 end

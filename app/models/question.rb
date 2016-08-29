@@ -9,4 +9,9 @@ class Question < ApplicationRecord
     self.content
   end
 
+  def question_created_at
+    self.created_at.to_date
+  end
+
+
 end

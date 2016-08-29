@@ -19,10 +19,12 @@
 
             <div id="top-tags-display">
               <%= form_tag questions_path, method: "get" do %>
-                <p> Popular Topics: </p>
+               <div id="pop-topics-title">
+                  <p> Popular Topics: </p>
+                </div>
                 <!-- <top-tags> -->
                 <% @top_tags.each do |tag| %>
-                    <div class= 'btn btn-default' id="top-tag-btn">
+                    <div id="top-tag-buttons">
                       <%= link_to tag.title, questions_path(search_term: tag.title) %>
                    </div>
                 <% end %>
@@ -74,6 +76,7 @@
     </div>
   </div>
 </div>
+
 
 
 

@@ -114,4 +114,6 @@ class QuestionsController < ApplicationController
   def set_randque
     @randque = Question.all.sample(4)
   end
+
+
 end

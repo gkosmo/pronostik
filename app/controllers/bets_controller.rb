@@ -8,6 +8,11 @@ class BetsController < ApplicationController
     @bet = Bet.new(bet_params)
     @bet.user_id = current_user.id
     @bet.save
+    if @question.status == 'new'
+      @question.bets.count > 20
+      @question.status = 'good'
+      @question.save
+    end
     redirect_to question_path(@question)
   end
 
@@ -29,4 +34,6 @@ class BetsController < ApplicationController
   def bet_params_update
     params.require(:bet).permit(:justification, :Url)
   end
+
+
 end

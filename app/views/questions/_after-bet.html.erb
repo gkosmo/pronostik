@@ -4,7 +4,7 @@
     <div class="card-sean">
 
     <h2>Scenario and Stats</h2>
-    <h2>You Choose : <%=@choosen_scenario.content%></h2>
+    <h2>You Choose : <%=@choosen_scenario.content.capitalize %></h2>
   </div>
 </div>
 </div>
@@ -16,8 +16,17 @@
   </div>
 
   <div class="col-sm-6">
-    <h3>Certainty level for each scenario</h3>
+    <h3>Average certainty for each scenario</h3>
     <%= bar_chart @bar_chart %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="bordered text-center">
+
+    <h2>Pronostik's Awesome prediction</h2> <p>(based on amazing proprietary algorithm)</p>
+    <h3><%= @prediction.capitalize %></h3>
+    </div>
   </div>
 </div>
 <%if @existing_bet.justification.nil? %>
@@ -52,7 +61,7 @@
           </div>
           <div class="justification-flex-body">
             <p>  <strong><%=bet.user.first_name.capitalize %></strong></p>
-            <p><%=bet.scenario.content %></p>
+            <p><%=bet.justification %></p>
           </div>
           <div class="justification-flex-item">
             <p>  <strong>Source</strong></p>

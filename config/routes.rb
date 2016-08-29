@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       resources :just_upvotes, only: [:new, :create]
     end
   end
+  resources :bets, only: [:index]
 
   namespace :dashboard do
       get 'dashboard' => 'dashboard#statistics'

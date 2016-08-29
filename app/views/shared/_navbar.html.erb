@@ -18,6 +18,9 @@
         <li ='nav-pill'>  <%= link_to 'Good', questions_good_index_path %></li>
         <% if user_signed_in? %>
         <li class ='nav-pill'>
+          <%= link_to 'Ranking', bets_path %>
+        </li>
+        <li class ='nav-pill'>
           <%= link_to 'Dashboard' , dashboard_statistics_path %>
         </li>
         <li class ='nav-pill'>

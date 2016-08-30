@@ -15,7 +15,7 @@ class QuestionsController < ApplicationController
           joins(:questions).
           group("tags.id").
           order("questions_count DESC").
-          limit(5)
+          limit(7)
   end
 
   def good_index
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
           joins(:questions).
           group("tags.id").
           order("questions_count DESC").
-          limit(5)
+          limit(7)
           @searched = Question.all
           @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
           @searched_questions = []
@@ -37,7 +37,7 @@ class QuestionsController < ApplicationController
   #input van de search
     @search = params[:search_term] if  !params[:search_term].nil?
     @category = params[:category]
-    @searched_questions = Question.all.order('id DESC').limit(7)
+    @searched_questions = Question.all.order('id DESC')
 
     @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
       joins(:questions).
@@ -51,6 +51,19 @@ class QuestionsController < ApplicationController
     if @search.present?
       @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
     end
+
+    if current_user
+      @searched_questions_only_new = []
+      @searched_questions.each do |question|
+        if question.event_date > DateTime.now.to_date && question.bets.where(user_id: current_user.id).empty?
+          @searched_questions_only_new << question
+        end
+      end
+      @right_column_current_user = @searched_questions_only_new.take(7)
+    end
+
+    @limited_questions = @searched_questions.limit(7)
+
   end
 
   def make_pending

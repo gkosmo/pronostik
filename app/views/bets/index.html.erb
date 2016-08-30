@@ -40,10 +40,13 @@
           <th>Question Upvotes</th>
         </tr>
         <tbody>
-          <% @users.each do |user| %>
+          <% @final_hash.each do |user| %>
           <tr>
-            <td><%= user.first_name%></td>
-            <td></td>
+            <td><%= user[0].first_name%></td>
+            <td><%= user[1][0]%></td>
+            <td><%= user[1][1]%></td>
+            <td><%= user[1][2]%></td>
+
           </tr>
           <% end %>
         </tbody>
@@ -54,4 +57,3 @@
 <% @index += 1 %>
 <%# end %>
 </div>
-

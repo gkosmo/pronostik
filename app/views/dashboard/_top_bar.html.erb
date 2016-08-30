@@ -12,10 +12,6 @@
           <% if current_user.country.nil? %>
           <h3>Help us improve our predictions. Which country have you lived the most? </h3>
 
-            <%= simple_form_for current_user, url: edit_user_registration_path, method: :put do |f| %>
-            <%= f.country_select :country %>
-            <%= f.submit %>
-            <%end%>
           <h4>Once answered, it will disappear and we won't bother you again.</h3>
           <%end%>
 

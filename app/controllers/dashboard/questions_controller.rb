@@ -28,7 +28,7 @@ class Dashboard::QuestionsController < ApplicationController
   private
 
    def set_randque
-     @randque = Question.all.sample(10)
+     @randque = Question.all.sample(3)
    end
    def question_params
       params.require(:question).permit(:content, :category_id, :event_date, scenarios_attributes: [:id, :content])

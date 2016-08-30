@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-offset-1 col-sm-10">
-      <div class="panel panel-info" style="border: solid 1px black" >
+      <div class="panel panel-info" style="background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%)" >
         <div class="panel-header">
           <div class="nav nav-success inline-block">
             <div class="navbar-header list-inline">
@@ -14,7 +14,9 @@
         </div>
         <div class="panel-body">
           <div class="panel panel-default panel-boredered">
+
             <% @bets.each do |bet| %>
+            <div class="bordered card-sean padded-chart">
             <div class="panel-header">
               <strong> <%= bet.scenario.question.content %> : </strong>
             </div>
@@ -31,13 +33,14 @@
               </li>
               <% end %>
             </ul>
-            <%end%>
           </div>
+            <%end%>
         </div>
         <div class="panel-footer">
           <%= will_paginate @bets %>
         </div>
       </div>
+    </div>
     </div>
     <div class="row">
 

@@ -2,39 +2,53 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
-$base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+$font-family-base: 'Roboto Condensed', sans-serif;
+$headings-font-family: 'Raleway', sans-serif;
 
-// Local fonts (uncomment following lines)
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+$font-weight-bold: 800;
+$headings-font-weight: $font-weight-bold;
 
-// Font-size and line-height
 $base-size: 16px;
 $base-height: 1.4;
 
-/* -------------------------------------
- * Colors
- * ------------------------------------- */
-// Scheme
-$brand-color: #1abc9c;
+// Color
+$black: #333d47;
 
-$red: #c0392b;
-$blue: #3498db;
+
+$purple:      #5E60BA;
+$purple-dark: #293159;
+$blue:        #2BCEE1;
+$pink:        #F37AD6;
+
+$body-bg: #EEF4F7;
+
+// Scheme
+$brand-color: $purple;
+
+$red:    #c0392b;
+$blue:   #3498db;
 $yellow: #f1c40f;
 $orange: #E67E22;
-$green: #27ae60;
+$green:  #27ae60;
 
 // Gray scale
 $gray-darker:  #34495e;// #222
 $gray-dark:    #7f8c8d;  // #333
-$gray:         #95a5a6;
+$gray:         #9095b0;
 $gray-light:   #bdc3c7; // #777
 $gray-lighter: #ecf0f1;// #eee
+
+
+
+h1,
+h2,
+h3,
+h4,
+h6 {
+  text-transform: uppercase;
+  color: $black !important;
+}
+
+body {
+  color: $gray  !important;
+}

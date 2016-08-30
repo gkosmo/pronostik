@@ -5,8 +5,12 @@ class QuestionsController < ApplicationController
 
 
   def new_index
-    @searched_questions = Question.all.where(status: 'new')
-  @searched_questions.where({created_at: 10.days.ago..DateTime.now.to_date})
+    @searched = Question.all
+    @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
+    @searched_questions = []
+    @searched.each do |x|
+      @searched_questions << x if x.bets.count < 10
+    end
       @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
           joins(:questions).
           group("tags.id").
@@ -21,7 +25,12 @@ class QuestionsController < ApplicationController
           group("tags.id").
           order("questions_count DESC").
           limit(5)
-    @searched_questions = Question.all.where(status: 'good')
+          @searched = Question.all
+          @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
+          @searched_questions = []
+          @searched.each do |x|
+            @searched_questions << x if x.bets.count > 5
+          end
   end
 
   def index

@@ -1,9 +1,9 @@
 <br>
 <br>
 <% if question.scenarios.any? %>
-  <div class="btn-group">
+  <div class="btn-group" >
     <% question.scenarios.each do |scenario| %>
-      <button type="button" class="btn btn-default">
+      <button type="button" class="btn btn-default" id="scenario-wrap">
         <%= scenario.content%>
       </button>
     <% end %>

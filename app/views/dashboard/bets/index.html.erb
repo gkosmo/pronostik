@@ -5,42 +5,42 @@
     <div class="col-sm-7">
       <div class="panel panel-info" style="border: solid 1px black" >
         <div class="panel-header">
-              <div class="nav nav-success inline-block">
-                <div class="navbar-header list-inline">
-                  <%= render 'dashboard/perso_nav' %>
-                </div>
-              </div>
-          </div>
-          <div class="panel-body">
-            <div class="panel panel-default panel-boredered">
-              <% @bets.each do |bet| %>
-              <div class="panel-header">
-                <strong> <%= bet.scenario.question.content %> : </strong>
-              </div>
-              <ul>  <% bet.scenario.question.scenarios.each do |scen| %>
-                <li>
-                  <%= scen.content %>
-                  <% if scen == bet.scenario; %>
-                  <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%= bet.estimation %>%;">
-                      <%= bet.estimation %> %
-                    </div>
-                  </div>
-                  <% end %>
-                </li>
-                <% end %>
-              </ul>
-              <%end%>
+          <div class="nav nav-success inline-block">
+            <div class="navbar-header list-inline">
+              <%= render 'dashboard/perso_nav' %>
             </div>
           </div>
-          <div class="panel-footer">
-            <%= will_paginate @bets %>
+        </div>
+        <div class="panel-body">
+          <div class="panel panel-default panel-boredered">
+            <% @bets.each do |bet| %>
+            <div class="panel-header">
+              <strong> <%= bet.scenario.question.content %> : </strong>
+            </div>
+            <ul>  <% bet.scenario.question.scenarios.each do |scen| %>
+              <li>
+                <%= scen.content %>
+                <% if scen == bet.scenario; %>
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <%= bet.estimation %>%;">
+                    <%= bet.estimation %> %
+                  </div>
+                </div>
+                <% end %>
+              </li>
+              <% end %>
+            </ul>
+            <%end%>
           </div>
         </div>
-      </div>
-      <div class="col-sm-3 col-sm-offset-1">
-
-        <%= render 'dashboard/side_bar', randque: @randque %>
+        <div class="panel-footer">
+          <%= will_paginate @bets %>
+        </div>
       </div>
     </div>
+    <div class="col-sm-3 col-sm-offset-1">
+
+      <%= render 'dashboard/side_bar', randque: @randque %>
+    </div>
   </div>
+</div>

@@ -5,7 +5,6 @@
 #sean {
   background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%);
   color: white;
-  border-radius: 5px;
   margin-bottom: 15px;
   padding: 10px;
   margin-right: 20px;
@@ -13,16 +12,22 @@
 }
 
 .card-sean {
- background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%);
- color: blue;
- border-radius: 5px;
- margin-bottom: 15px;
- padding: 10px;
- margin-right: 10px;
- margin-top: 30px;
-}
-.card-sean h2 {
- color: white;
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-top: 30px;
+
+  &-callout {
+    background-color: $purple;
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      color: white !important;
+    }
+  }
 }
 
 .heigth-vote {
@@ -34,7 +39,6 @@
   padding: 5px;
   color: black;
   margin-top: 2px;
-  border-radius: 5px;
 }
 
 .justification-positionning {

@@ -1,29 +1,22 @@
 <div class="row">
-    <div class="col-sm-2">
-      <div class="card-sean text-center heigth-vote">
+  <div class="col-sm-2">
+    <div class="card-sean text-center heigth-vote">
 
-        <p>Upvotes</p>
-        <p><%= question.scenarios.count%> </p>
+      <p>Upvotes</p>
+      <p><%= question.scenarios.count%> </p>
+    </div>
+  </div>
+
+  <div class="col-sm-10">
+    <div class="card-sean card-sean-callout text-center">
+      <div>
+        <div class="avatar">
+          <%= image_tag("user.jpg", class: "avatar", :alt => "user") %>
+        </div>
+        <h3>The Question: <%= question.content%> </h3>
+        <h3>The Date: <%= question.event_date%> </h3>
+        <h3>The Issuer: <%= question.user.first_name%> </h3>
       </div>
     </div>
-
-
-
-
-
-    <div class="col-sm-10">
-        <div class="card-sean text-center">
-          <div>
-      <div class="avatar">
-        <%= image_tag("user.jpg", class: "avatar", :alt => "user") %>
-      </div>
-                    <h3>The Question: <%= question.content%> </h3>
-                    <h3>The Date: <%= question.event_date%> </h3>
-                    <h3>The Issuer: <%= question.user.first_name%> </h3>
-                    <div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+  </div>
+</div>

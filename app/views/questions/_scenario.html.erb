@@ -1,20 +1,11 @@
-
-
-  <div id="<%= question.id %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
-
-      <div class="panel-body">
-          <% if question.scenarios.any? %>
-            <ul>
-              <% question.scenarios.each do |scenario| %>
-                <li>
-                  <%= scenario.content%>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-      </div>
- </div>
-
-
-
-
+<br>
+<br>
+<% if question.scenarios.any? %>
+  <div class="btn-group">
+    <% question.scenarios.each do |scenario| %>
+      <button type="button" class="btn btn-default">
+        <%= scenario.content%>
+      </button>
+    <% end %>
+  </div>
+<% end %>

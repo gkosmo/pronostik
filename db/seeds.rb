@@ -48,10 +48,10 @@ a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
   category_id: Category.all.sample.id,
   event_date:Faker::Date.between_except(2.year.ago, 8.year.from_now, Date.today),
   created_at: Faker::Time.between(2.year.ago, DateTime.now),
-  content: "#{Faker::ChuckNorris.fact } ? "
+  content: "#{Faker::StarWars.quote} ? "
 }
   a = Question.create!(atr)
-  rand(2..6).times do
+  rand(2..4).times do
     a.scenarios.build(content: Faker::Hacker.say_something_smart)
   end
   a.save

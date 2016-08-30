@@ -1,82 +1,53 @@
-
-<!-- <SEARCH> -->
 <div id="search-wrapper">
+  <div class="row">
   <div class="container">
-
-    <div class="row">
-        <div class="col-xs-6 col-sm-6">
-          <div id="info-homepage">
-            <h3> What will the future bring? </h3>
-            <h4> By crowdsourcing intelligence, we try to build a reliable picture of upcoming events.</h4>
-            <p> Are you expectations supported by others? </p>
-            <p> Do you have a knack for forecasting? Try it out...</p>
-            <p> More info.</p>
-          </div>
-        </div>
-
-        <div class="col-xs-6 col-sm-6">
-          <div id="search-engine">
-
-            <div id="top-tags-display">
-              <%= form_tag questions_path, method: "get" do %>
-               <div id="pop-topics-title">
-                  <p> Popular Topics: </p>
-                </div>
-                <!-- <top-tags> -->
-                <% @top_tags.each do |tag| %>
-                    <div id="top-tag-buttons">
-                      <%= link_to tag.title, questions_path(search_term: tag.title) %>
-                   </div>
-                <% end %>
-            </div>
-
-              <div id="search-and-btn-display">
-                 <!-- <input-field-for tags> -->
-                  <%= text_field_tag(:search_term, @search, placeholder: "topic?") %>
-                <!-- <category-dropdown> -->
-                       <%= collection_select nil, :category, Category.all, :id, :title, prompt: "All categories", selected: params[:category] %>
-                <!-- <button> -->
-                  <%= submit_tag("Search", class: 'btn btn-default btn-lg', id: "search-btn") %>
-                  <% end %>
-               </div>
-          </div>
+      <div class="col-xs-6 col-sm-6">
+        <div id="info-homepage">
+          <h3> What will the future bring? </h3>
+          <h4> By crowdsourcing intelligence, we try to build a reliable picture of upcoming events.</h4>
+          <p> Are you expectations supported by others? </p>
+          <p> Do you have a knack for forecasting? Try it out...</p>
+          <p> More info.</p>
         </div>
       </div>
-    </div>
+
+      <div class="col-xs-6 col-sm-6">
+        <%= render 'shared/search-engine' %>
+     </div>
+
+  </div>
+ </div>
 </div>
-<!-- <questions.all> -->
+
 
 <div id="question-home-wrapper">
   <div class="container">
     <div class="row">
-        <div class="col-xs-9 col-sm-offset-2 col-sm-7">
+      <div class="col-xs-12">
 
-              <% @searched_questions.each do |question| %>
-                <% if question.event_date < DateTime.now.to_date %>
-                    <%= render 'question-purple', question: question %>
-                <%else %>
-                <% if current_user %>
-                  <% if question.bets.where(user_id: current_user.id).empty?%>
-                  <%= render 'question-green', question: question %>
-                  <% else %>
-                  <%= render 'question-blue', question: question %>
-                  <% end %>
-                <%else%>
-                  <%= render 'question-green', question: question %>
-                <% end %>
+        <% @searched_questions.each do |question| %>
+          <% if question.event_date < DateTime.now.to_date %>
+            <%= render 'question-purple', question: question %>
+          <%else %>
+            <% if current_user %>
+              <% if question.bets.where(user_id: current_user.id).empty?%>
+                <%= render 'question-green', question: question %>
+              <% else %>
+                <%= render 'question-blue', question: question %>
               <% end %>
-             <% end %>
+            <%else%>
 
-        </div>
-        <div class="col-xs-3 col-sm-3">
-          <div id= "randque-home-page">
-            <%= render 'sidebar', randque: @randque %>
-          </div>
-        </div>
+              <%= raise %>
+              <%= render 'question-green', question: question %>
+            <% end %>
+          <% end %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 </div>
 
-
-
-
+<div id= "randque-home-page">
+  <%= render 'sidebar', randque: @randque %>
+</div>

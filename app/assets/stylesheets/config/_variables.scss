@@ -52,3 +52,8 @@ h6 {
 body {
   color: $gray  !important;
 }
+
+$btn-font-weight: $font-weight-bold;
+.btn {
+  text-transform: uppercase;
+}

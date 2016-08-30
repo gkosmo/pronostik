@@ -1,61 +1,58 @@
-
-<div class="col-xs-9 col-sm-9">
 <!-- <div class="container"> -->
-  <div class="card-wrapper">
-    <div class="row card-row">
+<div class="card-wrapper">
+  <div class="row card-row">
 
-  <!-- <upvotes-column> -->
-          <div class="hidden-xs col-sm-1 question-upvotes">
-            <div class="arrow">
-              <%= image_tag("upvote_version1.png", class: "avatar", :alt => "upvote-arrow") %>
-            </div>
-            <div class="votes">
-              <p><%= question.bets.count%> </p>
-            </div>
+<!-- <upvotes-column> -->
+        <div class="hidden-xs col-sm-1 question-upvotes">
+          <div class="arrow">
+            <%= image_tag("upvote_version1.png", class: "avatar", :alt => "upvote-arrow") %>
           </div>
- <!-- <avatar-column> -->
-         <div class="hidden-xs col-sm-2 question-creator">
-            <%= image_tag("user.jpg", class: "avatar-extra-large", :alt => "user") %>
-            <p>name: <%= question.user.first_name%></p>
+          <div class="votes">
+            <p><%= question.bets.count%> </p>
           </div>
- <!-- <card-column> -->
-          <div class="col-xs-12 col-sm-7">
-            <div class="question-card">
-              <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne">
-                    <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed" id="question-card-content">
+        </div>
+<!-- <avatar-column> -->
+       <div class="hidden-xs col-sm-2 question-creator">
+          <%= image_tag("user.jpg", class: "avatar-extra-large", :alt => "user") %>
+          <p>name: <%= question.user.first_name%></p>
+        </div>
+<!-- <card-column> -->
+        <div class="col-xs-12 col-sm-7">
+          <div class="question-card">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed" id="question-card-content">
 
-                        <p>Content: <%= question.content%> </p>
-                        <p>End Date: <%= question.event_date%> </p>
+                      <p>Content: <%= question.content%> </p>
+                      <p>End Date: <%= question.event_date%> </p>
 
-                        <%= render 'scenario', question: question %>
+                      <%= render 'scenario', question: question %>
 
-                      </a>
-                    </h4>
-                  </div>
+                    </a>
+                  </h4>
                 </div>
               </div>
             </div>
           </div>
- <!-- <bet&socialshar-column> -->
-        <div class="col-xs-12 col-sm-2 question-links">
-              <%= link_to 'Bet', question_path(question), class: 'link-to-bet' %>
-          <p>
-            <div class="social-shares" style="margin-top: 20px">
-              <ul class="list-inline">
-                <li>
-                  <a href="#"><i class="fa fa-twitter"></i></a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-facebook"></i></a>
-                </li>
-              </ul>
-            </div>
-          </p>
         </div>
+<!-- <bet&socialshar-column> -->
+      <div class="col-xs-12 col-sm-2 question-links">
+            <%= link_to 'Bet', question_path(question), class: 'link-to-bet' %>
+        <p>
+          <div class="social-shares" style="margin-top: 20px">
+            <ul class="list-inline">
+              <li>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+              </li>
+            </ul>
+          </div>
+        </p>
       </div>
-    <!-- </div> -->
-  </div>
+    </div>
+  <!-- </div> -->
 </div>

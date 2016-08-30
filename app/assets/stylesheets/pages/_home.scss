@@ -3,7 +3,6 @@
  * (margin/padding adjustments)
  * ------------------------------------- */
 #search-wrapper{
-  background-color: white;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -45,7 +44,6 @@
   border-style: solid;
   border-width: 1px;
   border-color: $gray-light;
-  border-radius: 5px;
   padding: 8px;
   margin-left: 5px;
   text-decoration: none;
@@ -61,7 +59,6 @@
 }
 
 #_category{
-    border-radius: 5px;
     border-style: solid;
     border-color:  $gray-light;
     color: $gray-light;
@@ -73,7 +70,6 @@
 }
 
 #search_term {
-    border-radius: 5px;
     border-style: solid;
      border-width: 1px;
     border-color:  $gray-light;
@@ -88,14 +84,12 @@
 
 #search-btn{
     width: 96px;
-    border-radius: 5px;
     border-style: solid;
     border-color:  $gray-light;
 }
 
 
 #question-home-wrapper{
-  background-color: white;
   padding-top: 15px;
   padding-bottom: 15px;
 }

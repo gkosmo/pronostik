@@ -1,62 +1,45 @@
-<div class="card-wrapper">
+<div class="card-wrapper"">
   <div class="row card-row">
-
-    <!-- <upvotes-column> -->
-    <div class="hidden-xs col-sm-1 question-upvotes">
+    <div class="col-sm-2 question-upvotes">
       <div class="arrow">
         <%= image_tag("upvote_version1.png", class: "avatar", :alt => "upvote-arrow") %>
       </div>
       <div class="votes">
-        <p><%= question.bets.count%> </p>
+        <p><%= question.bets.count%></p>
+      </div>
+      <div class="social-shares">
+        <p>Share the results</p>
+
+        <ul class="list-inline">
+          <li>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
       </div>
     </div>
-    <!-- <avatar-column> -->
-    <div class="hidden-xs col-sm-2 question-creator">
-      <%= image_tag("user.jpg", class: "avatar-extra-large", :alt => "user") %>
-      <p><%= question.user.first_name%></p>
-    </div>
-    <!-- <card-column> -->
-    <div class="col-xs-12 col-sm-6">
+
+    <div class="col-sm-7">
       <div class="question-card">
-        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-          <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-              <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= question.id %>" aria-expanded="false" aria-controls="collapseOne" class="collapsed" id="question-card-content">
-
-                  <p><%= question.content%> </p>
-                  <p>End Date: <%= question.event_date%> </p>
-
-                  <%= render 'scenario', question: question %>
-
-                </a>
-              </h4>
-            </div>
-          </div>
-        </div>
+        <h4 class="panel-title">
+          <%= question.content%>
+        </h4>
+        by <em><%= question.user.first_name%></em>
+        <strong>— End Date: <%= question.event_date%></strong>
+        by <em><%= question.user.first_name%></em>
+        <%= render 'scenario', question: question %>
       </div>
     </div>
-    <!-- <bet&socialshar-column> -->
-    <div class="col-xs-12 col-sm-3 question-links">
-      <%= link_to question_path(question) do %>
-        <h3>
-          <span class="label label-info">Pending final results</span>
-        </h3>
-      <% end %>
 
-      <p>
-        <div class="social-shares" style="margin-top: 20px">
-          <ul class="list-inline">
-            <li>
-              <a href="#"><i class="fa fa-twitter"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-facebook"></i></a>
-            </li>
-          </ul>
-        </div>
-      </p>
+    <div class="col-sm-3 question-links">
+      <%= link_to question_path(question) do %>
+      <h3>
+        <span class="label label-info">Pending results</span>
+      </h3>
+      <% end %>
     </div>
   </div>
-  <!-- </div> -->
+
 </div>

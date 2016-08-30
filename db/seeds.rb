@@ -43,12 +43,13 @@ a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
 
 
 50.times.each do
+  a = "#{Faker::Company.catch_phrase}? "
   atr =  {
   user_id: User.all.sample.id,
   category_id: Category.all.sample.id,
   event_date:Faker::Date.between_except(2.year.ago, 8.year.from_now, Date.today),
   created_at: Faker::Time.between(2.year.ago, DateTime.now),
-  content: "#{Faker::Company.catch_phrase}? "
+  content: a
 }
   a = Question.create!(atr)
   rand(2..4).times do
@@ -59,32 +60,6 @@ end
 
 
 
-
-b.scenarios.build(content: 'yes')
-b.scenarios.build(content: 'no')
-c.scenarios.build(content: 'yes')
-c.scenarios.build(content: 'no')
-d.scenarios.build(content: 'yes')
-d.scenarios.build(content: 'no')
-e.scenarios.build(content: 'yes')
-e.scenarios.build(content: 'no')
-f.scenarios.build(content: 'yes')
-f.scenarios.build(content: 'no')
-
-
-d.tags.build(title: 'BELGIUM')
-c.tags.build(title: 'UK')
-b.tags.build(title: 'USA')
-c.tags.build(title: 'TURKEY')
-
-e.tags.build(title: 'EU')
-
-
-
-
-f.tags.build(title: 'BRUSSELS')
-e.tags.build(title: 'FRANCE')
-e.tags.build(title: 'RELIGION')
 
 40.times do
   Tag.create(title: Faker::Hipster.word)
@@ -100,22 +75,15 @@ end
 
 200.times do
    user = User.all.sample
-
+   a ||= Scenario.all.sample.id
    user.bets.build(
-   scenario_id: Scenario.all.sample.id,
+   scenario_id: a,
    estimation: Faker::Number.between(0, 100),
    justification: Faker::Company.bs,
   scenario_score: Faker::Number.between(0, 100) )
   user.save
 end
 
-
-a.save!
-b.save!
-c.save!
-d.save!
-e.save!
-f.save!
 
 
 

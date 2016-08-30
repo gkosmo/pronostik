@@ -4,6 +4,7 @@ module Users
     def update
       @user = current_user
       @user.update(params_user)
+      @user.save!
       redirect_to dashboard_statistics_path
     end
 

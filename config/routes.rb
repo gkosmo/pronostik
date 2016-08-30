@@ -17,12 +17,12 @@ Rails.application.routes.draw do
   resources :bets, only: [:index]
 
   namespace :dashboard do
-      get 'dashboard' => 'dashboard#statistics'
+      get 'dashboard', to: 'dashboard#statistics'
       resources :statistics
       resources :questions
       resources :bets
       resources :notifications
       get 'history', to: 'histories#index'
-      put 'users' => 'devise/registrations#update', :as => 'user_registration' 
+      put 'users' => 'devise/registrations#update', :as => 'user_registration'
     end
 end

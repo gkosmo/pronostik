@@ -9,7 +9,7 @@ class Dashboard::BetsController < ApplicationController
 private
 
  def set_randque
-   @randque = Question.all.sample(10)
+   @randque = Question.all.sample(3)
  end
 
 

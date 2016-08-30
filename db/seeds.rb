@@ -41,6 +41,37 @@ f = Question.new( user_id: User.all.sample.id,  category: cat_tech, event_date: 
 a.scenarios.build(content: "No, Erdogan will be overtrown by 2017")
 a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
 
+b.scenarios.build(content: 'yes')
+b.scenarios.build(content: 'no')
+c.scenarios.build(content: 'yes')
+c.scenarios.build(content: 'no')
+d.scenarios.build(content: 'yes')
+d.scenarios.build(content: 'no')
+e.scenarios.build(content: 'yes')
+e.scenarios.build(content: 'no')
+f.scenarios.build(content: 'yes')
+f.scenarios.build(content: 'no')
+
+
+d.tags.build(title: 'BELGIUM')
+c.tags.build(title: 'UK')
+b.tags.build(title: 'USA')
+c.tags.build(title: 'TURKEY')
+
+e.tags.build(title: 'EU')
+
+
+
+
+f.tags.build(title: 'BRUSSELS')
+e.tags.build(title: 'FRANCE')
+e.tags.build(title: 'RELIGION')
+a.save!
+b.save!
+d.save!
+e.save!
+f.save!
+
 
 50.times.each do
   a = "#{Faker::Company.catch_phrase}? "
@@ -51,11 +82,11 @@ a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
   created_at: Faker::Time.between(2.year.ago, DateTime.now),
   content: a
 }
-  a = Question.create!(atr)
+  b = Question.create!(atr)
   rand(2..4).times do
-    a.scenarios.build(content: Faker::Hacker.say_something_smart)
+    b.scenarios.build(content: Faker::Hacker.say_something_smart)
   end
-  a.save
+  b.save!
 end
 
 
@@ -69,10 +100,10 @@ end
 100.times do
   a = Question.all.sample
   a.tags << Tag.all.sample
-  a.save
+  a.save!
 end
 
-
+ a = nil
 200.times do
    user = User.all.sample
    a ||= Scenario.all.sample.id
@@ -81,13 +112,8 @@ end
    estimation: Faker::Number.between(0, 100),
    justification: Faker::Company.bs,
   scenario_score: Faker::Number.between(0, 100) )
-  user.save
+  user.save!
 end
-
-
-
-
-
 
 Question.all.each do |qu|
   if qu.event_date  < DateTime.now.to_date

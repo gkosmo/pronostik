@@ -28,9 +28,9 @@
       <% @scenarios.each do |scenario|%>
         <%#= link_to scenario.id, '#', class: "js-scenario-choice", data: { id: scenario.id } %>
         <%= scenario.content.capitalize %>
-        <%= simple_form_for @bet, url: question_bets_path(@question) do |f| %>
+        <%= bootstrap_form_for @bet, url: question_bets_path(@question) do |f| %>
         <%= f.hidden_field :scenario_id, value: scenario.id%>
-        <%= f.number_field :estimation, style: 'color: blue' %>
+        <%= f.range_field :estimation, in: 1..100, step: 1, label: 'estimation', class: 'slider' %>
         <%= f.submit %>
       <%end%>
     <%end%>

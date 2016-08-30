@@ -7,7 +7,7 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'devise', github: 'plataformatec/devise'
-
+gem 'bootstrap_form'
 gem 'redis'
 gem 'omniauth-facebook'
 gem "chartkick"

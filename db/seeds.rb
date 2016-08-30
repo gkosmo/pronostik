@@ -8,7 +8,7 @@
 
 User.create(first_name: 'Bob')
 Bet.destroy_all
-
+Notification.destroy_all
 Question.destroy_all
 User.destroy_all
 Category.destroy_all

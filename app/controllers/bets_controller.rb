@@ -49,7 +49,7 @@ class BetsController < ApplicationController
     @bet.user_id = current_user.id
     @bet.save
     if @question.status == 'new'
-      @question.bets.count > 20
+      @question.bets.count > 5
       @question.status = 'good'
       @question.save
     end

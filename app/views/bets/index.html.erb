@@ -6,7 +6,6 @@
 <div class="text-center">
 
 
-<h2> THE RANKING </h2>
 <div>
 
 <ul>
@@ -30,20 +29,25 @@
 <%# @weeks.each do |week| %>
 <div class="row">
   <div class="col-sm-offset-2 col-sm-8">
-    <h2>Week <%#= @index + @weeks.size %> 1</h2>
-    <table class="table table-hover">
+    <h3> THE RANKING OF THE WEEK </h3>
+
+    <table class="table table-bordered">
+
       <thead>
         <tr>
-          <th>User</th>
-          <th>Score</th>
-          <th>Justification Upvotes</th>
-          <th>Question Upvotes</th>
+          <th><strong>User</strong></th>
+          <th><strong>Score</strong></th>
+          <th><strong>Justification Upvotes</strong></th>
+          <th><strong>Question Upvotes</strong></th>
         </tr>
         <tbody>
-          <% @users.each do |user| %>
+          <% @final_hash.each do |user| %>
           <tr>
-            <td><%= user.first_name%></td>
-            <td></td>
+            <td><%= user[0].first_name%></td>
+            <td><%= user[1][0]%></td>
+            <td><%= user[1][1]%></td>
+            <td><%= user[1][2]%></td>
+
           </tr>
           <% end %>
         </tbody>
@@ -54,4 +58,3 @@
 <% @index += 1 %>
 <%# end %>
 </div>
-

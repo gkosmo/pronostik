@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-7">
+    <div class="col-sm-10 col-sm-offset-1">
       <div class="panel panel-info" style="border: solid 1px black">
         <div class="panel-header">
           <div class="nav nav-success inline-block">
@@ -14,23 +14,61 @@
         </div>
         <div class="panel-body">
           <div class="panel-body">
+            <div class="bordered card-sean padded-chart text-center">
+              <div class="row">
+                <div class="col-sm-6">
+                  <h4>Your Forecast Score</h5>
+                  <h5><%= @fc_score%></h5>
+                </div>
+                <div class="col-sm-6">
+                  <h4>Your total accuracy</h4>
+                  <h5><%= @accuracy%> % </h5>
+                </div>
+              </div>
+            </div>
 
-            <h3>Your Forecast Score is : <%= @fc_score%></h3>
-            <h3>Your total accuracy : <%= @accuracy%> %</h3>
-            <%= scatter_chart @user.bets.pluck(:scenario_score, :created_at)%>
+            <div class="bordered card-sean padded-chart text-center">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4>Points plotted against time</h4>
+                  <%= scatter_chart @user.bets.pluck(:scenario_score, :created_at)%>
+                </div>
+              </div>
+            </div>
+
+            <div class="bordered card-sean padded-chart text-center">
+              <div class="row">
+                <div class="col-sm-12">
+                 <h4>What you bet the most on</h4>
+                  <%= pie_chart @bets_per_cat %>
+                </div>
+              </div>
+            </div>
+
+            <div class="bordered card-sean padded-chart text-center">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4>Your accuracy for each category (in %)</h4>
+                  <%= column_chart @accuracy_per_cat%>
+                </div>
+              </div>
+            </div>
+
+            <div class="bordered card-sean padded-chart text-center">
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4>Recommendation</h4>
+                  <% unless @recommendation.nil? || @recommendation.empty? %>
+                  <h5> Bet more on questions related to <%= @recommendation %> ! </h5>
+                  <% end %>
+                </div>
+              </div>
+            </div>
 
             <div>
-              <h3>What you bet the most on:</h3>
-              <%= pie_chart @bets_per_cat %>
             </div>
             <div>
-              <h3>Your accuracy for each category (in %)  </h3>
-              <%= column_chart @accuracy_per_cat%>
             </div>
-            <h3>Recommendation:</h3>
-            <% unless @recommendation.nil? || @recommendation.empty? %>
-            <p> Bet more on questions related to <%= @recommendation %> ! </p>
-            <% end %>
 
           </div>
         </div>
@@ -40,9 +78,13 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-3 col-sm-offset-1">
+    <div class="row">
+
+    <div class="col-sm-10 col-sm-offset-1">
 
       <%= render 'dashboard/side_bar', randque: @randque %>
     </div>
+  </div>
+
   </div>
 </div>

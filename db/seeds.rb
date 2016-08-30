@@ -48,7 +48,7 @@ a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
   category_id: Category.all.sample.id,
   event_date:Faker::Date.between_except(2.year.ago, 8.year.from_now, Date.today),
   created_at: Faker::Time.between(2.year.ago, DateTime.now),
-  content: "#{Faker::StarWars.quote} ? "
+  content: "#{Faker::Company.catch_phrase}? "
 }
   a = Question.create!(atr)
   rand(2..4).times do

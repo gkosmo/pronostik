@@ -15,7 +15,7 @@ Category.destroy_all
 Tag.destroy_all
 Scenario.destroy_all
 
-400.times do
+40.times do
   u = User.new(email: Faker::Internet.email,first_name: Faker::Pokemon.name, password: 'bobbob')
   u.save
 end
@@ -42,7 +42,7 @@ a.scenarios.build(content: "No, Erdogan will be overtrown by 2017")
 a.scenarios.build(content: "Yes, Erdogan will still be in power by 2017")
 
 
-500.times.each do
+50.times.each do
   atr =  {
   user_id: User.all.sample.id,
   category_id: Category.all.sample.id,
@@ -86,19 +86,19 @@ f.tags.build(title: 'BRUSSELS')
 e.tags.build(title: 'FRANCE')
 e.tags.build(title: 'RELIGION')
 
-400.times do
+40.times do
   Tag.create(title: Faker::Hipster.word)
 
 end
 
-2000.times do
+100.times do
   a = Question.all.sample
   a.tags << Tag.all.sample
   a.save
 end
 
 
-5000.times do
+200.times do
    user = User.all.sample
 
    user.bets.build(
@@ -125,6 +125,6 @@ Question.all.each do |qu|
   if qu.event_date  < DateTime.now.to_date
     scene = qu.scenarios.sample
     scene.happened = true unless scene == nil
-    Questions::ComputeBetScoresService.new(qu).call
+  #  Questions::ComputeBetScoresService.new(qu).call unless qu == nil
   end
 end

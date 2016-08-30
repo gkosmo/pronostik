@@ -4,8 +4,13 @@ class Question < ApplicationRecord
   has_and_belongs_to_many :tags
   belongs_to :user
   belongs_to :category
-
   has_many :questions_users_pendings, dependent: :destroy
+
+  validates :content, presence: true
+  validates :content, length: { maximum: 50, too_long: '%{count} is the max number of characters'}
+  validates :category, presence: true
+  validates :event_date, presence: true
+  validate :force_four_scenarios
 
   #creating questions with many scenarios
   after_initialize :assign_defaults
@@ -30,5 +35,15 @@ class Question < ApplicationRecord
     self.created_at.to_date
   end
 
-
+  def force_four_scenarios
+    result = []
+    self.scenarios.each do |scenario|
+      if scenario.content != ""
+        result << true
+      else
+        result << false
+      end
+    end
+    errors.add(:base, "must be at least 4 scenarios, currently there are #{result.partition {|value| value}.first.count}. Return to previous page") if result.include?(false)
+  end
 end

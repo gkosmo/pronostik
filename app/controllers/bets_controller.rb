@@ -3,31 +3,40 @@ class BetsController < ApplicationController
 
   def index
     @users = User.all
-
+    @final_hash = {}
     #total score by users
-    @scores = []
+
     @statistics = []
     @users_name = []
 
     @users.each do |user|
+      @final_hash[user] = []
+        @scores_bets = []
+        @scores_justification = []
       @users_name << user.first_name
       user.bets.each do |bet|
         if bet.scenario_score.nil?
-          @scores << 0
+          @scores_bets << 0
+          @scores_justification << 0
         else
-          @scores << bet.scenario_score
+          @scores_bets << bet.scenario_score
+          @scores_justification << bet.just_upvotes.count unless bet.justification.nil?
         end
       end
-      @statistics << @scores.inject { |sum, el| sum + el } unless @scores.nil?
-    end
-    @users_name
-    @statistics
-    @final_hash = Hash[@users_name.zip(@statistics)]
+       @final_hash[user] << @scores_bets.inject { |sum, el| sum + el } unless @scores_bets.nil?
+       @final_hash[user] << @scores_justification.inject { |sum, el| sum + el } unless @scores_justification.nil?
 
+       sum = 0
+       user.questions.each do |q|
+         sum += q.bets.count
+       end
+       @final_hash[user] << sum
+    end
+
+    @final_hash = @final_hash.sort_by {|k, v| v[0]}.reverse!
     #score per week per users
     @index = 0
-
-
+    @final_hash = @final_hash.first(20)
   end
 
 
@@ -40,7 +49,7 @@ class BetsController < ApplicationController
     @bet.user_id = current_user.id
     @bet.save
     if @question.status == 'new'
-      @question.bets.count > 20
+      @question.bets.count > 5
       @question.status = 'good'
       @question.save
     end

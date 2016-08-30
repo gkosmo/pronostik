@@ -20,7 +20,7 @@ class Dashboard::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
-    @question.save
+    @question.save!
     redirect_to question_path(@question)
   end
 

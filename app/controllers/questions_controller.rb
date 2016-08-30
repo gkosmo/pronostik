@@ -37,13 +37,13 @@ class QuestionsController < ApplicationController
   #input van de search
     @search = params[:search_term] if  !params[:search_term].nil?
     @category = params[:category]
-    @searched_questions = Question.all.order('id DESC')
+    @searched_questions = Question.all.order('id DESC').limit(7)
 
     @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
       joins(:questions).
       group("tags.id").
       order("questions_count DESC").
-      limit(5)
+      limit(7)
 
     if @category.present?
       @searched_questions = @searched_questions.where(category_id: params[:category]).uniq

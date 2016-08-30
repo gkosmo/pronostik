@@ -58,6 +58,7 @@
     }
 }
 
+
 #_category{
     border-style: solid;
     border-color:  $gray-light;
@@ -86,12 +87,22 @@
     width: 96px;
     border-style: solid;
     border-color:  $gray-light;
+    border-radius: 0px;
 }
 
 
 #question-home-wrapper{
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+#scenario-wrap{
+   max-width: 285px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
 }
 
 

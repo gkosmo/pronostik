@@ -5,14 +5,14 @@
           <h2>
             Hi <span><%= current_user.first_name %></span>, Welcome to your Dashboard.
           </h2>
-          <div><%= link_to "Create a Question", new_dashboard_question_path, class: "btn btn-primary"  %></div>
+          <div><%= link_to "Create a Question", new_dashboard_question_path, class: "btn btn-warning"  %></div>
           <p>Have a look around, you'll have an awesome time.</p>
       </div>
           <div class="text-center bordered">
           <% if current_user.country.nil? %>
           <h3>Help us improve our predictions. Which country have you lived the most? </h3>
 
-            <%= simple_form_for current_user, url: edit_user_registration_path, method: :put do |f| %>
+            <%= simple_form_for current_user, url: user_registration_path, method: :put do |f| %>
             <%= f.country_select :country %>
             <%= f.submit %>
             <%end%>

@@ -6,7 +6,7 @@
         <%= render 'before-bet', question: @question %>
 
         <% if @pending.empty? && user_signed_in? %>
-        <%= button_to 'bet later', question_makepending_path(@question), method: :patch%>
+          <%= button_to 'Bet later', question_makepending_path(@question), method: :patch, class: 'btn btn-warning' %>
         <% end %>
         <%end%>
         <%if @existing_bet%>

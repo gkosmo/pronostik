@@ -1,64 +1,123 @@
-<div class="wrapper">
-<div class="container">
+  <div class="wrapper">
+    <div class="container">
 
-  <div class="row">
-    <div class="col-sm-offset-4 col-sm-4">
-      <strong> Hi <%= current_user.first_name %> </strong>, you want to create a question right ? Let's go !
+      <div class="row">
+        <div class="col-xs-offset-3 col-xs-6">
+          <h4> Hi <%= current_user.first_name %>, </h4>
+          <h1> would you like to create a question? </h1>
+          <h6> Let's go!</h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-offset-3 col-xs-6">
+            <div class="card-sean" id="create_new_question">
+              <%= form_for @question, url: dashboard_questions_path do |f| %>
+              <div class="field-create-question">
+                <h6>Your question</h6>
+                <p> Pose a question about something that hasn't occured yet. </p>
+                <p> (e.g. Will this ..., Shall 'X' do ...) </p>
+              </div>
+              <div class="field-create-question">
+                <%= f.text_area :content, class: 'form-control', style: "width: 300px; height: 150px;" %>
+              </div>
+              <div class="field-create-question">
+                <h6>Category</h6>
+              </div>
+              <div class="field-create-question">
+                <%= f.collection_select(:category_id, Category.all, :id, :title) %>
+              </div>
+              <div class="field-create-question">
+                <h6>Please enter an expiry date</h6>
+              </div>
+              <div class="field-create-question">
+                <%= date_field(:question, :event_date) %>
+              </div>
+              <div class="field-create-question">
+                <h6>Scenarios</h6>
+                <p>Give at least two possible scenarios or outcomes (eg. 'Yes' or 'No') </p>
+              </div>
+              <ul>
+                <%= f.fields_for :scenarios do |scenarios_form| %>
+                <div class="field-create-question">
+                  <li>
+                    <%= scenarios_form.label :scenario %>
+                    <%= scenarios_form.text_field :content %>
+                  </li>
+                </div>
+                <% end %>
+              </ul>
+              <div class="field-create-question">
+                <h6>All Set?</h6>
+                <p>- all fields are mandatory -</p>
+              </div>
+              <div class="field-create-question" actions">
+                <%=  f.submit "Create Question", :class => 'btn btn-warning' %>
+              </div>
+              <% end %>
+
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div id="randque-wrapper">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-6">
+
+           <div class="linking-cards-bottom-of-page">
+
+            <div class="text-linking-card">
+              <p> Do you know what tomorrow brings?</p>
+              <h4> Check out your ranking </h4>
+              <h4> in forecasting</h4>
+              <br>
+              <%= link_to bets_path do %>
+              <h3>
+                <span class="label label-default">Ranking</span>
+              </h3>
+              <% end %>
+            </div>
+
+            <div id="medal-icon">
+              <%= image_tag("medal.svg", :alt => "medal") %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="linking-cards-bottom-of-page">
+
+            <div class="link-linking-card">
+              <p> Dive in your personal statistics</p>
+              <h4> Are you improving?</h4>
+              <br>
+              <br>
+              <%= link_to dashboard_statistics_path(current_user) do %>
+              <h3>
+                <span class="label label-default">Your stats</span>
+              </h3>
+              <% end %>
+            </div>
+
+            <div id="stats-icon">
+              <%= image_tag("stat-grow.png", :alt => "stat-grow") %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-sm-12">
-
-      <%= form_for @question, url: dashboard_questions_path do |f| %>
-
-        <div class="text-center form-margin">Question</div>
-
-        <div class="row">
-          <div class="col-sm-offset-4 col-sm-4">
-            <%= f.text_area :content, class: 'form-control' %>
-          </div>
-        </div>
-
-        <div class="text-center form-margin">Category</div>
-
-        <div class="row">
-          <div class="col-sm-offset-4 col-sm-4">
-          <%= f.collection_select(:category_id, Category.all, :id, :title) %>
-          </div>
-        </div>
-
-        <div class="text-center form-margin">When will the event occur ?</div>
-
-        <div class="row">
-          <div class="col-sm-offset-4 col-sm-4">
-            <%= date_field(:question, :event_date) %>
-          </div>
-        </div>
-
-        <div class="text-center form-margin">Scenarios</div>
-        <ul>
-          <%= f.fields_for :scenarios do |scenarios_form| %>
-            <div class="row">
-            <div class="col-sm-offset-4 col-sm-4">
-            <li>
-              <%= scenarios_form.label :scenario %>
-              <%= scenarios_form.text_field :content %>
-            </li>
-            </div>
-            </div>
-          <% end %>
-        </ul>
-
-        <div class="text-center form-margin">All Set ?</div>
-
-            <div class="actions text-center">
-              <%=  f.submit "Create Question", :class => 'btn btn-primary' %>
-            </div>
-      <% end %>
-
-    </div>
-  </div>
-</div>
-</div>
 

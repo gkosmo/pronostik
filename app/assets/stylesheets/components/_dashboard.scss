@@ -17,3 +17,31 @@
 .dashboard-topbar p {
   margin-top : 15px;
 }
+
+#create_new_question{
+  text-align: -webkit-center;
+
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+}
+
+#question_category_id{
+    border-style: solid;
+    border-color:  $gray-light;
+    color: $gray-light;
+    background: white;
+    width: 120px;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#question_event_date{
+    width: 150px;
+    padding: 5px;
+}
+#question_scenarios_attributes_0_content, #question_scenarios_attributes_1_content, #question_scenarios_attributes_2_content, #question_scenarios_attributes_3_content{
+width: 450px;
+}

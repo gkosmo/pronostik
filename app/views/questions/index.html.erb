@@ -54,7 +54,6 @@
       </div>
 
       <div class="col-xs-5 col-xs-offset-1">
-
           <h3> New Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date > DateTime.now.to_date %>

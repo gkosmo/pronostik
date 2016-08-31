@@ -35,7 +35,7 @@ class BetsController < ApplicationController
     @final_hash = @final_hash.sort_by {|k, v| v[0] }.reverse!
     #score per week per users
     @index = 0
-    @final_hash = @final_hash.first(20)
+    @final_hash
   end
 
 

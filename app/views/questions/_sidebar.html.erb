@@ -1,13 +1,19 @@
+
+
 <% unless @randque_not_voted.nil? %>
-      <br>
+<br>
+<br>
+<br>
+<br>
 
 
       <div class="text-center">
         <h3> Explore More Questions !</h3>
       </div>
-      <br>
+<div class="container">
+  <div class="row">
     <% @randque_not_voted.each do |que|  %>
-      <div class="col-sm-12">
+      <div class="col-sm-3">
       <div class="card-sean padded-chart">
         <%= link_to question_path(que) do %>
 
@@ -39,5 +45,6 @@
 
       </div>
     <% end %>
+    </div>
+  </div>
   <%end%>
-

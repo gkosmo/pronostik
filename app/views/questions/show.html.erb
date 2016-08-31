@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-12">
         <%if user_signed_in? && !@existing_bet %>
         <%= render 'before-bet', question: @question %>
 
@@ -13,7 +13,15 @@
         <%= render 'after-bet', question: @question %>
         <%end%>
       </div>
-      <div class="col-sm-3">
+
+    </div>
+  </div>
+</div>
+
+<div id="randque-wrapper-before-bet">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
         <%= render 'sidebar', randque: @randque %>
       </div>
     </div>

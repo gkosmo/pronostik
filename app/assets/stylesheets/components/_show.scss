@@ -2,13 +2,12 @@
   background: grey;
 }
 
-#sean {
+#resources-card{
   background-color: #bdc3c7;;
   color: white;
   margin-bottom: 15px;
   padding: 10px;
   margin-right: 20px;
-  background-color: red;
 }
 
 .card-sean {
@@ -43,9 +42,9 @@
 }
 
 .heigth-vote {
-
-  width: 75px;
-  height: 75px;
+  margin-left: 102px;
+  width: 100px;
+  height: 100px;
   text-align: center;
   border-radius: 100%;
   p, h1 {
@@ -90,3 +89,20 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+#randque-wrapper-before-bet{
+  margin-top: 40px;
+  background-color:white;
+}
+
+#bet_estimation{
+    align-items: center;
+    width: 50%;
+    color: red;
+    margin: 0 auto;
+}
+
+#bet_show_page{
+  margin-bottom:0px;
+}
+

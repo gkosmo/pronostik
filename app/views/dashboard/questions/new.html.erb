@@ -15,8 +15,8 @@
               <%= form_for @question, url: dashboard_questions_path do |f| %>
               <div class="field-create-question">
                 <h6>Your question</h6>
-                <p> Pose a question about something that hasn't occured yet. </p>
-                <p> (e.g. Will this ..., Shall 'X' do ...) </p>
+                <p> Pose a question about something that hasn't occured yet.  [max 200 char.]</p>
+                <p>  e.g. Will this ...</p>
               </div>
               <div class="field-create-question">
                 <%= f.text_area :content, class: 'form-control', style: "width: 300px; height: 150px;" %>
@@ -35,13 +35,14 @@
               </div>
               <div class="field-create-question">
                 <h6>Scenarios</h6>
-                <p> Give at least four possible scenarios or outcomes </p>
+                <p> Give at least four possible scenarios or outcomes. [max 200 char.] </p>
+
               </div>
               <ul>
                 <%= f.fields_for :scenarios do |scenarios_form| %>
                 <div class="field-create-question">
                   <li>
-                    <%= scenarios_form.label :scenario %>
+                    <%= scenarios_form.label :scenario, class: "control_label" %>
                     <%= scenarios_form.text_field :content %>
                   </li>
                 </div>
@@ -64,9 +65,41 @@
 
 
 
+<script>
 
+  var EVENTS = 'focusout keyup change';
 
+  function checkIsFilled(input, add_class) {
+    var filled = false;
+    filled = $(input).val().length < 200;
+    if (add_class) {
+      addClass(input, filled);
+    }
 
+    return filled;
+  };
+
+  function addClass(input, remove) {
+    var form_group = $(input).parents('.form-group');
+    if (remove) {
+      $(input).removeClass('has-error');
+      if ($(input).val().length > 0) {
+        $(input).addClass('has-success');
+      }
+    } else {
+      $(input).addClass('has-error').removeClass('has-success');
+    }
+  };
+
+  function onReady() {
+  $('form input, form textarea').on(EVENTS, function(e) {
+      checkIsFilled(e.target, true);
+    });
+  }
+
+  $(document).ready(onReady);
+
+</script>
 
    <div id="randque-wrapper">
   <div class="container">
@@ -120,5 +153,3 @@
     </div>
   </div>
 </div>
-
-

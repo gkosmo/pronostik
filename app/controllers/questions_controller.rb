@@ -83,6 +83,11 @@ class QuestionsController < ApplicationController
     @bet = Bet.new
     @scenarios = @question.scenarios
     @bets = @question.bets
+
+    #resources sorted by popularity
+    @resources = @bets.select("Url").group(:Url).count
+    @resources = @resources.sort_by { |k, v| v }.reverse[0..4]
+
     @all_bets = @bets.where.not(justification: nil)
     @existing_bet = nil
 

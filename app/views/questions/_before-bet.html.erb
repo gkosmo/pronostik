@@ -8,16 +8,16 @@
       <h3>Resources</h3>
       <p>Ranked by popularity</p>
       </div>
-      <% if @bets.empty? %>
+      <% if @resources.empty? %>
       <div>| See what are the most used resources </div>
       <div>| No resources yet</div>
       <% end %>
-      <ol> <% @bets.each do |bet| %>
+      <ul> <% @resources.each do |resource| %>
         <li>
-          <%= bet.Url %>
+          <%= resource[0].capitalize %> (<%= resource[1] %>)
         </li>
         <%end%>
-      </ol>
+      </ul>
     </div>
   </div>
   <div class="col-sm-9">

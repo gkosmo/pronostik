@@ -1,25 +1,3 @@
-
-// question-card = question incl dropdown scenario's
-// card-wrapper = question-card + upvotes & avatar & social-shares
-
-.card-wrapper{
-  color: $gray-darker;
-  margin-bottom: 15px;
-  padding: 20px;
-  border-color: $gray-darker;
-  background-color: white;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-}
-
-.card-row {
-  display: flex;
-  align-items: center;
-}
-
-.question-upvotes, .question-creator, .question-links {
-  text-align: center;
-}
-
 .arrow, .link-to-bet{
   margin-bottom: 25px;
 }
@@ -35,7 +13,6 @@
 }
 
 .panel-group#accordion{
-  //text-decoration: none;
   margin-bottom: 0px;
 }
 

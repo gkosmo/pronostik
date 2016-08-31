@@ -5,10 +5,10 @@
           <h2>
             Hi <span><%= current_user.first_name %></span>, Welcome to your Dashboard.
           </h2>
-          <div><%= link_to "Create a Question", new_dashboard_question_path, class: "btn btn-warning"  %></div>
+          <div><%= link_to "Create a Question", new_dashboard_question_path, class: "btn btn-warning btn-lg"  %></div>
           <p>Have a look around, you'll have an awesome time.</p>
       </div>
-          <div class="text-center bordered">
+        <div class="text-center">
           <% if current_user.country.nil? %>
           <h3>Help us improve our predictions. Which country have you lived the most? </h3>
 

@@ -3,7 +3,7 @@
 }
 
 #sean {
-  background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%);
+  background-color: #bdc3c7;;
   color: white;
   margin-bottom: 15px;
   padding: 10px;
@@ -12,11 +12,13 @@
 }
 
 .card-sean {
+  word-wrap: break-word;
   background-color: white;
   margin-bottom: 15px;
   padding: 10px;
   margin-right: 10px;
   margin-top: 30px;
+  transition: box-shadow 300ms ease-in-out;
   box-shadow: 5px 5px 0px rgba($black,.1);
   &:hover {
     box-shadow: 1px 1px 0px rgba($black,.2);
@@ -32,12 +34,23 @@
       color: white !important;
     }
   }
+  .pull-right {
+    margin-right: 15px;
+  }
+  .votes {
+    text-align: center;
+  }
 }
 
 .heigth-vote {
-  border-radius: 50%;
+
   width: 75px;
   height: 75px;
+  text-align: center;
+  border-radius: 100%;
+  p, h1 {
+    margin: 0;
+  }
 }
 
 .white-back {
@@ -77,6 +90,3 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
-
-

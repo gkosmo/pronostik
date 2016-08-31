@@ -44,16 +44,22 @@ h1,
 h2,
 h3,
 h4,
+h5,
 h6 {
   text-transform: uppercase;
   color: $black !important;
 }
 
 body {
-  color: $gray  !important;
+  color: $gray !important;
 }
 
 $btn-font-weight: $font-weight-bold;
 .btn {
   text-transform: uppercase;
+  border-radius: 0 !important;
+}
+
+.panel {
+  border-radius: 0 !important;
 }

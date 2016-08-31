@@ -1,14 +1,31 @@
-<div class="card-wrapper">
-  <div class="row card-row">
-    <div class="col-sm-2 question-upvotes">
+<div class="card-sean">
+  <div class="row">
+    <div class="col-sm-2">
       <div class="arrow">
-        <%= image_tag("upvote_version1.png", class: "avatar", :alt => "upvote-arrow") %>
+        <i class="fa fa-4x fa-chevron-circle-up" aria-hidden="true"></i>
       </div>
       <div class="votes">
-        <p><%= question.bets.count%></p>
+        <h1><%= question.bets.count%></h1>
       </div>
+    </div>
+
+    <div class="col-sm-10">
+      <h4>
+        <%= question.content%>
+      </h4>
+      <strong>— End Date: <%= question.event_date%></strong>
+      by <em><%= question.user.first_name%></em>
+      <%= link_to question_path(question) do %>
+        <%= render 'scenario', question: question %>
+      <% end %>
+      <hr>
+      <%= link_to question_path(question), class: 'pull-right' do %>
+        <h3>
+          <span class="label btn-info">Pending</span>
+        </h3>
+      <% end %>
       <div class="social-shares">
-        <p>Share the results</p>
+        <p>Share</p>
 
         <ul class="list-inline">
           <li>
@@ -21,30 +38,6 @@
       </div>
     </div>
 
-    <div class="col-sm-7">
-      <div class="question-card">
-        <h4 class="panel-title">
-          <%= question.content%>
-        </h4>
-        <strong>— End Date: <%= question.event_date%></strong>
-        by <em><%= question.user.first_name%></em>
-        <%= link_to question_path(question) do %>
-        <%= render 'scenario', question: question %>
 
-        <% end %>
-      </div>
-    </div>
-
-    <div class="col-sm-3" >
-      <%= link_to question_path(question) do %>
-      <div style="margin-bottom: 200px; margin-right: 10px">
-        <h3>
-          <span class="label btn-info">Pending</span>
-        </h3>
-      </div>
-
-      <% end %>
-    </div>
   </div>
-
 </div>

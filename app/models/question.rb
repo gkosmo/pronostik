@@ -10,7 +10,7 @@ class Question < ApplicationRecord
   validates :content, length: { maximum: 200, too_long: '%{count} is the max number of characters'}
   validates :category, presence: true
   validates :event_date, presence: true
-  validate :force_four_scenarios
+  #validate :force_four_scenarios
 
   #creating questions with many scenarios
   after_initialize :assign_defaults

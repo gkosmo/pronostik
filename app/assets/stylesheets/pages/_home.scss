@@ -18,23 +18,22 @@
   justify-content: space-between;
 }
 
-  #top-tags-display {
+#top-tags-display {
   flex: 0 0 50%;
   display: flex;
   justify-content: flex-end;
   margin-bottom: 10px;
+  li {
+    margin-bottom: 5px;
+  }
 }
 
-#search-and-btn-display {
-  flex: 0 0 50%;
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 26px;
-}
-
-#pop-topics-title{
-  margin-right: 30px;
-}
+//#search-and-btn-display {
+//  flex: 0 0 50%;
+//  display: flex;
+//  justify-content: flex-end;
+//  margin-bottom: 26px;
+// }
 
 #top-tag-buttons{
   border-style: solid;

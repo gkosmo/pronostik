@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_question, only: [:show]
-  before_action :set_randque, only: [:index, :show, :new_index, :good_index]
+  before_action :set_randque, only: [:show, :new_index, :good_index]
 
 
   def new_index
@@ -64,7 +64,7 @@ class QuestionsController < ApplicationController
       end
       @right_column_current_user = @searched_questions_only_new.take(7)
     end
-    
+
 
     @limited_questions = @searched_questions.limit(7)
 
@@ -176,7 +176,7 @@ class QuestionsController < ApplicationController
     @randque = Question.all.sample(30)
     @randque_not_voted = []
     @randque.each do |que|
-      if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
+       if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
         @randque_not_voted << que
       end
     end

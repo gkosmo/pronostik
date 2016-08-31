@@ -169,8 +169,13 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
   def set_randque
-    @randque = Question.all.sample(4)
+    @randque = Question.all.sample(30)
+    @randque_not_voted = []
+    @randque.each do |que|
+      if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
+        @randque_not_voted << que
+      end
+    end
+    @randque_not_voted = @randque_not_voted.sample(3)
   end
-
-
 end

@@ -25,7 +25,6 @@ class BetsController < ApplicationController
       end
        @final_hash[user] << @scores_bets.inject { |sum, el| sum + el } unless @scores_bets.nil?
        @final_hash[user] << @scores_justification.inject { |sum, el| sum + el } unless @scores_justification.nil?
-
        sum = 0
        user.questions.each do |q|
          sum += q.bets.count

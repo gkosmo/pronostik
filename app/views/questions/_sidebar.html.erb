@@ -1,22 +1,43 @@
+<% unless @randque_not_voted.nil? %>
+      <br>
 
 
-
-    <div class="col-sm-12">
-      <% @randque.each do |que|  %>
-      <div class="panel panel-success">
+      <div class="text-center">
+        <h3> Explore More Questions !</h3>
+      </div>
+      <br>
+    <% @randque_not_voted.each do |que|  %>
+      <div class="col-sm-12">
+      <div class="panel bordered card-sean padded-chart">
         <%= link_to question_path(que) do %>
-        <div class="panel-header">
-          <%= que.content  %>
-        </div>
-        <div class="panel-body">
-          <ul>
+
+          <div class="panel-heading">
+            <h3 class="panel-title"> <%= que.content  %> </h3>
+          </div>
+          <div class="panel-body"> <ul>
             <% que.scenarios.each do |scen| %>
             <li> <%= scen.content %> </li>
             <% end %>
           </ul>
-        </div>
+          <ul>
+            <% que.tags.each do |tag| %>
+            <div class="label label-info">
+              <%= tag.title %>
+            </div>
+            <% end %>
+          </ul>
+          </div>
         <% end %>
+
+      <div class="text-muted text-right">
+        <%= que.event_date %>
       </div>
-      <%end%>
-    </div>
-  </div>
+      <div class="panel-footer">
+        <%= que.category.title %>
+      </div>
+      </div>
+
+      </div>
+    <% end %>
+  <%end%>
+

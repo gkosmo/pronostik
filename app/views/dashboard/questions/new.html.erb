@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-xs-offset-3 col-xs-6">
           <h4> Hi <%= current_user.first_name %>, </h4>
-          <h1> would you like to create a question? </h1>
+          <h1> would you like to ask a question? </h1>
           <h6> Let's go!</h2>
           </div>
         </div>
@@ -31,7 +31,7 @@
                 <h6>Please enter an expiry date</h6>
               </div>
               <div class="field-create-question">
-                <%= date_field(:question, :event_date) %>
+                <%= date_field(:question, :event_date, options = {min: Date.today}) %>
               </div>
               <div class="field-create-question">
                 <h6>Scenarios</h6>
@@ -53,7 +53,7 @@
                 <p>- all fields are mandatory -</p>
               </div>
               <div class="field-create-question" actions>
-                <%=  f.submit "Create Question", :class => 'btn btn-warning' %>
+                <%=  f.submit "Ask Question", :class => 'btn btn-warning' %>
               </div>
               <% end %>
 

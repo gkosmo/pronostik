@@ -9,12 +9,9 @@
   <div class="col-sm-9">
     <div class="card-sean card-sean-callout text-center">
       <div>
-        <div class="avatar">
-          <%= image_tag("user.jpg", class: "avatar", :alt => "user") %>
-        </div>
-        <h3><%= question.content.capitalize%> </h3>
-        <h3><%= question.event_date%> </h3>
-        <h3>The Issuer: <%= question.user.first_name%> </h3>
+        <h1><%= question.content.capitalize%> </h1>
+        <h3>Expiry date: <%= question.event_date%> </h3>
+        <h5>Question by: <%= question.user.first_name%> </h5>
       </div>
     </div>
   </div>

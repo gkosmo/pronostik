@@ -2,3 +2,16 @@
  margin-top: 20px;
  margin-bottom: 20px;
 }
+
+.has-success {
+  border-color: #4caf50;
+  color: #4caf50;
+  border: 3px;
+}
+
+
+.has-error {
+  color: #ff5252;
+  border: 3px;
+  border-color: #ff5252;
+}

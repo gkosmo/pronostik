@@ -107,18 +107,28 @@ end
 200.times do
    user = User.all.sample
    a ||= Scenario.all.sample.id
+   puts a
    user.bets.build(
    scenario_id: a,
    estimation: Faker::Number.between(0, 100),
    justification: Faker::Company.bs,
-  scenario_score: Faker::Number.between(0, 100) )
+  scenario_score: 0 )
   user.save!
+
 end
 
 Question.all.each do |qu|
   if qu.event_date  < DateTime.now.to_date
     scene = qu.scenarios.sample
     scene.happened = true unless scene == nil
-  #  Questions::ComputeBetScoresService.new(qu).call unless qu == nil
+  #  Questions::ComputeBetScoresService.new(qu).call
+  end
+end
+
+Scenario.all.each do |scen|
+  if scen.happened?
+    scen.bets.each do |b|
+      b.scenario_score = 250
+    end
   end
 end

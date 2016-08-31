@@ -1,4 +1,4 @@
-<div class="card-wrapper"">
+<div class="card-wrapper">
   <div class="row card-row">
     <div class="col-sm-2 question-upvotes">
       <div class="arrow">
@@ -28,15 +28,21 @@
         </h4>
         <strong>— End Date: <%= question.event_date%></strong>
         by <em><%= question.user.first_name%></em>
+        <%= link_to question_path(question) do %>
         <%= render 'scenario', question: question %>
+
+        <% end %>
       </div>
     </div>
 
-    <div class="col-sm-3 question-links">
+    <div class="col-sm-3" >
       <%= link_to question_path(question) do %>
-      <h3>
-        <span class="label label-default">Expired</span>
-      </h3>
+      <div style="margin-bottom: 200px; margin-right: 10px">
+        <h3>
+          <span class="label btn-success">Expired</span>
+        </h3>
+      </div>
+
       <% end %>
     </div>
   </div>

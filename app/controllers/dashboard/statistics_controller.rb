@@ -64,19 +64,31 @@ class Dashboard::StatisticsController < ApplicationController
     @successful_bets = @user.bets.joins(:scenario).where(scenarios: {happened: true}).count
     @total_bets = @user.bets.count
     @accuracy = @total_bets == 0 ? 0 : @successful_bets.to_f / @total_bets * 100
+
     #recommendation
     @sorted = @success_bets_per_cat.sort_by { |element| element[1]}
     @recommendation = @sorted[0][0] unless @sorted.empty?
 
     #accuracy per month
-    # @successful_bets = @user.bets.joins(:scenario).where(scenarios: {happened: true}).group("DATE_TRUNC('month', created_at)").count
+    #@successful_bets = @user.bets.joins(:scenario).where(scenarios: {happened: true}).group("DATE_TRUNC('month', created_at)").count
     # @total_bets = @user.bets.group("DATE_TRUNC('month', created_at)").count
+
+    #forecasting score per month
+
+
   end
 
 
   private
   def set_randque
-    @randque = Question.all.sample(3)
+    @randque = Question.all.sample(30)
+    @randque_not_voted = []
+    @randque.each do |que|
+      if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
+        @randque_not_voted << que
+      end
+    end
+    @randque_not_voted = @randque_not_voted.sample(4)
   end
 end
 

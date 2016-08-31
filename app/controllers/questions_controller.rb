@@ -51,16 +51,20 @@ class QuestionsController < ApplicationController
     if @search.present?
       @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
     end
-
+     @unbetted_questions = []
     if current_user
       @searched_questions_only_new = []
       @searched_questions.each do |question|
         if question.event_date > DateTime.now.to_date && question.bets.where(user_id: current_user.id).empty?
           @searched_questions_only_new << question
+        else
+          @unbetted_questions << question
         end
+
       end
       @right_column_current_user = @searched_questions_only_new.take(7)
     end
+    
 
     @limited_questions = @searched_questions.limit(7)
 
@@ -169,8 +173,13 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
   def set_randque
-    @randque = Question.all.sample(4)
+    @randque = Question.all.sample(30)
+    @randque_not_voted = []
+    @randque.each do |que|
+      if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
+        @randque_not_voted << que
+      end
+    end
+    @randque_not_voted = @randque_not_voted.sample(3)
   end
-
-
 end

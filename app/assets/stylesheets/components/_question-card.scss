@@ -6,9 +6,9 @@
   color: $gray-darker;
   margin-bottom: 15px;
   padding: 20px;
-  border-style: solid;
   border-color: $gray-darker;
   background-color: white;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .card-row {
@@ -97,5 +97,3 @@ a:hover, a:focus {
     text-decoration: none;
     }
 }
-
-

@@ -28,8 +28,14 @@ class Dashboard::QuestionsController < ApplicationController
   private
 
    def set_randque
-     @randque = Question.all.sample(3)
-   end
+    @randque = Question.all.sample(30)
+    @randque_not_voted = []
+    @randque.each do |que|
+      if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
+        @randque_not_voted << que
+      end
+    end
+    @randque_not_voted = @randque_not_voted.sample(4)   end
    def question_params
       params.require(:question).permit(:content, :category_id, :event_date, scenarios_attributes: [:id, :content])
    end

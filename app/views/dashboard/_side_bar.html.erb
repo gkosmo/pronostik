@@ -1,116 +1,48 @@
-<% unless @randque.nil? %>
+<% unless @randque_not_voted.nil? %>
+<br>
+<br>
+<br>
 <br>
 
 
-
-<div style="background-image: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%)">
-<p>
-  <div class="text" style="color: green">
-    This color: not voted yet
-  </div>
-  <div class="text" style="color: blue">
-    This color: voted
-  </div>
-</p>
-<br>
-<br>
-<br>
-<div class="text-center">
-  <h3> Explore More Questions !</h3>
-</div>
+      <div class="text-center">
+        <h3> Explore More Questions !</h3>
+      </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-8  col-sm-offset-1" >
-<% @randque.each do |que|  %>
-<% if que.bets.where(user_id: current_user.id).empty? %>
-<div class="panel" style="border: solid 1px green">
-  <%= link_to question_path(que) do %>
+    <% @randque_not_voted.each do |que|  %>
+      <div class="col-sm-3">
+      <div class="panel bordered card-sean padded-chart">
+        <%= link_to question_path(que) do %>
 
-  <div class="panel-heading">
-    <h3 class="panel-title"> <%= que.content  %> </h3>
-  </div>
-  <div class="panel-body"> <ul>
-    <% que.scenarios.each do |scen| %>
-    <li> <%= scen.content %> </li>
-    <% end %>
-  </ul>
-  <ul>
-    <% que.tags.each do |tag| %>
-    <div class="label label-info">
-      <%= tag.title %>
-    </div>
-    <% end %>
-  </ul>
-</div>
-
-<% end %>
-
-<div class="text-muted text-right">
-  <%= que.event_date %>
-</div>
-<div class="panel-footer">
-  <%= que.category.title %>
-</div>
-</div>
-
-
-
-<% elsif  que.event_date < DateTime.now.to_date %>
-
-<div class="panel panel-striped panel-danger" style="border: solid 1px purple"><
-<%= link_to question_path(que) do %>
-<div class="panel-heading">
-  <h2 class="panel-title"><%= que.content  %> </h2>
-</div>
-<div class="panel-body">
-  <ul>
-    <% que.scenarios.each do |scen| %>
-    <li> <%= scen.content %> </li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
-
-<div class="text-muted text-right">
-  <%= que.event_date %>
-</div>
-<div class="panel-footer">
-  <%= que.category.title %>
-</div>
-</div>
-
-<% else  %>
-<div class="panel panel-info" style="border: solid 1px blue">
-  <div class="">
-    <%= link_to question_path(que) do %>
-    <div class="panel-heading">
-      <h2 class="panel-title">  <%= que.content  %> </h2>
-    </div>
-    <div class="panel-body">
-      <ul>
-        <% que.scenarios.each do |scen| %>
-        <li> <%= scen.content %> </li>
+          <div class="panel-heading">
+            <h3 class="panel-title"> <%= que.content  %> </h3>
+          </div>
+          <div class="panel-body"> <ul>
+            <% que.scenarios.each do |scen| %>
+            <li> <%= scen.content %> </li>
+            <% end %>
+          </ul>
+          <ul>
+            <% que.tags.each do |tag| %>
+            <div class="label label-info">
+              <%= tag.title %>
+            </div>
+            <% end %>
+          </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-    <% end %>
-  </div>
-  <div class="text-muted text-right">
-    <%= que.event_date %>
-  </div>
-  <div class="panel-footer">
-    <div class="text-footer">
-      <%= que.category.title %>
-    </div>
-  </div>
-</div>
-<%end%>
-<br>
-<% end %>
-<br>
-<%end%>
+
+      <div class="text-muted text-right">
+        <%= que.event_date %>
       </div>
+      <div class="panel-footer">
+        <%= que.category.title %>
+      </div>
+      </div>
+
+      </div>
+    <% end %>
     </div>
   </div>
-</div>
-</div>
+  <%end%>

@@ -48,11 +48,11 @@
         <tbody>
           <% @final_hash.each do |user| %>
             <% if user.first == current_user %>
-              <tr bgcolor="red" style="color: white;">
-                <td><%= user[0].first_name%></td>
-                <td><%= user[1][0]%></td>
-                <td><%= user[1][1]%></td>
-                <td><%= user[1][2]%></td>
+              <tr >
+                <td class="btn-danger"><%= user[0].first_name%></td>
+                <td class="btn-danger"><%= user[1][0]%></td>
+                <td class="btn-danger"><%= user[1][1]%></td>
+                <td class="btn-danger"><%= user[1][2]%></td>
 
               </tr>
             <% else %>

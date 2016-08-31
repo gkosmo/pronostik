@@ -53,12 +53,15 @@ class BetsController < ApplicationController
       @question.save
     end
     redirect_to question_path(@question)
+
   end
 
   def update
     @bet = current_user.bets.find(params[:id])
     @bet.update(bet_params_update)
+
     redirect_to question_path(@question)
+    
   end
 
   private

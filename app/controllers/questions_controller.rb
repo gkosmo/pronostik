@@ -19,7 +19,6 @@ class QuestionsController < ApplicationController
   end
 
   def good_index
-
         @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
           joins(:questions).
           group("tags.id").
@@ -38,7 +37,6 @@ class QuestionsController < ApplicationController
     @search = params[:search_term] if  !params[:search_term].nil?
     @category = params[:category]
     @searched_questions = Question.all.order('id DESC')
-
     @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
       joins(:questions).
       group("tags.id").

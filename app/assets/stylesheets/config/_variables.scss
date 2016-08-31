@@ -12,27 +12,27 @@ $base-size: 16px;
 $base-height: 1.4;
 
 // Color
-$black: #333d47;
-
-$purple:#5E60BA;
-
-$btn-warning-bg:#c0392b;
+$black:       #333d47;
+$purple:      #5E60BA;
 $purple-dark: #293159;
 //$blue:        #2BCEE1;
 $pink:        #F37AD6;
-
-$body-bg: #EEF4F7;
-$table-bg: #293159;
+$body-bg:     #EEF4F7;
+$progress-bg: #293159;
 // Scheme
-$brand-color: purple;
-
+$brand-color: #5E60BA;
+$btn-warning-bg:  #5E60BA;
+$brand-warning:   #5E60BA;
+$btn-info-bg:     #293159;
+$table-border-color: #293159;
+$label-danger-bg: #f1c40f;
+$table-bg:    white;
+$navbar-default-bg: #ecf0f1;
 $red:    #c0392b;
 $blue:   #3498db;
 $yellow: #f1c40f;
 $orange: #E67E22;
 $green:  #27ae60;
-$btn-info-bg: #293159;
-$label-danger-bg: #f1c40f;
 // Gray scale
 $gray-darker:  #34495e;// #222
 $gray-dark:    #7f8c8d;  // #333

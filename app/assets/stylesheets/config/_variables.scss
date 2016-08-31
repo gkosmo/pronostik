@@ -13,24 +13,26 @@ $base-height: 1.4;
 
 // Color
 $black: #333d47;
-$btn-info-bg: blue;
-$btn-warning-bg: purple;
+
 $purple:      #5E60BA;
+
+$btn-warning-bg:  #c0392b;
 $purple-dark: #293159;
 //$blue:        #2BCEE1;
 $pink:        #F37AD6;
 
 $body-bg: #EEF4F7;
-
+$table-bg: #293159;
 // Scheme
-$brand-color: $purple;
+$brand-color: purple;
 
 $red:    #c0392b;
 $blue:   #3498db;
 $yellow: #f1c40f;
 $orange: #E67E22;
 $green:  #27ae60;
-
+$btn-info-bg: #293159;
+$label-danger-bg: #f1c40f;
 // Gray scale
 $gray-darker:  #34495e;// #222
 $gray-dark:    #7f8c8d;  // #333

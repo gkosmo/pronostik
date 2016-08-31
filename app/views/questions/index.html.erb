@@ -26,10 +26,7 @@
       <!-- current -->
       <% if user_signed_in? %>
       <div class="col-xs-5">
-        <div class="well">
-          <h4> Pending & Expired Questions </h4>
-
-        </div>
+          <h3> Pending & Expired Questions </h3>
         <% @unbetted_questions.take(7).each do |question| %>
         <% if question.event_date < DateTime.now.to_date %>
         <%= render 'question-purple', question: question %>
@@ -40,9 +37,7 @@
       </div>
 
       <div class="col-xs-5 col-xs-offset-1">
-        <div class="well">
-          <h4> New Questions </h4>
-        </div>
+          <h3> New Questions </h3>
         <% @right_column_current_user.take(7).each do |question| %>
         <%= render 'question-green', question: question %>
         <% end %>
@@ -51,9 +46,7 @@
       <%else%>
       <!-- visitor -->
       <div class="col-xs-5">
-        <div class="well">
-          <h4> Pending & Expired Questions </h4>
-        </div>
+          <h3> Pending & Expired Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date < DateTime.now.to_date %>
         <%= render 'question-purple', question: question %>
@@ -61,10 +54,7 @@
       </div>
 
       <div class="col-xs-5 col-xs-offset-1">
-        <div class="well">
-
-          <h4> New Questions </h4>
-        </div>
+          <h3> New Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date > DateTime.now.to_date %>
         <%= render 'question-green', question: question %>

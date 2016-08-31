@@ -11,8 +11,8 @@ class BetsController < ApplicationController
 
     @users.each do |user|
       @final_hash[user] = []
-        @scores_bets = []
-        @scores_justification = []
+      @scores_bets = []
+      @scores_justification = []
       @users_name << user.first_name
       user.bets.each do |bet|
         if bet.scenario_score.nil?
@@ -23,17 +23,16 @@ class BetsController < ApplicationController
           @scores_justification << bet.just_upvotes.count unless bet.justification.nil?
         end
       end
-       @final_hash[user] << @scores_bets.inject { |sum, el| sum + el } unless @scores_bets.nil?
-       @final_hash[user] << @scores_justification.inject { |sum, el| sum + el } unless @scores_justification.nil?
+      @final_hash[user] << @scores_bets.inject { |sum, el| sum + el } unless @scores_bets.nil?
+      @final_hash[user] << @scores_justification.inject { |sum, el| sum + el } unless @scores_justification.nil?
 
-       sum = 0
-       user.questions.each do |q|
-         sum += q.bets.count
-       end
-       @final_hash[user] << sum
+      sum = 0
+      user.questions.each do |q|
+        sum += q.bets.count
+      end
+      @final_hash[user] << sum
     end
-
-    @final_hash = @final_hash.sort_by {|k, v| v[0]}.reverse!
+    @final_hash = @final_hash.sort_by {|k, v| v[0] }.reverse!
     #score per week per users
     @index = 0
     @final_hash = @final_hash.first(20)

@@ -78,7 +78,7 @@
           </div>
           <div class="justification-flex-item2">
             <p>  <strong>Source</strong></p>
-            <p><%=bet.Url.capitalize%></p>
+            <p><%=bet.Url.capitalize unless bet.Url.nil? %></p>
           </div>
           </div>
           </div>
@@ -88,4 +88,3 @@
   </div>
 
   <%#end%>
-

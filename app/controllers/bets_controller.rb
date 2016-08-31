@@ -35,7 +35,7 @@ class BetsController < ApplicationController
     @final_hash = @final_hash.sort_by {|k, v| v[0] }.reverse!
     #score per week per users
     @index = 0
-    @final_hash = @final_hash.first(20)
+    @final_hash
   end
 
 
@@ -53,12 +53,15 @@ class BetsController < ApplicationController
       @question.save
     end
     redirect_to question_path(@question)
+
   end
 
   def update
     @bet = current_user.bets.find(params[:id])
     @bet.update(bet_params_update)
+
     redirect_to question_path(@question)
+    
   end
 
   private

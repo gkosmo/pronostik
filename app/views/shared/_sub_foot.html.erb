@@ -1,0 +1,52 @@
+<div id="randque-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="card-sean">
+          <div class="row">
+            <div class="col-xs-7">
+              <div class="text-left">
+                <p> Do you know what tomorrow brings?</p>
+                <h4> Check out your ranking </h4>
+                <h4> in forecasting</h4>
+                <br>
+                <%= link_to bets_path do %>
+                <h3>
+                  <span class="label label-danger">Ranking</span>
+                </h3>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-xs-5">
+              <div>
+                <%= image_tag("medal.svg", :alt => "medal", class:' img-responsive ') %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="card-sean">
+          <div class="row">
+            <div class="col-xs-7">
+              <div class="text-left">
+                <p> Dive in your personal statistics</p>
+                <h4> Are you improving?</h4>
+                <br>
+                <br>
+                <%= link_to dashboard_statistics_path(current_user) do %>
+                <h3>
+                  <span class="label label-danger">Your stats</span>
+                </h3>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-xs-5">
+                <%= image_tag("stat-grow.png", :alt => "stat-grow",  class:' img-responsive ') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

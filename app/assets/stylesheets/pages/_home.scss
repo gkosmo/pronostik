@@ -89,12 +89,12 @@
   padding-bottom: 15px;
 }
 
-#scenario-wrap{
-  max-width: 285px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+//#scenario-wrap{
+//  max-width: auto;
+//  white-space: nowrap;
+//  overflow: hidden;
+//  text-overflow: ellipsis;
+//}
 
 #randque-wrapper{
   background-color: white;
@@ -111,12 +111,6 @@
   display:flex;
 }
 
-#medal-icon{
-    flex: 0 0 20%;
-    img {
-      width: 180px;
-    }
-}
 
 #stats-icon{
     flex: 0 0 20%;

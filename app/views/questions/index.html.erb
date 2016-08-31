@@ -8,7 +8,9 @@
           <br>
           <p> Are your expectations supported by others? </p>
           <p> Do you have a knack for forecasting? Try it out...</p>
+        <%= link_to 'faq' do %>
           <p> More info.</p>
+          <% end %>
         </div>
       </div>
 
@@ -66,56 +68,4 @@
     </div>
   </div>
 </div>
-
-<div id="randque-wrapper">
-  <div class="container">
-    <div class="row">
-
-      <div class="col-xs-6">
-
-        <div class="linking-cards-bottom-of-page">
-
-          <div class="text-linking-card">
-            <p> Do you know what tomorrow brings?</p>
-            <h4> Check out your ranking </h4>
-            <h4> in forecasting</h4>
-            <br>
-            <%= link_to bets_path do %>
-            <h3>
-              <span class="label label-default">Ranking</span>
-            </h3>
-            <% end %>
-          </div>
-
-          <div id="medal-icon">
-            <%= image_tag("medal.svg", :alt => "medal") %>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="col-xs-6">
-        <div class="linking-cards-bottom-of-page">
-
-          <div class="link-linking-card">
-            <p> Dive in your personal statistics</p>
-            <h4> Are you improving?</h4>
-            <br>
-            <br>
-            <%= link_to dashboard_statistics_path(current_user) do %>
-            <h3>
-              <span class="label label-danger">Your stats</span>
-            </h3>
-            <% end %>
-          </div>
-
-          <div id="stats-icon">
-            <%= image_tag("stat-grow.png", :alt => "stat-grow") %>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
+<%= render 'shared/sub_foot'%>

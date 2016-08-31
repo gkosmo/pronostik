@@ -1,6 +1,6 @@
 
 <div class="container">
-<% if current_user.admin %>
+<% if current_user.admin && true == false %>
 <div class="row">
 <div class="col-sm-offset-4 col-sm-4">
 <div class="text-center">
@@ -24,13 +24,18 @@
 </div>
 </div>
 <% end %>
+</div>
 
+
+<div class="container">
 
 <%# @weeks.each do |week| %>
-<div class="row">
-  <div class="col-sm-offset-2 col-sm-8">
-    <h3> THE RANKING OF THE WEEK </h3>
 
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10">
+<div class="card-sean">
+
+    <h3> THE RANKING OF THE WEEK </h3>
     <table class="table table-bordered">
 
       <thead>
@@ -42,13 +47,22 @@
         </tr>
         <tbody>
           <% @final_hash.each do |user| %>
-          <tr>
-            <td><%= user[0].first_name%></td>
-            <td><%= user[1][0]%></td>
-            <td><%= user[1][1]%></td>
-            <td><%= user[1][2]%></td>
+            <% if user.first == current_user %>
+              <tr >
+                <td class="btn-danger"><%= user[0].first_name%></td>
+                <td class="btn-danger"><%= user[1][0]%></td>
+                <td class="btn-danger"><%= user[1][1]%></td>
+                <td class="btn-danger"><%= user[1][2]%></td>
 
-          </tr>
+              </tr>
+            <% else %>
+              <tr>
+                <td><%= user[0].first_name%></td>
+                <td><%= user[1][0]%></td>
+                <td><%= user[1][1]%></td>
+                <td><%= user[1][2]%></td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
        </thead>
@@ -57,4 +71,5 @@
 </div>
 <% @index += 1 %>
 <%# end %>
+</div>
 </div>

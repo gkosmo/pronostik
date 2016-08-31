@@ -51,16 +51,20 @@ class QuestionsController < ApplicationController
     if @search.present?
       @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
     end
-
+     @unbetted_questions = []
     if current_user
       @searched_questions_only_new = []
       @searched_questions.each do |question|
         if question.event_date > DateTime.now.to_date && question.bets.where(user_id: current_user.id).empty?
           @searched_questions_only_new << question
+        else
+          @unbetted_questions << question
         end
+
       end
       @right_column_current_user = @searched_questions_only_new.take(7)
     end
+    
 
     @limited_questions = @searched_questions.limit(7)
 

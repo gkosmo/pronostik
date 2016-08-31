@@ -20,6 +20,11 @@ class Dashboard::QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
+    @question.scenarios.each do |scene|
+      if scene.content.empty?
+        scene.destroy
+      end
+    end
     @question.save!
     redirect_to question_path(@question)
   end

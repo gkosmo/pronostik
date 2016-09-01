@@ -55,7 +55,6 @@ class BetsController < ApplicationController
       @question.status = 'good'
       @question.save
     end
-    redirect_to question_path(@question)
 
     if current_user.bets.
       joins(scenario: :question).

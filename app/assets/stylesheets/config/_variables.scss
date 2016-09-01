@@ -28,7 +28,7 @@ $btn-info-bg:     #293159;
 $table-border-color: #293159;
 $label-danger-bg: #3498db;
 $table-bg:    white;
-
+$brand-info: #293159;
 $navbar-inverse-bg: #bdc3c7;
 $navbar-inverse-color: #293159;
 $navbar-inverse-brand-hover-color: #bdc3c7;
@@ -75,4 +75,8 @@ $btn-font-weight: $font-weight-bold;
 
 .panel {
   border-radius: 0 !important;
+}
+.slow-spin {
+  -webkit-animation: fa-spin 6s infinite linear !important;
+  animation: fa-spin 6s infinite linear !important;
 }

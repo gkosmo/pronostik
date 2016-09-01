@@ -21,7 +21,7 @@
       <%end%>
       <% if params[:controller] == 'dashboard/bets'  %>
       <li class= "nav-pill" >
-        <%= link_to 'Personal Stats', dashboard_bets_path, class: 'btn btn-info'  %>
+        <%= link_to 'Current Bets', dashboard_bets_path, class: 'btn btn-info'  %>
       </li>
       <%else%>
       <li class="nav-pill">
@@ -30,7 +30,7 @@
       <%end%>
       <% if params[:controller] == 'dashboard/histories'  %>
       <li class= "nav-pill" >
-        <%= link_to 'Personal Bets', 'history', class: 'btn btn-info'  %>
+        <%= link_to 'Past Bets', 'history', class: 'btn btn-info'  %>
       </li>
       <%else%>
       <li class="nav-pill">

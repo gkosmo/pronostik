@@ -4,16 +4,23 @@
       <p>Upvotes</p>
       <h1><%= question.bets.count%></h1>
     </div>
-    <div>
-    </div>
-  </div>
+
+        <div class="card-sean text-center">
+          <%= form_tag tagquestion_question_path, method: :put do %>
+          <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :title) %>
+          <%= submit_tag("Tag This Question", :class => 'btn btn-default') %>
+          <% end %>
+        </div>
+      </div>
 
   <div class="col-sm-9">
     <div class="card-sean card-sean-callout text-center">
-      <div>
+      <div style="padding-bottom: 5px;">
         <h1><%= question.content.capitalize%> </h1>
         <h3>Expiry date: <%= question.event_date%> </h3>
         <h5>Question by: <%= question.user.first_name%> </h5>
+        <br>
+        <br>
       </div>
     </div>
   </div>

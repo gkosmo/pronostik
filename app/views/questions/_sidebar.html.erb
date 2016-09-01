@@ -1,54 +1,40 @@
 
 
 <% unless @randque_not_voted.nil? %>
-
-<br>
-<br>
-<br>
-
-
-
-      <div class="text-center">
-        <h3> Explore More Questions!</h3>
-      </div>
-<br>
-<br>
-
-<div class="container">
+<div class="text-center">
+  <h3> Learning From Our Past: </h3>
+</div>
+<br><br><br>
   <div class="row">
     <% @randque_not_voted.each do |que|  %>
-      <div class="col-sm-3">
-      <div class="card-sean padded-chart">
+    <div class="col-xs-12">
+      <div class="card-sean ">
         <%= link_to question_path(que) do %>
-
-          <div class="panel-heading">
-            <h3 class="panel-title"> <%= que.content  %> </h3>
+        <div class="panel-heading">
+          <h3 class="panel-title"> <%= que.content  %> </h3>
+        </div>
+        <div class="panel-body"> <ul>
+          <% que.scenarios.each do |scen| %>
+          <li> <%= scen.content %> </li>
+          <% end %>
+        </ul>
+        <ul>
+          <% que.tags.each do |tag| %>
+          <div class="label label-info">
+            <%= tag.title %>
           </div>
-          <div class="panel-body"> <ul>
-            <% que.scenarios.each do |scen| %>
-            <li> <%= scen.content %> </li>
-            <% end %>
-          </ul>
-          <ul>
-            <% que.tags.each do |tag| %>
-            <div class="label label-info">
-              <%= tag.title %>
-            </div>
-            <% end %>
-          </ul>
-          </div>
-        <% end %>
-
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
       <div class="text-muted text-right">
         <%= que.event_date %>
       </div>
       <div class="panel-footer">
         <%= que.category.title %>
       </div>
-      </div>
-
-      </div>
-    <% end %>
     </div>
   </div>
-  <%end%>
+  <% end %>
+</div>
+<%end%>

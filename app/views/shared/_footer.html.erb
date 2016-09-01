@@ -1,21 +1,20 @@
-
-<footer>
-  <div class="navbar navbar-default flexflex">
-    <div class="flex-item2">
-          <%= link_to root_path do %>
+<footer class="footer">
+    <div class="row">
+      <div class="col-xs-6">
+        <%= link_to root_path do %>
           <%= image_tag 'logoProno.png',  class:'img-responsive text-center', style: 'max-width: 90px' %>
-          <% end %>
+        <% end %>
+      </div>
+      <div class="col-xs-3 text-right">
+        <h5>About Us</h5>
+      </div>
+      <div class="col-xs-2 text-left">
+        <h5>Discover More</h5>
+      </div>
+      <div class="col-xs-1">
+        <%= link_to "https://www.lewagon.com/" do %>
+          <%= image_tag 'lewagon.png',  class:'img-responsive', width: '50px' %>
+        <% end %>
+      </div>
     </div>
-    <div class="flex-item1">
-      <p>About Us</p>
-    </div>
-    <div class="flex-item1">
-      <p>Discover More</p>
-    </div>
-    <div class="flex-item1">
-    <%= link_to "https://www.lewagon.com/" do %>
-      <%= image_tag 'lewagon',  class:'img-responsive', width: '50px' %>
-      <% end %>
-    </div>
-  </div>
 </footer>

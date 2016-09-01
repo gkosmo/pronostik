@@ -12,9 +12,9 @@
     <%= javascript_include_tag "chartkick.js" %>
     <%= javascript_include_tag "https://www.google.com/jsapi" %>
 
-   <% favicon_link_tag 'favicon.ico' %>
+     <%= favicon_link_tag 'favicon.ico' %>
     <title> <%= meta_title %> </title>
-    <metaname = "description" content = "<%=  meta_description  %> ">
+    <meta name = "description" content = "<%=  meta_description  %> ">
 
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
@@ -37,8 +37,6 @@
     <meta itemprop="image" content="<%= image_url(meta_image) %>">
 
 
-    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
 
   </head>
   <body>
@@ -47,9 +45,6 @@
 
     <%= yield %>
 
-    <%= javascript_include_tag "https://www.google.com/jsapi" %>
-    <%= javascript_include_tag 'application.js' %>
-    <script src="https://www.google.com/jsapi"></script>
     <%= yield(:after_js)%>
 
     <%= render 'shared/footer' %>
@@ -63,4 +58,8 @@
        $('.alert').slideUp(500);
      }, 2500);
    </script>
+   <%= javascript_include_tag "https://www.google.com/jsapi" %>
+   <%= javascript_include_tag 'application.js' %>
+   <script src="https://www.google.com/jsapi"></script>
+
 </html>

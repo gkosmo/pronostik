@@ -13,34 +13,34 @@
           <div class="col-xs-offset-3 col-xs-6">
             <div class="card-sean" id="create_new_question">
               <%= form_for @question, url: dashboard_questions_path do |f| %>
-              <div class="field-create-question">
+              <div class="">
                 <h6>Your question</h6>
-                <p> Pose a question about something that hasn't occured yet.  [max 200 char.]</p>
+                <p> Ask a question about something that hasn't occured yet.  [max 200 char.]</p>
                 <p>  e.g. Will this ...</p>
               </div>
-              <div class="field-create-question">
+              <div class="">
                 <%= f.text_area :content, class: 'form-control', style: "width: 300px; height: 150px;" %>
               </div>
-              <div class="field-create-question">
+              <div class="">
                 <h6>Category</h6>
               </div>
-              <div class="field-create-question">
+              <div class="">
                 <%= f.collection_select(:category_id, Category.all, :id, :title) %>
               </div>
-              <div class="field-create-question">
+              <div class="">
                 <h6>Please enter an expiry date</h6>
               </div>
-              <div class="field-create-question">
+              <div class="">
                 <%= date_field(:question, :event_date, options = {min: Date.today}) %>
               </div>
-              <div class="field-create-question">
+              <div class="">
                 <h6>Scenarios</h6>
-                <p> Give at least four possible scenarios or outcomes. [max 200 char.] </p>
+                <p> Give minimum 2 possible scenarios or outcomes. [max 200 char.] </p>
 
               </div>
               <ul>
                 <%= f.fields_for :scenarios do |scenarios_form| %>
-                <div class="field-create-question">
+                <div class="">
                   <li>
                     <%= scenarios_form.label :scenario, class: "control_label" %>
                     <%= scenarios_form.text_field :content %>
@@ -48,11 +48,10 @@
                 </div>
                 <% end %>
               </ul>
-              <div class="field-create-question">
+              <div class="">
                 <h6>All Set?</h6>
-                <p>- all fields are mandatory -</p>
               </div>
-              <div class="field-create-question" actions>
+              <div class="" actions>
                 <%=  f.submit "Ask Question", :class => 'btn btn-warning' %>
               </div>
               <% end %>
@@ -99,57 +98,5 @@
 
 </script>
 
-<div id="randque-wrapper">
-  <div class="container">
-    <div class="row">
 
-      <div class="col-xs-6">
-
-        <div class="linking-cards-bottom-of-page">
-
-          <div class="text-linking-card">
-            <p> Do you know what tomorrow brings?</p>
-            <h4> Check out your ranking </h4>
-            <h4> in forecasting</h4>
-            <br>
-            <%= link_to bets_path do %>
-            <h3>
-              <span class="label label-default">Ranking</span>
-            </h3>
-            <% end %>
-          </div>
-
-          <div id="medal-icon">
-            <%= image_tag("medal.svg", :alt => "medal") %>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="col-xs-6">
-        <div class="linking-cards-bottom-of-page">
-
-          <div class="link-linking-card">
-            <p> Dive in your personal statistics</p>
-            <h4> Are you improving?</h4>
-            <br>
-            <br>
-            <%= link_to dashboard_statistics_path(current_user) do %>
-            <h3>
-              <span class="label label-danger">Your stats</span>
-            </h3>
-            <% end %>
-          </div>
-
-          <div id="stats-icon">
-            <%= image_tag("stat-grow.png", :alt => "stat-grow") %>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-
+<%= render 'shared/sub_foot'%>

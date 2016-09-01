@@ -26,12 +26,19 @@ class QuestionsController < ApplicationController
           group("tags.id").
           order("questions_count DESC").
           limit(7)
+
           @searched = Question.last(200)
           # @searched_questions = []
           # @searched.each do |x|
           #   @searched_questions << x if x.bets.count > 5
           # end
           @searched_questions = @searched.keep_if { |question| question.bets.count > 5 }.reverse
+          # @searched = Question.all
+          # @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
+          # @searched_questions = []
+          # @searched.each do |x|
+          #   @searched_questions << x if x.bets.count >= 5
+          # end
   end
 
   def index
@@ -185,6 +192,6 @@ class QuestionsController < ApplicationController
         @randque_not_voted << que
       end
     end
-    @randque_not_voted = @randque_not_voted.sample(3)
+    @randque_not_voted = @randque_not_voted.sample(4)
   end
 end

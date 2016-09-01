@@ -8,7 +8,7 @@ class Dashboard::QuestionsController < ApplicationController
     @pending_queries = QuestionsUsersPending.where(user_id: current_user.id)
     @queries = []
     @pending_queries.each do |q|
-        @queries << Question.find_by_id(q.question.id)
+      @queries << Question.find_by_id(q.question.id)
     end
   end
 
@@ -32,7 +32,7 @@ class Dashboard::QuestionsController < ApplicationController
 
   private
 
-   def set_randque
+  def set_randque
     @randque = Question.all.sample(30)
     @randque_not_voted = []
     @randque.each do |que|
@@ -41,7 +41,7 @@ class Dashboard::QuestionsController < ApplicationController
       end
     end
     @randque_not_voted = @randque_not_voted.sample(4)   end
-   def question_params
+    def question_params
       params.require(:question).permit(:content, :category_id, :event_date, scenarios_attributes: [:id, :content])
-   end
-end
+    end
+  end

@@ -2,54 +2,44 @@
 <br><br>
 <div class="container">
   <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-      <div class="panel panel-info" style="background-color: linear-gradient(-180deg, #B5AFAF 0%, #E7E1DD 100%)" >
+    <div class="col-sm-offset-1 col-sm-10">
+      <div class="panel panel-info" style="background-color: #bdc3c7;" >
         <div class="panel-header">
-              <div class="nav nav-success inline-block">
-                <div class="navbar-header list-inline">
-                  <%= render 'dashboard/perso_nav' %>
-
-                </div>
-              </div>
-          </div>
-        <div class="panel-body">
-
-            <div class="bordered card-sean padded-chart">
-          <% @queries.each do |que| %>
-          <div class="panel">
-            <%= link_to question_path(que) do %>
-            <div class="panel-heading">
-              <h3 class="panel-title"> <%= que.content  %> </h3>
+          <div class="nav nav-success inline-block">
+            <div class="navbar-header list-inline">
+              <%= render 'dashboard/perso_nav' %>
             </div>
-            <div class="panel-body"> <ul>
-
-              <% que.scenarios.each do |scen| %>
-              <li> <%= scen.content %> </li>
-              <% end %>
-            </ul>
-            <ul>
-              <% que.tags.each do |tag| %>
-              <div class="label label-info">
-                <%= tag.title %>
-              </div>
-              <% end %>
-            </ul>
-          </div>
-          <% end %>
-          <div class="text-muted text-right">
-            <%= que.event_date %>
-          </div>
-          <div class="panel-footer">
-            <%= que.category.title %>
           </div>
         </div>
-        <% end %>
+        <div class="panel-body">
+          <div class="panel panel-default panel-boredered">
+            <% if @queries.empty? %>
+            <h3> All qestions left for later have been answered ! </h3>
+            <h4> Find new questions or post a new one ;) </h4>
+            <%else%>
+            <% @queries.each do |question| %>
+            <%= link_to question_path(question) do %>
+            <div class="card-sean">
+              <div class="panel-header">
+                <strong> <%= question.content %> : </strong>
+              </div>
+              <ul>  <% question.scenarios.each do |scen| %>
+                <li>
+                  <%= scen.content %>
+                  <% end %>
+                </li>
+                <% end %>
+              </ul>
+            </div>
+            <% end %>
+          </div>
+          <%end%>
+          <div class="panel-footer">
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  </div>
-
-</div>
 </div>
 <br>
 <br>
@@ -64,5 +54,3 @@
     </div>
   </div>
 </div>
-
-

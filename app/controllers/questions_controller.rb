@@ -86,11 +86,19 @@ class QuestionsController < ApplicationController
     redirect_to dashboard_statistics_path
   end
 
+  def tagquestion
+    @tag = Tag.find(params[:tag_id])
+    @question = Question.find(params[:id])
+
+    @question.tags << @tag
+    redirect_to question_path(@question)
+  end
+
   def show
     @bet = Bet.new
     @scenarios = @question.scenarios
     @bets = @question.bets
-    @tags = Tag.all
+    @tags = Tag.all - @question.tags
     #resources sorted by popularity
     @resources = @bets.select("Url").group(:Url).count
     @resources = @resources.sort_by { |k, v| v }.reverse[0..4]

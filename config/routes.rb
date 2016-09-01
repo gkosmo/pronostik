@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'questions/new_index'
   get 'questions/good_index'
   resources :questions, only: [:index, :show] do
+    member do
+      put 'tagquestion'
+    end
     patch 'makepending', to: 'questions#make_pending'
     resources :bets, only: [:new, :create, :update] do
       resources :just_upvotes, only: [:new, :create]

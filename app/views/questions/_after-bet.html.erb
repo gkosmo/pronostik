@@ -12,12 +12,12 @@
 <div class="bordered card-sean padded-chart text-center">
   <div class="row">
     <div class="col-sm-6">
-      <h3># of Bets per scenario</h3>
-        <%= column_chart @column_chart %>
+      <h3>Bets for each scenario</h3>
+        <%= column_chart @column_chart, xtitle: "Scenarios", ytitle: "Number of bets", colors: ["#0000FF"]%>
       </div>
     <div class="col-sm-6">
-      <h3>Average Certainty</h3>
-      <%= bar_chart @bar_chart %>
+      <h3>Certainty for each</h3>
+      <%= bar_chart @bar_chart, xtitle: "Average Certainty", ytitle: "Scenarios", colors: ["#0000FF"]%> %>
     </div>
   </div>
 </div>

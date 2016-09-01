@@ -41,10 +41,9 @@
       <input type="range" name='bet[estimation]' min="1" max="100" value="0" id="bet_estimation" class="bet_fader<%= scenario.id %> bet_set" step="1" oninput="minPrice(value, <%= scenario.id %>)">
       <h2 id="bet<%= scenario.id %>" class="bet_h_set"> 0 </h2>
 
-
       <%= f.submit class: "btn btn-warning", id: scenario.id %>
       <% end %>
-      <br>
+
       <br>
       <% end %>
     </div>

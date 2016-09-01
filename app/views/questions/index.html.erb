@@ -30,7 +30,7 @@
       <!-- current -->
       <% if user_signed_in? %>
       <div class="col-xs-5">
-          <h3> Pending & Expired Questions </h3>
+          <h3> Pending & Concluded Questions </h3>
         <% @unbetted_questions.take(7).each do |question| %>
         <% if question.event_date < DateTime.now.to_date %>
         <%= render 'question-purple', question: question %>
@@ -50,7 +50,7 @@
       <%else%>
       <!-- visitor -->
       <div class="col-xs-5">
-          <h3> Pending & Expired Questions </h3>
+          <h3> Pending & Concluded Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date < DateTime.now.to_date %>
         <%= render 'question-purple', question: question %>

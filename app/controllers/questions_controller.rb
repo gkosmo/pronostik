@@ -1,18 +1,16 @@
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_question, only: [:show]
-  before_action :set_randque, only: [:show, :new_index, :good_index]
-
+  before_action :set_randque, only: [:show]
+  before_action :set_expired_question, only: [:new_index, :good_index]
 
   def new_index
-    @searched = Question.last(20)
-    # => @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
-    #@searched_questions = []
-    # @searched.each do |x|
-    #   @searched_questions << x unless x.bets.count > 10
-    # end
-    @searched_questions = @searched.keep_if { |question| question.bets.count < 10 }.reverse
-
+    @searched = Question.all
+    @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
+    @searched_questions = []
+    @searched.each do |x|
+      @searched_questions << x if x.bets.count < 10
+    end
       @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
           joins(:questions).
           group("tags.id").
@@ -26,19 +24,12 @@ class QuestionsController < ApplicationController
           group("tags.id").
           order("questions_count DESC").
           limit(7)
-
-          @searched = Question.last(200)
-          # @searched_questions = []
-          # @searched.each do |x|
-          #   @searched_questions << x if x.bets.count > 5
-          # end
-          @searched_questions = @searched.keep_if { |question| question.bets.count > 5 }.reverse
-          # @searched = Question.all
-          # @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
-          # @searched_questions = []
-          # @searched.each do |x|
-          #   @searched_questions << x if x.bets.count >= 5
-          # end
+          @searched = Question.all
+          @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
+          @searched_questions = []
+          @searched.each do |x|
+            @searched_questions << x if x.bets.count >= 5
+          end
   end
 
   def index
@@ -98,7 +89,9 @@ class QuestionsController < ApplicationController
     @bet = Bet.new
     @scenarios = @question.scenarios
     @bets = @question.bets
+
     @tags = Tag.all - @question.tags
+
     #resources sorted by popularity
     @resources = @bets.select("Url").group(:Url).count
     @resources = @resources.sort_by { |k, v| v }.reverse[0..4]
@@ -199,6 +192,14 @@ class QuestionsController < ApplicationController
        if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
         @randque_not_voted << que
       end
+    end
+    @randque_not_voted = @randque_not_voted.sample(4)
+  end
+  def set_expired_question
+    @randque = Question.where("event_date < ?", 2.days.ago)
+    @randque_not_voted = []
+    @randque.each do |que|
+
     end
     @randque_not_voted = @randque_not_voted.sample(4)
   end

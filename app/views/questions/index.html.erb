@@ -40,7 +40,7 @@
         <% end %>
       </div>
 
-      <div class="col-xs-5 col-xs-offset-1">
+      <div class="col-xs-5 col-xs-offset-2">
           <h3> New Questions </h3>
         <% @right_column_current_user.take(7).each do |question| %>
         <%= render 'question-green', question: question %>

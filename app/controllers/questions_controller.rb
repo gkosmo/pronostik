@@ -2,15 +2,12 @@ class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_question, only: [:show]
   before_action :set_randque, only: [:show]
-  before_action :set_expired_question, only: [:new_index, :good_index]
+  before_action :set_expired_question, only[:new_index, :good_index]
 
   def new_index
-    @searched = Question.all
-    @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
-    @searched_questions = []
-    @searched.each do |x|
-      @searched_questions << x if x.bets.count < 10
-    end
+    @searched = Question.last(20)
+    @searched_questions = @searched.keep_if {|question| questions.bets.count < 10 }.reverse
+
       @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
           joins(:questions).
           group("tags.id").
@@ -24,8 +21,8 @@ class QuestionsController < ApplicationController
           group("tags.id").
           order("questions_count DESC").
           limit(7)
-          @searched = Question.all
-          @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
+          @searched = Question.last(200)
+          @searched = @searched.keep_if{|question| question.bets.count > 5}.reverse
           @searched_questions = []
           @searched.each do |x|
             @searched_questions << x if x.bets.count >= 5
@@ -77,20 +74,10 @@ class QuestionsController < ApplicationController
     redirect_to dashboard_statistics_path
   end
 
-  def tagquestion
-    @tag = Tag.find(params[:tag_id])
-    @question = Question.find(params[:id])
-
-    @question.tags << @tag
-    redirect_to question_path(@question)
-  end
-
   def show
     @bet = Bet.new
     @scenarios = @question.scenarios
     @bets = @question.bets
-
-    @tags = Tag.all - @question.tags
 
     #resources sorted by popularity
     @resources = @bets.select("Url").group(:Url).count
@@ -196,7 +183,7 @@ class QuestionsController < ApplicationController
     @randque_not_voted = @randque_not_voted.sample(4)
   end
   def set_expired_question
-    @randque = Question.where("event_date < ?", 2.days.ago)
+    @randque = Question.where("created_at < ?", 2.days.ago)
     @randque_not_voted = []
     @randque.each do |que|
 

@@ -2,57 +2,51 @@
 <br><br>
 <div class="container">
 <%  if @today %>
-  <%= render 'dashboard/announce-new-score' %>
-  <% end %>
-
-  <div class="row">
-    <div class="col-sm-10 col-sm-offset-1">
-      <div class="panel panel-info"  style="background-color: #bdc3c7;">
-        <div class="panel-header">
-          <div class="nav nav-success  inline-block">
-            <div class="navbar-header list-inline">
-              <%= render 'dashboard/perso_nav' %>
-            </div>
-
+<%= render 'dashboard/announce-new-score' %>
+<% end %>
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="panel panel-info"  style="background-color: #bdc3c7;">
+      <div class="panel-header">
+        <div class="nav nav-success  inline-block">
+          <div class="navbar-header list-inline">
+            <%= render 'dashboard/perso_nav' %>
           </div>
         </div>
+      </div>
+      <div class="panel-body">
         <div class="panel-body">
-          <div class="panel-body">
-
-            <% @queries.each do |query| %>
-            <div class="bordered card-sean padded-chart">
-
+          <% if @queries.empty? %>
+          <h3>  Either you haven't voted, like ever ! </h3>
+          <h4>  Or simply, the questions' events have not been concluded yet ;) </h4>
+          <%else%>
+          <% @queries.each do |query| %>
+          <div class="bordered card-sean padded-chart">
             <div class="panel panel-default panel-boredered">
-
-
               <div class="panel-header">
-
                 <strong> <%= query.content %> </strong>
               </div>
               <ul>
-
                 <%  query.scenarios.each do |scen| %>
                 <li>  <%= scen.content %> <%= ' : happened ' if scen.happened %>  </li>
-
                 <% end %>
-
               </ul>
             </div>
-            </div>
-            <% end %>
           </div>
+          <% end %>
+          <% end %>
         </div>
         <div class="panel-footer">
-
         </div>
       </div>
+
     </div>
   </div>
+</div>
 </div>
 <br>
 <br>
 <br>
-
 <div id="randque-wrapper-dashboard">
   <div class="container">
     <div class="row">
@@ -62,5 +56,3 @@
     </div>
   </div>
 </div>
-
-

@@ -102,12 +102,12 @@ class QuestionsController < ApplicationController
     @scenarios_certainties = compute_scenarios_certainties
     @bets_count = compute_bets_count
     # charts stats
-    if !@scenarios_certainties.nil?
+    if !@scenarios_certainties.empty? || !@scenarios_certainties.nil?
       @bar_chart = @scenarios_certainties.map do |scenario|
         [scenario.content, scenario.certainty.to_f.round(2)]
       end
     end
-    if !@bets_count.nil?
+    if !@bets_count.empty? || !@bets_count.nil?
       @column_chart = @bets_count.map do |scenario|
         [scenario.content, scenario.bets_count]
       end

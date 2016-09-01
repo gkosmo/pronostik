@@ -2,26 +2,26 @@
 <div class="container">
 <% if current_user.admin && true == false %>
 <div class="row">
-<div class="col-sm-offset-4 col-sm-4">
-<div class="text-center">
+  <div class="col-sm-offset-4 col-sm-4">
+    <div class="text-center">
 
 
-<div>
+      <div>
 
-<ul>
-<% unless @final_hash.nil?   %>
-<% @final_hash.each do |key, value| %>
-<li>
-  <%= key %> : <%= value %>
-</li>
-<% end %>
-<% end %>
+        <ul>
+        <% unless @final_hash.nil?   %>
+          <% @final_hash.each do |key, value| %>
+          <li>
+            <%= key %> : <%= value %>
+          </li>
+          <% end %>
+          <% end %>
 
 
-</ul>
-</div>
-</div>
-</div>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 <% end %>
 </div>
@@ -29,25 +29,25 @@
 
 <div class="container">
 
-<%# @weeks.each do |week| %>
+  <%# @weeks.each do |week| %>
 
-<div class="row">
-  <div class="col-sm-offset-1 col-sm-10">
-<div class="card-sean">
+  <div class="row">
+    <div class="col-sm-13">
+      <div class="card-sean">
 
-    <h3> THE RANKING OF THE WEEK </h3>
-    <table class="table table-bordered">
+        <h3> THE RANKING OF THE WEEK </h3>
+        <table class="table table-bordered">
 
-      <thead>
-        <tr>
-          <th><strong>User</strong></th>
-          <th><strong>Score</strong></th>
-          <th><strong>Justification Upvotes</strong></th>
-          <th><strong>Question Upvotes</strong></th>
-        </tr>
-        <tbody>
-          <% @final_hash.each do |user| %>
-            <% if user.first == current_user %>
+          <thead>
+            <tr>
+              <th><strong>User</strong></th>
+              <th><strong>Score</strong></th>
+              <th><strong>Justification Upvotes</strong></th>
+              <th><strong>Question Upvotes</strong></th>
+            </tr>
+            <tbody>
+              <% @final_hash.each do |user| %>
+              <% if user.first == current_user %>
               <tr >
                 <td class="btn-danger"><%= user[0].first_name%></td>
                 <td class="btn-danger"><%= user[1][0]%></td>
@@ -55,21 +55,21 @@
                 <td class="btn-danger"><%= user[1][2]%></td>
 
               </tr>
-            <% else %>
+              <% else %>
               <tr>
                 <td><%= user[0].first_name%></td>
                 <td><%= user[1][0]%></td>
                 <td><%= user[1][1]%></td>
                 <td><%= user[1][2]%></td>
               </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-       </thead>
-    </table>
+              <% end %>
+              <% end %>
+            </tbody>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <% @index += 1 %>
+    <%# end %>
   </div>
-</div>
-<% @index += 1 %>
-<%# end %>
-</div>
 </div>

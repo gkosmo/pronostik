@@ -5,9 +5,10 @@
       <h1><%= question.bets.count%></h1>
     </div>
 
-        <div class="card-sean text-center">
+        <div class="card-sean text-center" >
+
           <%= form_tag tagquestion_question_path, method: :put do %>
-          <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :title) %>
+          <%= select_tag :tag_id, options_from_collection_for_select(@tags, :id, :title), id: '_category' %>
           <%= submit_tag("Tag This Question", :class => 'btn btn-default') %>
           <% end %>
         </div>

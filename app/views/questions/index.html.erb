@@ -1,7 +1,7 @@
 <div id="search-wrapper">
   <div class="row">
     <div class="container">
-      <div class="col-xs-6 col-sm-6">
+      <div class="col-sm-6 col-sm-6">
         <div id="info-homepage">
           <h3> What will the future bring? </h3>
           <h4> By crowdsourcing intelligence, we try to build a reliable picture of upcoming events.</h4>
@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="col-xs-6 col-sm-6">
+      <div class="col-sm-6 col-sm-6">
         <%= render 'shared/search-engine' %>
       </div>
     </div>
@@ -29,7 +29,7 @@
 
       <!-- current -->
       <% if user_signed_in? %>
-      <div class="col-xs-5">
+      <div class="col-sm-5">
           <h3> Pending & Concluded Questions </h3>
         <% @unbetted_questions.take(7).each do |question| %>
         <% if question.event_date < DateTime.now.to_date %>
@@ -40,7 +40,7 @@
         <% end %>
       </div>
 
-      <div class="col-xs-5 col-xs-offset-1">
+      <div class="col-sm-5 col-sm-offset-2">
           <h3> New Questions </h3>
         <% @right_column_current_user.take(7).each do |question| %>
         <%= render 'question-green', question: question %>
@@ -49,7 +49,7 @@
 
       <%else%>
       <!-- visitor -->
-      <div class="col-xs-5">
+      <div class="col-sm-5">
           <h3> Pending & Concluded Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date < DateTime.now.to_date %>
@@ -57,7 +57,7 @@
         <% end %>
       </div>
 
-      <div class="col-xs-5 col-xs-offset-1">
+      <div class="col-sm-5 col-sm-offset-1">
           <h3> New Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date > DateTime.now.to_date %>

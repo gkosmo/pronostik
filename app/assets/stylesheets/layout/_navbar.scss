@@ -1,13 +1,11 @@
-/* Main class */
-
 #navbar-pronostik{
   background-color: black;
-  color:white;
+  // color:white;
   text-decoration: none;
   padding-bottom: 15px;
   padding-top: 15px;
    a {
-    color:white;
+    // color:white;
     text-decoration: none;
     }
   align-items: center;
@@ -24,6 +22,9 @@
   align-items: center;
   display: flex;
   justify-content: space-around;
+  a:hover {
+    color: $brand-color !important;
+  }
 }
 
 
@@ -57,11 +58,11 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: #616668;
+  // color: #616668;
   font-size: 14px;
 }
 .navbar-wagon-link:hover {
-  color: #da552f;
+  // color: #da552f;
   text-decoration: none;
 }
 
@@ -72,12 +73,12 @@
   border-radius: 20em;
   line-height: 40px;
   background-color: #D23333;
-  color: white;
+  // color: white;
   font-size: 14px;
   border: 2px solid #D23333;
 }
 .navbar-wagon-button:hover {
-  color: white;
+  // color: white;
   background: #D23333;
   border-color: #ac2626;
 }
@@ -92,7 +93,7 @@
 }
 .navbar-wagon-search-btn {
   line-height: 40px;
-  color: #E6E6E6;
+  // color: #E6E6E6;
   border: none;
   background: transparent;
   position: absolute;
@@ -105,7 +106,7 @@
   transition: all 0.15s ease;
   line-height: 40px;
   font-weight: lighter;
-  color: #666666;
+  // color: #666666;
   border: 1px solid #E6E6E6;
   border-radius: 5px;
   padding: 0 10px;
@@ -125,14 +126,14 @@
 .navbar-wagon-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  // color: #999999 !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
 }
 .navbar-wagon-dropdown-menu li > a:hover {
   background: transparent !important;
-  color: black !important;
+  // color: black !important;
 }
 .navbar-wagon-dropdown-menu:before {
   content: ' ';
@@ -146,3 +147,42 @@
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
 }
+
+.navbar-logo {
+  padding: 10px;
+  img, &-title {
+    float: left;
+    margin-top: 10px;
+    &:hover {
+      color: $brand-color !important;
+    }
+  }
+  &-title {
+    line-height: 55px;
+    margin-left: 10px;
+  }
+}
+
+.anim-logo:before {
+  background: $red !important;
+}
+
+.anim-popular:before {
+  background: $red !important;
+}
+.anim-explore:before {
+  background: $blue !important;
+}
+.anim-faq:before {
+  background: $blue !important;
+}
+.anim-ranking:before {
+  background: $orange !important;
+}
+.anim-tachometer:before {
+  background: $green !important;
+}
+.anim-sign:before {
+  background: $gray !important;
+}
+

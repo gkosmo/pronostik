@@ -1,17 +1,17 @@
 // Your footer style
 
 #footer {
-    background-color: $gray-dark;
-    bottom: 0;
-    height: 100px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    z-index: 1;
-    width: 100%;
+  background-color: $gray-dark;
+  bottom: 0;
+  height: 100px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  width: 100%;
 }
 
 #footer-pronostik{
@@ -38,4 +38,10 @@
 
 .flex-item2 {
   flex: 1 0 auto;
+}
+
+.footer {
+    position: -webkit-sticky;  // required for Safari
+    position: sticky;
+    top: 0; // required as well.
 }

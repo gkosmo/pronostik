@@ -8,14 +8,11 @@
           <div class="nav nav-success inline-block">
             <div class="navbar-header list-inline">
               <%= render 'dashboard/perso_nav' %>
-
             </div>
           </div>
         </div>
         <div class="panel-body">
-
           <h3>Exciting time to be alive !</h3>
-
           <table class="table table-bordered table-responsive">
             <thead>
               <tr>
@@ -23,7 +20,6 @@
                 <th class="success">Content</th>
               </tr>
             </thead>
-
             <tbody>
               <% @notifs.each do |messtouser| %>
               <tr>
@@ -32,13 +28,10 @@
                 <td>    <%= link_to 'Delete This Message', dashboard_notification_path(messtouser), method: :delete, data: { confirm: "sure you wanna do that Bro?" }, class: "btn btn-primary", style: "border-radius: 5px; padding: 10px;" %> </td>
               </tr>
               <% end %>
-
             </tbody>
           </table>
-
-
-
-
+          <div class="panel-footer">
+          </div>
         </div>
       </div>
     </div>

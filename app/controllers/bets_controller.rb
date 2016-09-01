@@ -46,6 +46,8 @@ class BetsController < ApplicationController
   def create
     @bet = Bet.new(bet_params)
     @bet.user_id = current_user.id
+    a = QuestionsUsersPending.where(user_id: current_user).where(question_id: @question)
+    a[0].destroy unless a.empty?
     @bet.save
     if @question.status == 'new'
       @question.bets.count > 5

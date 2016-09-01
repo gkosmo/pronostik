@@ -1,18 +1,51 @@
-<ul class="nav navbar-nav list-inline">
-  <li class =''>
-    <%= link_to 'Personal Stats', dashboard_statistics_path  %>
-  </li>
-
-  <li class ='nav-pill'>
-    <%= link_to 'Selected for Later', dashboard_questions_path %>
-  </li>
-  <li class ='nav-pill'>
-    <%= link_to 'Current Bets', dashboard_bets_path %>
-  </li>
-  <li class ='nav-pill'>
-    <%= link_to 'Past Bets', 'history' %>
-  </li>
-  <li class ='nav-pill'>
-    <%= link_to 'Messages', dashboard_notifications_path %>
-  </li>
-</ul>
+<div class="container-fluid">
+  <nav class = " navbar-inverse" >
+    <ul class="nav nav-justified list-inline ">
+      <% if params[:controller] == 'dashboard/statistics'  %>
+      <li class= "nav-pill" >
+        <%= link_to 'Personal Stats', dashboard_statistics_path, class: 'btn btn-info'  %>
+      </li>
+      <%else%>
+      <li class= "nav-pill" >
+        <%= link_to 'Personal Stats', dashboard_statistics_path, class: 'btn btn-success'  %>
+      </li>
+      <%end%>
+      <% if params[:controller] == 'dashboard/questions'  %>
+      <li class= "nav-pill" >
+        <%= link_to 'Select for Later', dashboard_questions_path, class: 'btn btn-info'  %>
+      </li>
+      <%else%>
+      <li class="nav-pill">
+        <%= link_to 'Selected for Later', dashboard_questions_path, class: 'btn btn-success' %>
+      </li>
+      <%end%>
+      <% if params[:controller] == 'dashboard/bets'  %>
+      <li class= "nav-pill" >
+        <%= link_to 'Personal Stats', dashboard_bets_path, class: 'btn btn-info'  %>
+      </li>
+      <%else%>
+      <li class="nav-pill">
+        <%= link_to 'Current Bets', dashboard_bets_path, class: 'btn btn-success' %>
+      </li>
+      <%end%>
+      <% if params[:controller] == 'dashboard/histories'  %>
+      <li class= "nav-pill" >
+        <%= link_to 'Personal Bets', 'history', class: 'btn btn-info'  %>
+      </li>
+      <%else%>
+      <li class="nav-pill">
+        <%= link_to 'Past Bets', 'history', class: 'btn btn-success' %>
+      </li>
+      <%end%>
+      <% if params[:controller] == 'dashboard/notifications'  %>
+      <li class= "nav-pill" >
+        <%= link_to 'Messages', dashboard_notifications_path, class: 'btn btn-info'  %>
+        </li>
+        <%else%>
+        <li class="nav-pill">
+        <%= link_to 'Messages', dashboard_notifications_path , class: 'btn btn-success'%>
+      </li>
+      <%end%>
+    </ul>
+  </nav>
+</div>

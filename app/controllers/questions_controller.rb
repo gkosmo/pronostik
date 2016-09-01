@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
           @searched = @searched.where(created_at: 10.days.ago..DateTime.now.to_date)
           @searched_questions = []
           @searched.each do |x|
-            @searched_questions << x if x.bets.count > 5
+            @searched_questions << x if x.bets.count >= 5
           end
   end
 

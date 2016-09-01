@@ -26,3 +26,16 @@
   margin-bottom: 0px;
 }
 
+.flexflex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-item1 {
+  flex: 0 0 10%;
+}
+
+.flex-item2 {
+  flex: 1 0 auto;
+}

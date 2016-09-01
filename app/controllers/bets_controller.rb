@@ -46,14 +46,22 @@ class BetsController < ApplicationController
   def create
     @bet = Bet.new(bet_params)
     @bet.user_id = current_user.id
-    @bet.save
-    if @question.status == 'new'
-      @question.bets.count > 5
-      @question.status = 'good'
-      @question.save
-    end
-    redirect_to question_path(@question)
 
+    if current_user.bets.
+      joins(scenario: :question).
+      where(questions: { id: @question.id }).empty?
+
+
+      @bet.save
+      if @question.status == 'new'
+        @question.bets.count > 5
+        @question.status = 'good'
+        @question.save
+      end
+    else
+      flash[:alert] = "You've already bet on this question"
+    end
+      redirect_to question_path(@question)
   end
 
   def update
@@ -61,7 +69,7 @@ class BetsController < ApplicationController
     @bet.update(bet_params_update)
 
     redirect_to question_path(@question)
-    
+
   end
 
   private

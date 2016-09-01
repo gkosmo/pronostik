@@ -1,9 +1,21 @@
 
 <footer>
-  <div class="navbar navbar-default ">
-
+  <div class="navbar navbar-default flexflex">
+    <div class="flex-item2">
           <%= link_to root_path do %>
           <%= image_tag 'logoProno.png',  class:'img-responsive text-center', style: 'max-width: 90px' %>
           <% end %>
+    </div>
+    <div class="flex-item1">
+      <p>About Us</p>
+    </div>
+    <div class="flex-item1">
+      <p>Discover More</p>
+    </div>
+    <div class="flex-item1">
+    <%= link_to "https://www.lewagon.com/" do %>
+      <%= image_tag 'lewagon',  class:'img-responsive', width: '50px' %>
+      <% end %>
+    </div>
   </div>
 </footer>

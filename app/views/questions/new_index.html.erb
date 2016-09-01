@@ -14,6 +14,7 @@
   <div class="container">
     <div class="row">
         <div class="col-xs-9 col-sm-9">
+          <% unless @searched_questions.nil? %>
               <% @searched_questions.each do |question| %>
 
                 <% if question.event_date < DateTime.now.to_date %>
@@ -30,6 +31,7 @@
                   <%= render 'question-green', question: question %>
                 <% end %>
               <% end %>
+             <% end %>
              <% end %>
         </div>
         <div class="col-xs-3 col-sm-3">

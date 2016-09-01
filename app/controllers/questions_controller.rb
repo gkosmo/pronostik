@@ -183,6 +183,6 @@ class QuestionsController < ApplicationController
         @randque_not_voted << que
       end
     end
-    @randque_not_voted = @randque_not_voted.sample(3)
+    @randque_not_voted = @randque_not_voted.sample(4)
   end
 end

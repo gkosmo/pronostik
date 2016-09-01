@@ -74,6 +74,15 @@ class QuestionsController < ApplicationController
     redirect_to dashboard_statistics_path
   end
 
+  def tagquestion
+    @tag = Tag.find(params[:tag_id])
+    @question = Question.find(params[:id])
+
+
+    @question.tags << @tag
+    redirect_to question_path(@question)
+  end
+
   def show
     @bet = Bet.new
     @scenarios = @question.scenarios

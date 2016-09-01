@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_question, only: [:show]
   before_action :set_randque, only: [:show]
-  before_action :set_expired_question, only[:new_index, :good_index]
+  before_action :set_expired_question, only: [:new_index, :good_index]
 
   def new_index
     @searched = Question.last(20)

@@ -163,10 +163,6 @@
   }
 }
 
-.anim-logo:before {
-  background: $red !important;
-}
-
 .anim-popular:before {
   background: $red !important;
 }
@@ -174,13 +170,13 @@
   background: $blue !important;
 }
 .anim-faq:before {
-  background: $blue !important;
+  background: $green !important;
 }
 .anim-ranking:before {
   background: $orange !important;
 }
 .anim-tachometer:before {
-  background: $green !important;
+  background: $brand-color !important;
 }
 .anim-sign:before {
   background: $gray !important;

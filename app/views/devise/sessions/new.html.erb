@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
 
-        <div class="devise-card">
+        <div class="card-sean">
             <h2> Log in</h2>
 
             <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -16,7 +16,7 @@
               </div>
 
               <div class="form-actions" id="sign-in-button" >
-                <%= f.button :submit, "Log in" %>
+                <%= f.button :submit, "Log in", class: 'btn btn-lg btn-success' %>
               </div>
             <% end %>
 

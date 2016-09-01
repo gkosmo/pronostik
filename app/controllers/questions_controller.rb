@@ -186,7 +186,7 @@ class QuestionsController < ApplicationController
     @randque_not_voted = @randque_not_voted.sample(4)
   end
   def set_expired_question
-    @randque = Question.where(event_date: > 1.day.ago)
+    @randque = Question.where("event_date < ?", 2.days.ago)
     @randque_not_voted = []
     @randque.each do |que|
 

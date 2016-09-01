@@ -10,7 +10,7 @@
       </div>
         <div class="text-center">
           <% if current_user.country.nil? %>
-          <h3>Help us improve our predictions. Which country have you lived the most? </h3>
+          <h3>Help us improve our predictions. <br>Which country have you lived the most? </h3>
 
             <%= simple_form_for current_user, url: user_registration_path, method: :put do |f| %>
             <%= f.country_select :country %>

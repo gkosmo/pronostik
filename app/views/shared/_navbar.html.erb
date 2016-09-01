@@ -1,37 +1,60 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="center-block">
-      <%= link_to root_path do %>
-
       <div class="navbar-left">
-      <%= image_tag 'logoProno.png',  class:'img-responsive', width: '80px' %>
-    </div>
-      <div class="navbar-left" style="color: white">
-        <h3> Pronostik </h3>
-
-    </div>
-    <% end %>
+        <%= link_to root_path, class: 'navbar-logo' do %>
+          <%= image_tag 'logoProno.png',  class:'img-responsive', width: '80px' %>
+          <h2 class="navbar-logo-title">Pronostik</h2>
+        <% end %>
+      </div>
 
      <div class="nav navbar-right">
-
-      <ul class="nav navbar-nav list-inline">
-        <li ='nav-pill'>  <%= link_to '   FAQ', faq_path, class: 'fa fa-question-circle' %></li>
-        <li ='nav-pill'>  <%= link_to 'Explore', questions_new_index_path %></li>
-        <li ='nav-pill'>  <%= link_to 'Popular', questions_good_index_path %></li>
+      <ul class="nav navbar-nav list-inline text-center">
+        <li class="nav-pill">
+          <%= link_to questions_good_index_path, class: 'bounce-animation anim-popular' do %>
+            <i class="fa fa-fw fa-2x fa-fire"></i>
+            <div>Popular</div>
+          <% end %>
+        </li>
+        <li class="nav-pill">
+          <%= link_to questions_new_index_path, class: 'bounce-animation anim-explore' do %>
+            <i class="fa fa-fw fa-2x fa-globe"></i>
+            <div>Explore</div>
+          <% end %>
+        </li>
+        <li class="nav-pill">
+          <%= link_to faq_path, class: 'bounce-animation anim-faq' do %>
+            <i class="fa fa-fw fa-2x fa-question-circle"></i>
+            <div>FAQ</div>
+          <% end %>
+        </li>
         <% if user_signed_in? %>
-        <li class ='nav-pill'>
-          <%= link_to 'Ranking', bets_path %>
-        </li>
-        <li class ='nav-pill'>
-          <%= link_to 'Dashboard' , dashboard_statistics_path %>
-        </li>
-        <li class ='nav-pill'>
-          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-        </li>
+          <li class="nav-pill">
+            <%= link_to bets_path, class: 'bounce-animation anim-ranking' do %>
+              <i class="fa fa-fw fa-2x fa-trophy"></i>
+              <div>Ranking</div>
+            <% end %>
+          </li>
+          <li class="nav-pill">
+            <%= link_to dashboard_statistics_path, class: 'bounce-animation anim-tachometer' do %>
+              <i class="fa fa-fw fa-2x fa-tachometer"></i>
+              <div>Dashboard</div>
+            <% end %>
+          </li>
+
+          <li class="nav-pill">
+            <%= link_to destroy_user_session_path, method: :delete, class: 'bounce-animation anim-sign' do %>
+              <i class="fa fa-fw fa-2x fa-sign-out"></i>
+              <div>Sign Out</div>
+            <% end %>
+          </li>
         <% else %>
-        <li class ='nav-pill'>
-          <%= link_to 'Sign in', new_user_session_path %>
-        </li>
+          <li class="nav-pill">
+            <%= link_to new_user_session_path, class: 'bounce-animation anim-sign' do %>
+              <i class="fa fa-fw fa-2x fa-sign-in"></i>
+              <div>Sign in</div>
+            <% end %>
+          </li>
         <% end %>
 
       </ul>

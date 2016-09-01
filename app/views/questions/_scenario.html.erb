@@ -3,7 +3,7 @@
 <% if question.scenarios.any? %>
   <div class="label-group" >
     <% question.scenarios.each do |scenario| %>
-      <button type="button" class=" btn-default" id="scenario-wrap">
+      <button type="button" class="btn btn-default" id="scenario-wrap">
         <%= scenario.content%>
       </button>
     <% end %>

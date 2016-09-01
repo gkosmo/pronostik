@@ -8,37 +8,37 @@ class QuestionsController < ApplicationController
     @searched = Question.last(20)
     @searched_questions = @searched.keep_if {|question| question.bets.count < 10 }.reverse
 
-      @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
-          joins(:questions).
-          group("tags.id").
-          order("questions_count DESC").
-          limit(7)
+    @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
+    joins(:questions).
+    group("tags.id").
+    order("questions_count DESC").
+    limit(7)
   end
 
   def good_index
-        @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
-          joins(:questions).
-          group("tags.id").
-          order("questions_count DESC").
-          limit(7)
-          @searched = Question.last(200)
-          @searched = @searched.keep_if{|question| question.bets.count > 5}.reverse
-          @searched_questions = []
-          @searched.each do |x|
-            @searched_questions << x if x.bets.count >= 5
-          end
+    @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
+    joins(:questions).
+    group("tags.id").
+    order("questions_count DESC").
+    limit(7)
+    @searched = Question.last(200)
+    @searched = @searched.keep_if{|question| question.bets.count > 5}.reverse
+    @searched_questions = []
+    @searched.each do |x|
+      @searched_questions << x if x.bets.count >= 5
+    end
   end
 
   def index
-  #input van de search
+    #input van de search
     @search = params[:search_term] if  !params[:search_term].nil?
     @category = params[:category]
     @searched_questions = Question.all.order('id DESC')
     @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
-      joins(:questions).
-      group("tags.id").
-      order("questions_count DESC").
-      limit(7)
+    joins(:questions).
+    group("tags.id").
+    order("questions_count DESC").
+    limit(7)
 
     if @category.present?
       @searched_questions = @searched_questions.where(category_id: params[:category]).uniq
@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
     if @search.present?
       @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
     end
-     @unbetted_questions = []
+    @unbetted_questions = []
     if current_user
       @searched_questions_only_new = []
       @searched_questions.each do |question|
@@ -102,10 +102,10 @@ class QuestionsController < ApplicationController
     @scenarios_certainties = compute_scenarios_certainties
     @bets_count = compute_bets_count
     # charts stats
-    if !@scenarios_certainties.nil? do
-    @bar_chart = @scenarios_certainties.map do |scenario|
-      [scenario.content, scenario.certainty.to_f.round(2)]
-    end
+    if !@scenarios_certainties.nil?
+      @bar_chart = @scenarios_certainties.map do |scenario|
+        [scenario.content, scenario.certainty.to_f.round(2)]
+      end
     end
     @column_chart = @bets_count.map do |scenario|
       [scenario.content, scenario.bets_count]
@@ -143,9 +143,9 @@ class QuestionsController < ApplicationController
     # hash_new
 
     return @question.scenarios.
-      select("scenarios.id, content, COUNT(bets.id) AS bets_count").
-      joins("LEFT OUTER JOIN bets ON bets.scenario_id = scenarios.id").
-      group("scenarios.id")
+    select("scenarios.id, content, COUNT(bets.id) AS bets_count").
+    joins("LEFT OUTER JOIN bets ON bets.scenario_id = scenarios.id").
+    group("scenarios.id")
   end
 
   def compute_scenarios_certainties
@@ -178,7 +178,7 @@ class QuestionsController < ApplicationController
     @randque = Question.all.sample(30)
     @randque_not_voted = []
     @randque.each do |que|
-       if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
+      if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
         @randque_not_voted << que
       end
     end

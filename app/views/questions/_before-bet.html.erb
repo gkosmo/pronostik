@@ -30,26 +30,34 @@
       <h4> by selecting your certainty level</h4>
       <p> <%= link_to "(Find out more)", faq_path %></p>
 
-      <% @scenarios.each do |scenario|%>
-        <%#= link_to scenario.id, '#', class: "js-scenario-choice", data: { id: scenario.id } %>
-        <%= scenario.content.capitalize %>
-        <%= bootstrap_form_for @bet, url: question_bets_path(@question) do |f| %>
-        <%= f.hidden_field :scenario_id, value: scenario.id %>
-        <input type="range" name='bet[estimation]' min="1" max="100" value="50" id="bet_estimation" class="bet_fader<%= scenario.id %>" step="1" oninput="minPrice(value, <%= scenario.id %>)">
-        <h2 id="bet<%= scenario.id %>"> 50 </h2>
-        <%= f.submit class: "btn btn-warning"%>
-      <%end%>
-    <%end%>
+          <%= bootstrap_form_for @bet, url: question_bets_path(@question) do |f| %>
 
+              <% @scenarios.each do |scenario|%>
+                <%= scenario.content.capitalize %>
+
+                  <%= f.hidden_field :scenario_id, value: scenario.id %>
+                  <input type="range" name='bet[estimation]' min="1" max="100" value="50" id="bet_estimation" class="bet_fader<%= scenario.id %>" step="1" oninput="minPrice(value, <%= scenario.id %>)">
+                  <h2 id="bet<%= scenario.id %>"> 50 </h2>
+
+              <%end%>
+          <%= f.submit class: "btn btn-warning"%>
+        <%end%>
     </div>
   </div>
 </div>
+
+
+<script>
+  function minPrice(vol, id) {
+    var output_id = '#bet' + id;
+    $(output_id).text(vol);
+  }
+  </script>
 
 <div class="row">
   <div class="col-sm-12">
     <div class="card-sean">
       <div id="unlock-text-field">
-
         <h3>Unlock</h3>
         <h4>other users' answers,</h4>
         <h5>their justifications </h5>
@@ -59,10 +67,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  function minPrice(vol, id) {
-    var output_id = '#bet' + id;
-    $(output_id).text(vol);
-  }
-  </script>

@@ -47,3 +47,12 @@
   margin-top: 50px;
   padding: 20px;
 }
+
+.btn-facebook {
+  border-color: #3B5998;
+  background-color: #3B5998;
+  color: white !important;
+  &:hover {
+    background-color: #29487D !important;
+  }
+}

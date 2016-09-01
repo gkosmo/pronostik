@@ -32,7 +32,7 @@ class BetsController < ApplicationController
        @final_hash[user] << sum
 
     end
-    @final_hash = @final_hash.sort_by {|k, v| v[0] }.reverse!
+    @final_hash = @final_hash.sort_by {|k, v| v[0].to_i }.reverse!
     #score per week per users
     @index = 0
     @final_hash
@@ -46,6 +46,9 @@ class BetsController < ApplicationController
   def create
     @bet = Bet.new(bet_params)
     @bet.user_id = current_user.id
+
+    a = QuestionsUsersPending.where(user_id: current_user).where(question_id: @question)
+    a[0].destroy unless a.empty?
     @bet.save
     if @question.status == 'new'
       @question.bets.count > 5
@@ -54,6 +57,21 @@ class BetsController < ApplicationController
     end
     redirect_to question_path(@question)
 
+    if current_user.bets.
+      joins(scenario: :question).
+      where(questions: { id: @question.id }).empty?
+
+
+      @bet.save
+      if @question.status == 'new'
+        @question.bets.count > 5
+        @question.status = 'good'
+        @question.save
+      end
+    else
+      flash[:alert] = "You've already bet on this question"
+    end
+      redirect_to question_path(@question)
   end
 
   def update
@@ -61,7 +79,7 @@ class BetsController < ApplicationController
     @bet.update(bet_params_update)
 
     redirect_to question_path(@question)
-    
+
   end
 
   private

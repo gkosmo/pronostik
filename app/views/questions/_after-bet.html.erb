@@ -1,11 +1,11 @@
 <%= render 'question-show', question: question %>
 <br>
 <br>
-<br>
 <div class="row">
   <div class="col-sm-12">
     <h3>Quick Stats Overview</h3>
-    <h4> You bet on : <%=@choosen_scenario.content.capitalize %></h4>
+    <h5> You have bet on: </h5>
+    <h4> <%=@choosen_scenario.content.capitalize %></h4>
 </div>
 </div>
 
@@ -25,7 +25,7 @@
 <div class="bordered card-sean padded-chart text-center">
   <div class="row">
     <div class="col-sm-12">
-      <h3>Where do people who bet come from ?</h3>
+      <h3>The other betters are coming from:</h3>
       <h3><%= geo_chart @result%></h3>
     </div>
   </div>
@@ -35,8 +35,10 @@
   <div class="row">
     <div class="col-sm-12">
 
-    <h3>Pronostik's Awesome prediction</h3> <p>based on our collective intellingence algorithm. <%= link_to "Find out more", faq_path %>.</p>
+    <h4>Currently this is our prediction</h4>
+    <p>based on our collective intellingence algorithm. <%= link_to "Find out more", faq_path %>.</p>
     <h3><%= @prediction.capitalize %></h3>
+    <h6>When the question expires the final result will be displayed in your Dashboard. </h6>
     </div>
   </div>
 </div>
@@ -46,12 +48,12 @@
         <div class="bordered card-sean padded-chart text-center">
 
       <h3>Justify your bet</h3>
-      <p>Provide an explaination (1000 chars max) and the main source you relied on. <%= link_to "Find out more", faq_path %>.</p>
+      <p>Provide an explanation [max 1000 char.] and the main source you relied on. <%= link_to "Find out more", faq_path %>.</p>
 
         <%= simple_form_for @existing_bet, url: question_bet_path(@question, @existing_bet) do |f| %>
         <%= f.input :justification, placeholder: 'Why did you bet on this scenario?'%>
         <%= f.input :Url, placeholder: 'What source did you use the most?'%>
-        <%= f.submit %>
+        <%= f.submit 'Add justification' ,class: "btn btn-default"%>
         <%end%>
     </div>
     </div>
@@ -86,5 +88,13 @@
       </div>
     </div>
   </div>
+
+
+
+
+
+
+
+
 
   <%#end%>

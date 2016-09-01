@@ -6,7 +6,7 @@ class QuestionsController < ApplicationController
 
   def new_index
     @searched = Question.last(20)
-    @searched_questions = @searched.keep_if {|question| questions.bets.count < 10 }.reverse
+    @searched_questions = @searched.keep_if {|question| question.bets.count < 10 }.reverse
 
       @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
           joins(:questions).

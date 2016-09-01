@@ -15,7 +15,7 @@
       <% end %>
       <ul> <% @resources.each do |resource| %>
         <li>
-          <%= resource[0].capitalize %> (<%= resource[1] %>)
+          <%= resource[0].capitalize unless resource[0].nil? %> (<%= resource[1]  unless resource[0].nil?%>)
         </li>
         <%end%>
       </ul>

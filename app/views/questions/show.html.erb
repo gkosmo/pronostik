@@ -6,9 +6,22 @@
         <%= render 'before-bet', question: @question %>
 
         <% if @pending.empty? && user_signed_in? %>
-          <%= button_to 'Bet later', question_makepending_path(@question), method: :patch, class: 'btn btn-warning' %>
-        <% end %>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card-sean">
+               <div id="bet-later-card">
+                <p> Need to look something up?</p>
+                <h4>Store the question in your Dashboard for later... </h4>
+                <%= button_to 'Bet later', question_makepending_path(@question), method: :patch, class: 'btn btn-default' %>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <%end%>
+
         <%if @existing_bet%>
         <%= render 'after-bet', question: @question %>
         <%end%>
@@ -18,12 +31,15 @@
   </div>
 </div>
 
-<div id="randque-wrapper-before-bet">
+<div id="randque-wrapper-dashboard">
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <%= render 'sidebar', randque: @randque %>
+        <%if @existing_bet%>
+            <%= render 'dashboard/side_bar', randque: @randque %>
+        <%end%>
       </div>
+
     </div>
   </div>
 </div>

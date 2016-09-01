@@ -27,7 +27,7 @@
 
       <h3>Scenarios</h3>
       <h4>Bet on 1 scenario</h4>
-      <h4> by selecting a certainty level</h4>
+      <h4> by selecting your certainty level</h4>
       <p> <%= link_to "(Find out more)", faq_path %></p>
 
       <% @scenarios.each do |scenario|%>
@@ -37,21 +37,29 @@
         <%= f.hidden_field :scenario_id, value: scenario.id %>
         <input type="range" name='bet[estimation]' min="1" max="100" value="50" id="bet_estimation" class="bet_fader<%= scenario.id %>" step="1" oninput="minPrice(value, <%= scenario.id %>)">
         <h2 id="bet<%= scenario.id %>"> 50 </h2>
-        <%= f.submit %>
+        <%= f.submit class: "btn btn-warning"%>
       <%end%>
     <%end%>
 
     </div>
   </div>
 </div>
+
 <div class="row">
   <div class="col-sm-12">
     <div class="card-sean">
-    <h3>Bet on a Scenario to unlock other users' justifications</h3>
+      <div id="unlock-text-field">
 
+        <h3>Unlock</h3>
+        <h4>other users' answers,</h4>
+        <h5>their justifications </h5>
+        <h5>and lots of stats </h5>
+        <h3>by betting!</h3>
+    </div>
     </div>
   </div>
 </div>
+
 <script>
   function minPrice(vol, id) {
     var output_id = '#bet' + id;

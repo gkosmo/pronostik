@@ -108,10 +108,10 @@ class QuestionsController < ApplicationController
       end
     end
     if !@bets_count.nil?
-    @column_chart = @bets_count.map do |scenario|
-      [scenario.content, scenario.bets_count]
+      @column_chart = @bets_count.map do |scenario|
+        [scenario.content, scenario.bets_count]
+      end
     end
-  end
 
     #@users = User.all.group(:country).joinwhere(bet_id: @question.id).count
     @countries = []

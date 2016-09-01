@@ -2,7 +2,7 @@
 <!-- <SEARCH> -->
   <div class="container">
      <div class="row">
-      <div class="col-xs-12">
+      <div class="col-sm-12">
         <%= render "shared/search-engine" %>
       </div>
     </div>
@@ -13,7 +13,7 @@
 <div class="wrapper" id="question-home-wrapper">
   <div class="container">
     <div class="row">
-        <div class="col-xs-9 col-sm-9">
+        <div class="col-sm-9 col-sm-9">
               <% @searched_questions.each do |question| %>
 
                 <% if question.event_date < DateTime.now.to_date %>
@@ -31,7 +31,7 @@
               <% end %>
              <% end %>
         </div>
-        <div class="col-xs-3 col-sm-3">
+        <div class="col-sm-3 col-sm-3">
           <div id= "randque-home-page">
             <%= render 'sidebar', randque: @randque %>
           </div>

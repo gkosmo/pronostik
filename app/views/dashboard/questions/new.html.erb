@@ -2,7 +2,7 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-xs-offset-3 col-xs-6">
+        <div class="col-sm-offset-3 col-sm-6">
           <h4> Hi <%= current_user.first_name %>, </h4>
           <h1> would you like to ask a question? </h1>
           <h6> Let's go!</h2>
@@ -10,7 +10,7 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-offset-3 col-xs-6">
+          <div class="col-sm-offset-3 col-sm-6">
             <div class="card-sean" id="create_new_question">
               <%= form_for @question, url: dashboard_questions_path do |f| %>
               <div class="">

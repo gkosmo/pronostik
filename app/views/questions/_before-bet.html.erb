@@ -2,11 +2,11 @@
 
 
 <div class="row">
-<div class="col-sm-3">
+  <div class="col-sm-3">
     <div class="card-sean" id="resources-card">
       <div class="text-center">
-      <h3>Resources</h3>
-      <p>Ranked by popularity</p>
+        <h3>Resources</h3>
+        <p>Ranked by popularity</p>
       </div>
       <% if @resources.empty? %>
       <div>| The most references sources </div>
@@ -26,33 +26,46 @@
     <div class="card-sean text-center" id="bet_show_page">
 
       <h3>Scenarios</h3>
+      <br>
       <h4>Bet on 1 scenario</h4>
       <h4> by selecting your certainty level</h4>
       <p> <%= link_to "(Find out more)", faq_path %></p>
+      <br>
+      <br>
 
-          <%= bootstrap_form_for @bet, url: question_bets_path(@question) do |f| %>
+      <% @scenarios.each do |scenario|%>
+      <%= bootstrap_form_for @bet, url: question_bets_path(@question) do |f| %>
+      <%= scenario.content.capitalize %>
 
-              <% @scenarios.each do |scenario|%>
-                <%= scenario.content.capitalize %>
+      <%= f.hidden_field :scenario_id, value: scenario.id %>
+      <input type="range" name='bet[estimation]' min="1" max="100" value="0" id="bet_estimation" class="bet_fader<%= scenario.id %> bet_set" step="1" oninput="minPrice(value, <%= scenario.id %>)">
+      <h2 id="bet<%= scenario.id %>" class="bet_h_set"> 0 </h2>
 
-                  <%= f.hidden_field :scenario_id, value: scenario.id %>
-                  <input type="range" name='bet[estimation]' min="1" max="100" value="50" id="bet_estimation" class="bet_fader<%= scenario.id %>" step="1" oninput="minPrice(value, <%= scenario.id %>)">
-                  <h2 id="bet<%= scenario.id %>"> 50 </h2>
 
-              <%end%>
-          <%= f.submit class: "btn btn-warning"%>
-        <%end%>
+      <%= f.submit class: "btn btn-warning", id: scenario.id %>
+      <% end %>
+      <br>
+      <br>
+      <% end %>
     </div>
   </div>
 </div>
 
-
 <script>
   function minPrice(vol, id) {
     var output_id = '#bet' + id;
+    var set_self_max = '.bet_fader'+ id;
+    var hide_button = '#' + id
+    $('.bet_h_set').val(0);
+    $('.bet_set').attr('max', 0);
+    $('.bet_h_set').text(0);
     $(output_id).text(vol);
+    $(set_self_max).attr('max', 100);
+    $(set_self_max).val(vol);
+    $('.btn-warning').addClass('hidden');
+    $(hide_button).removeClass('hidden');
   }
-  </script>
+</script>
 
 <div class="row">
   <div class="col-sm-12">
@@ -63,7 +76,7 @@
         <h5>their justifications </h5>
         <h5>and lots of stats </h5>
         <h3>by betting!</h3>
-    </div>
+      </div>
     </div>
   </div>
 </div>

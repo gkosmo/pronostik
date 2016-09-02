@@ -43,6 +43,8 @@
     </div>
   </div>
 </div>
+<% if !@choosen_scenario.nil? %>
+
 <%if @existing_bet.justification.nil? %>
   <div class="row">
     <div class="col-sm-12">
@@ -59,6 +61,7 @@
     </div>
     </div>
   </div>
+<%end%>
 <%end%>
 
   <%# if @existing_bet.justification.nil? == false %>

@@ -54,7 +54,7 @@ class Dashboard::StatisticsController < ApplicationController
       @final_array = []
       @index = 0
       @new_array.each do |element|
-        @final_array << (element.to_f / @new_array_2[@index] * 100).round
+        @final_array << (element.to_f / @new_array_2[@index].to_f * 100).round
         @index += 1
       end
 
@@ -91,21 +91,3 @@ class Dashboard::StatisticsController < ApplicationController
     @randque_not_voted = @randque_not_voted.sample(4)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

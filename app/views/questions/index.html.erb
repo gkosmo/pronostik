@@ -1,23 +1,27 @@
 <div id="search-wrapper">
-  <div class="row">
-    <div class="container">
-      <div class="col-sm-6 col-sm-6">
-        <div id="info-homepage">
-          <h3> What will the future bring? </h3>
-          <h4> By crowdsourcing intelligence, we try to build a reliable picture of upcoming events.</h4>
-          <br>
-          <p> Do you want to take part in an exiting competition? </p>
-          <p> Do you want to have a reliable overview on current events?</p>
-          <p> Do you have a knack for forecasting? <%= link_to "Try It Out", questions_new_index_path %></p>
-          <p> Bet on questions, outsmart experts and stay ahead of the curve with Pronostik.</p>
-        <%= link_to 'faq' do %>
-          <p> More Info.</p>
-          <% end %>
-        </div>
-      </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="container">
+          <div class="col-sm-6 col-sm-6">
+            <div id="info-homepage">
+              <h3> What will the future bring? </h3>
+              <h4> By crowdsourcing intelligence, we try to build a reliable picture of upcoming events.</h4>
+              <br>
+              <p> Do you want to take part in an exiting competition? </p>
+              <p> Do you want to have a reliable overview on current events?</p>
+              <p> Do you have a knack for forecasting? <%= link_to "Try It Out", questions_new_index_path %></p>
+              <p> Bet on questions, outsmart experts and stay ahead of the curve with Pronostik.</p>
+              <%= link_to 'faq' do %>
+              <p> More Info.</p>
+              <% end %>
+            </div>
+          </div>
 
-      <div class="col-sm-6 col-sm-6">
-        <%= render 'shared/search-engine' %>
+          <div class="col-sm-6 col-sm-6">
+            <%= render 'shared/search-engine' %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +34,7 @@
       <!-- current -->
       <% if user_signed_in? %>
       <div class="col-sm-5">
-          <h3> Pending & Concluded Questions </h3>
+        <h3> Pending & Concluded Questions </h3>
         <% @unbetted_questions.take(7).each do |question| %>
         <% if question.event_date < DateTime.now.to_date %>
         <%= render 'question-purple', question: question %>
@@ -41,7 +45,7 @@
       </div>
 
       <div class="col-sm-5 col-sm-offset-2">
-          <h3> New Questions </h3>
+        <h3> New Questions </h3>
         <% @right_column_current_user.take(7).each do |question| %>
         <%= render 'question-green', question: question %>
         <% end %>
@@ -50,7 +54,7 @@
       <%else%>
       <!-- visitor -->
       <div class="col-sm-5">
-          <h3> Pending & Concluded Questions </h3>
+        <h3> Pending & Concluded Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date < DateTime.now.to_date %>
         <%= render 'question-purple', question: question %>
@@ -58,7 +62,7 @@
       </div>
 
       <div class="col-sm-5 col-sm-offset-1">
-          <h3> New Questions </h3>
+        <h3> New Questions </h3>
         <% @limited_questions.take(7).each do |question| %>
         <% question.event_date > DateTime.now.to_date %>
         <%= render 'question-green', question: question %>

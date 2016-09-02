@@ -86,7 +86,7 @@ class QuestionsController < ApplicationController
   def show
     @happened = false
     @question.scenarios.each {|x|  @happened = true if x.happened? }
-    
+
     @bet = Bet.new
     @scenarios = @question.scenarios
     @bets = @question.bets
@@ -188,7 +188,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
   end
   def set_randque
-    @randque = Question.all.sample(30)
+    @randque = Question.all
     @randque_not_voted = []
     @randque.each do |que|
       if que.bets.where(user_id: current_user.id).empty? && que.event_date < DateTime.now.to_date
@@ -198,11 +198,11 @@ class QuestionsController < ApplicationController
     @randque_not_voted = @randque_not_voted.sample(4)
   end
   def set_expired_question
-    @randque = Question.where("created_at < ?", 2.days.ago)
+    @randque =Scenario.all
     @randque_not_voted = []
-    @randque.each do |que|
+    @randque.each do |q|
 
-    end
-    @randque_not_voted = @randque_not_voted.sample(4)
+        @randque_not_voted << q.question if q.happened?
+      end
   end
 end

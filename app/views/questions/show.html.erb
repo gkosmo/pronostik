@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-12">
-        <%if user_signed_in? && !@existing_bet %>
+        <%if user_signed_in? && !@existing_bet && @happened %>
         <%= render 'before-bet', question: @question %>
 
         <% if @pending.empty? && user_signed_in? %>
@@ -22,7 +22,7 @@
 
         <%end%>
 
-        <%if @existing_bet%>
+        <%if @existing_bet %>
         <%= render 'after-bet', question: @question %>
         <%end%>
       </div>

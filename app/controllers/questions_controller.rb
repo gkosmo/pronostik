@@ -84,6 +84,9 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @happened = false
+    @question.scenarios.each {|x|  @happened = true if x.happened? }
+    
     @bet = Bet.new
     @scenarios = @question.scenarios
     @bets = @question.bets

@@ -4,146 +4,146 @@
     <div class="col-sm-12">
       <div class="card-sean">
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="text-center">
-        <h1>What Is Going On Here ?</h1>
-      </div>
-    </div>
-  </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="text-center">
+            <br>
+            <br>
+              <h1>What Is Going On Here ?</h1>
+            </div>
+          </div>
+        </div>
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="faq-padded faq-margin">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="faq-padded faq-margin">
 
-      <h2>Play The Game.</h2>
-      <h4> Bet on as many question as you want. Earn points each weeks, and see your position in the overall weekly ranking. <%= link_to "Check it out", bets_path %> </h4>
-      <h5>How does it work ?</h5>
-      <p>Each week, you earn points for the questions you successfully answered. The number of points you earn depends on: </p>
-      <ul>
-        <li>The Accuracy of your bets (of course)</li>
-        <li>The certainty levels associated with your bets</li>
-        <li>The percentage of people who successfully answered to the question</li>
-        <li>The date you answered the question</li>
-      </ul>
-      <br>
-      <p>Your score direclty depends on the previous factors for various reasons. First, the main driver of your overall score is your accuracy. Goes without saying. Secong, the certainty level is aimed at optimizing the collective intelligence effect generated throught Pronostik's bets. The scoring mechanism is designed to induce users to provide a certaintly level reflecting the true assessment in the confidence. Third, if every one bet correctly on a scenario of a question, we can easily infer that the question was highly obvious. We penalize the obviousness of the questions by reducing the amount of points in proportion with the obviousness of the questions. This metric can overshadow your accuracy up to a point where you do not earn any points if every one answered correctly. Finally, Forecasters who bet on a question later have more time to see how the events unfold, thereby increasing the likeliness of an accurate forecast. Your score is therefore adjusted for the time you answered each question.  </p>
-      </div>
+              <h2>Play The Game.</h2>
+              <h4> Bet on as many question as you want. Earn points each weeks, and see your position in the overall weekly ranking. <%= link_to "Check it out", bets_path %> </h4>
+              <h5>How does it work ?</h5>
+              <p>Each week, you earn points for the questions you have successfully answered. The number of points you earn depend on: </p>
+              <ul>
+                <li>The accuracy of your bets (of course)</li>
+                <li>The certainty levels associated with your bets</li>
+                <li>The percentage of people who have successfully answered the question</li>
+                <li>The date you answered the question</li>
+              </ul>
+              <br>
+              <p>Your score direclty depends on these factors for various reasons.
+                <p> First, the main driver of your overall score is your accuracy. Goes without saying.</p>
+                <p> Second, the certainty level is aimed at optimizing the collective intelligence gathered by Pronostik.
+                The scoring mechanism is so designed that users need to provide a certaintly level. This certainty level is a true assessment of the users confidence in his answer. </p>
+                  <p> Third, if everyone bets correctly on a scenario of a question, we can easily infer that the question was highly obvious. We penalize the obviousness of the questions by reducing the amount of points in proportion with the obviousness of the questions. This metric can overshadow your accuracy up to a point where you do not earn any points if every one answered correctly. </p>
+                  <p> Finally, Forecasters who bet on a question later have more time to see how the events unfold, thereby increasing the likeliness of an accurate forecast. Your score is therefore adjusted for the time you answered each question.  </p>
+                </div>
 
-    </div>
-    <div class="col-sm-6">
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <div class="faq-padded" style="margin-top: 70px; margin-bottom: 100px;">
-          <%= image_tag 'competiton.jpg',  class:'img-responsive', width: '400px', height: '400px'%>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-10 col-sm-offset-1">
+                    <div class="faq-padded" style="margin-top: 70px; margin-bottom: 100px;">
+                      <%= image_tag 'competiton.jpg',  class:'img-responsive', width: '400px', height: '400px'%>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <%= link_to "Bet Now", questions_path, class: "btn btn-lg btn-warning" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-10 col-sm-offset-1">
+                    <div class="faq-padded" style="margin-top: 70px; margin-bottom: 150px;">
+                      <%= image_tag 'forecasting.jpg',  class:'img-responsive', width: '400px', height: '400px'%>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <%= link_to "My Dashboard", dashboard_statistics_path, class: "btn btn-lg btn-warning" %>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="faq-padded faq-margin">
+                  <h2>Develop your strategy. Become a Top Forecaster.</h2>
+                  <h4>It's all about the Stats. We provide you with the relevant information you need to learn, understand and improve your forecasting strategies.</h4>
+                  <h5>What is on my dashboard and why is it relevant ?</h5>
+                  <p>On your dashboard, you can find:</p>
+                  <ul>
+                    <li>Total Score and Accuracy</li>
+                    <li>Your Accuracy each month</li>
+                    <li>Number of bets on each categories</li>
+                    <li>Accuracy for each category</li>
+                    <li>A tailor-made recommendation for you.</li>
+                  </ul>
+                  <br>
+                  <p>Remember to keep track of your stats in order to know where you have performed well, and how you could adapt your betting strategy accordingly.</p>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="faq-padded faq-margin">
+
+                  <h2>Collective Intelligence.</h2>
+                  <h4>For each question, check out what people believe will happen, their certainty and our prediction.</h4>
+                  <h5>How does it work ?</h5>
+                  <p>It's an exiting time to be alive. The brain is an amazing organ, and we are starting to understand the tremendous potential that stems from pooling our individual intelligence. Together, we will be able to paint a better picture of the future in two steps. </p>
+                  <p>First, by betting on questions and providing your level of certainty, you are already helping people who are interested in the questions. You can not only see the number of people who bet on each scenarios, but also the average certainty and the country from which the forecasters come from. Second, we use our proprietary algorithm to allocate a certain weight on different users, which allow us to come up with a prediction that harness the intelligence of the crowd. The weight that each user receives is directly correlated with his/her past performances in each categories. In essence, someone who tends to forecast correclty for questions pertaining to politics and technology will, on average, receive a higher weight in these specific categories.</p>
+
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-10 col-sm-offset-1">
+                    <div class="faq-padded" style="margin-top: 70px; margin-bottom: 100px;">
+                      <%= image_tag 'intelligence.jpg',  class:'img-responsive', width: '400px', height: '400px'%>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <%= link_to "Learn More", "#", class: "btn btn-lg btn-warning" %>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-10 col-sm-offset-1">
+                    <div class="faq-padded" style="margin-top: 70px; margin-bottom: 50px;">
+                      <%= image_tag 'voice.jpg',  class:'img-responsive', width: '400px', height: '200px'%>
+                      <div class="text-center">
+                        <%= link_to "Try It Out", dashboard_statistics_path, class: "btn btn-lg btn-warning" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="faq-padded faq-margin">
+                  <h2>Have a voice, share your opinions.</h2>
+                  <h4>Hands-on Knowledge, delivered conveniently, from reliable people.</h4>
+                  <h5>Is it a dream ? </h5>
+                  <p>Once you bet on a question, you can always provide a justification to bolster the credibility of your bet. You can always check out other users' justifications, and filter the relevant answers you want to see displayed. Do you want to have an in-depth discussion ? You can always share your questions on various social networks, and engage in lively discussions on Reddit.</p>
+                </div>
+              </div>
+            </div>
+
+<!--             <div class="row">
+              <div class="col-sm-12">
+                <div class="text-center">
+                  <h1> Frequently Asked Question </h1>
+                </div>
+              </div>
+            </div> -->
+
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-3 col-sm-offset-5">
-          <%= link_to "Bet Now", questions_path, class: "btn btn-lg btn-warning" %>
-          </div>
-      </div>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <div class="faq-padded" style="margin-top: 70px; margin-bottom: 150px;">
-          <%= image_tag 'forecasting.jpg',  class:'img-responsive', width: '400px', height: '400px'%>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3 col-sm-offset-5">
-          <%= link_to "My Dashboard", dashboard_statistics_path, class: "btn btn-lg btn-warning" %>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="faq-padded faq-margin">
-        <h2>Develop your strategy. Become a Top Forecaster.</h2>
-        <h4>It's all about the Stats. We provide you with the relevant information you need to learn, understand and improve your forecasting strategies.</h4>
-        <h5>What is on my dashboard and why is it relevant ?</h5>
-        <p>On your dashboard, you can find:</p>
-        <ul>
-          <li>Total Score and Accuracy</li>
-          <li>Accuracy each month</li>
-          <li>Number of bets on each categories</li>
-          <li>Accuracy for each category</li>
-          <li>A tailor-made recommendation for you.</li>
-        </ul>
-        <br>
-        <p>Remember to keep track of your stats in order to know where you have performed well, and how you could adapt your betting strategy accordingly.</p>
-      </div>
-    </div>
-  </div>
-
-
-
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="faq-padded faq-margin">
-
-      <h2>Collective Intelligence.</h2>
-      <h4>For each question, check out what people believe will happen, their certainty and our prediction.</h4>
-      <h5>How does it work ?</h5>
-      <p>It's an exiting time to be alive. The brain is an amazing organ, and we are starting to undestand the tremendous potential that stems from pooling our individual intelligence. Together, we will be able to paint a better picture of the future in two steps. First, by betting on questions and providing your level of certainty, you are already helping people who are interested in the questions. You can not only see the number of people who bet on each scenarios, but also the average certainty and the country from which the forecasters come from. Second, we use our proprietary algorithm to allocate a certain weight on different users, which allow us to come up with a prediction that harness the intelligence of the crowd. The weight that each user receives is directly correlated with his/her past performances in each categories. In essence, someone who tends to forecast correclty for questions pertaining to politics and technology will, on average, receive a higher weight in these specific categories.</p>
-
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <div class="faq-padded" style="margin-top: 70px; margin-bottom: 100px;">
-          <%= image_tag 'intelligence.jpg',  class:'img-responsive', width: '400px', height: '400px'%>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3 col-sm-offset-5">
-          <%= link_to "Learn More", "#", class: "btn btn-lg btn-warning" %>
-          </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="row">
-        <div class="col-sm-10 col-sm-offset-1">
-          <div class="faq-padded" style="margin-top: 70px; margin-bottom: 50px;">
-          <%= image_tag 'voice.jpg',  class:'img-responsive', width: '400px', height: '200px'%>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3 col-sm-offset-5">
-          <%= link_to "Try It Out", dashboard_statistics_path, class: "btn btn-lg btn-warning" %>
-          </div>
-      </div>
-    </div>
-    <div class="col-sm-6">
-      <div class="faq-padded faq-margin">
-        <h2>Have a voice, share your opinions.</h2>
-        <h4>Hands-on Knowledge, delivered conveniently, from reliable people.</h4>
-        <h5>Is it a dream ? </h5>
-        <p>Once you bet on a question, you can always provide a justification to bolster the credibility of your bet. You can always check out other users' justifications, and filter the relevant answers you want to see displayed. Do you want to have an in-depth discussion ? You can always share your questions on various social networks, and engage in lively discussions on Reddit.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="text-center">
-      <h1> Frequently Asked Question </h1>
-      </div>
-    </div>
-  </div>
-
-      </div>
-    </div>
-  </div>
-</div>

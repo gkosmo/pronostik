@@ -68,7 +68,7 @@ class BetsController < ApplicationController
         @question.save
       end
     else
-      flash[:alert] = "You've already bet on this question"
+      flash[:alert] = "You've bet on this question"
     end
       redirect_to question_path(@question)
   end

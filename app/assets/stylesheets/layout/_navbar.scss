@@ -182,3 +182,19 @@
   background: $gray !important;
 }
 
+
+
+@media screen and (max-width: 800px) {
+  .navbar-left {
+    width: 100%;
+    float: left;
+  }
+  .navbar-right {
+    li {
+      float: left;
+    }
+    a {
+      padding: 4px !important;
+    }
+  }
+}

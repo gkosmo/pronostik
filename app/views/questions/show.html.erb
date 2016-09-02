@@ -22,7 +22,7 @@
 
         <%end%>
 
-        <%if @existing_bet %>
+        <%if @existing_bet || @happened%>
         <%= render 'after-bet', question: @question %>
         <%end%>
       </div>

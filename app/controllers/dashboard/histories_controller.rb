@@ -7,8 +7,10 @@ class Dashboard::HistoriesController < ApplicationController
     @queries = []
     @today = false
     current_user.questions.each do |que|
-      @queries << que if que.event_date < DateTime.now.to_date
+      que.scenarios.each do |scen|
+      @queries << que if scen.happened?
       @today = true if que.event_date == DateTime.now.to_date
+    end
     end
   end
 

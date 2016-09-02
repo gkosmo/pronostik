@@ -22,11 +22,11 @@ class QuestionsController < ApplicationController
     order("questions_count DESC").
     limit(7)
     @searched = Question.last(200)
-    @searched = @searched.keep_if{|question| question.bets.count > 5}.reverse
-    @searched_questions = []
-    @searched.each do |x|
-      @searched_questions << x if x.bets.count >= 5
-    end
+    @searched = @searched.keep_if{|question| question.bets.count > 5 }.reverse
+    #@searched_questions = []
+    #@searched.each do |x|
+    #  @searched_questions << x if x.bets.count >= 5
+    #end
   end
 
   def index

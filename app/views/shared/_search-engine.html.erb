@@ -1,26 +1,15 @@
 <div id="search-engine" class="text-right">
-  <h5>Popular Topics:</h5>
-  <div id="top-tags-display">
-
-    <%= form_tag questions_path, method: "get" do %>
-      <ul class="list-inline">
-          <% @top_tags.each do |tag| %>
-            <li>
-              <%= link_to tag.title, questions_path(search_term: tag.title), class: 'btn btn-default' %>
-            </li>
-        <% end %>
-      </ul>
-
-
-  </div>
 
   <div id="search-and-btn-display">
+
+        <%= form_tag questions_path, method: "get" do %>
+
    <!-- <input-field-for tags> -->
    <%= text_field_tag(:search_term, @search, placeholder: "topic?") %>
    <!-- <category-dropdown> -->
    <%= collection_select nil, :category, Category.all, :id, :title, prompt: "All categories", selected: params[:category] %>
    <!-- <button> -->
    <%= submit_tag("Search", class: 'btn btn-default btn-lg', id: "search-btn") %>
-   <% end %>
+  <% end %>
  </div>
 </div>

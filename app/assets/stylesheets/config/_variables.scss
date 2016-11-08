@@ -21,10 +21,11 @@ $body-bg:     #EEF4F7;
 $progress-bg: #293159;
 // Scheme;
 $brand-color: #5E60BA;
-$btn-warning-bg:  #6B0433;
+$btn-warning-bg:  rgb(192,57,43);
 $btn-success-bg: #5E60BA;
 $brand-warning:   #5E60BA;
-$btn-info-bg:     #293159;
+$btn-info-bg:     #27AE60;
+$btn-primary-bg:   #3498DB;
 $table-border-color: #293159;
 $label-danger-bg: #3498db;
 $table-bg:    white;
@@ -32,18 +33,18 @@ $brand-info: #293159;
 $navbar-inverse-bg: #bdc3c7;
 $navbar-inverse-color: #293159;
 $navbar-inverse-brand-hover-color: #bdc3c7;
-
+$label-danger-bg: #F1C40F;
 
 $component-active-bg: #F37AD6;
 
 
 
 
-$red:    #c0392b;
-$blue:   #3498db;
-$yellow: #f1c40f;
+$red:    rgb(192,57,43);
+$blue:  #3498DB;
+$yellow: #F1C40F;
 $orange: #E67E22;
-$green:  #27ae60;
+$green:  #27AE60;
 // Gray scale
 $gray-darker:  #34495e;// #222
 $gray-dark:    #7f8c8d;  // #333

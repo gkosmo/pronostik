@@ -11,12 +11,7 @@ class Question < ApplicationRecord
   validates :category, presence: true
   validates :event_date, presence: true
   #validate :force_four_scenarios
-  # Search With Algolia
-  include AlgoliaSearch
 
-  algoliasearch do
-    # all attributes will be sent
-  end
 
   #creating questions with many scenarios
   after_initialize :assign_defaults

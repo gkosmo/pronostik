@@ -40,15 +40,6 @@ class QuestionsController < ApplicationController
      end
     end
   end
-
-  def searched
-     @questionskick = Question.search(params[:search_term] )
-     @searched_questions = @questionskick.response["hits"]["hits"].map do |answer|
-              Question.find(answer["_id"].to_i)
-              p Question.find(answer["_id"].to_i)
-     end
-
-  end
   def index
     #input van de search
     @search = params[:search_term] if  !params[:search_term].nil?
@@ -82,13 +73,13 @@ class QuestionsController < ApplicationController
 
 
     #  @limited_questions = @searched_questions.limit(7)
-     if  !params[:search_term].nil?
-     @limited_questions = []
-     @questionskick = Question.search(params[:search_term] )
-     @limited_questions = @questionskick.response["hits"]["hits"].map do |answer|
-              Question.find(answer["_id"].to_i)
-     end
-   end
+   #   if  !params[:search_term].nil?
+   #   @limited_questions = []
+   #   @questionskick = Question.search(params[:search_term] )
+   #   @limited_questions = @questionskick.response["hits"]["hits"].map do |answer|
+   #            Question.find(answer["_id"].to_i)
+   #   end
+   # end
   end
 
   def make_pending

@@ -117,18 +117,18 @@ end
 
 end
 
-Question.all.each do |qu|
-  if qu.event_date  < DateTime.now.to_date
-    scene = qu.scenarios.sample
-    scene.happened = true unless scene == nil
-  #  Questions::ComputeBetScoresService.new(qu).call
-  end
-end
+# Question.all.each do |qu|
+#   if qu.event_date  < DateTime.now.to_date
+#     scene = qu.scenarios.sample
+#     scene.happened = true unless scene == nil
+#   #  Questions::ComputeBetScoresService.new(qu).call
+#   end
+# end
 
-Scenario.all.each do |scen|
-  if scen.happened?
-    scen.bets.each do |b|
-      b.scenario_score = 250
-    end
-  end
-end
+# Scenario.all.each do |scen|
+#   if scen.happened?
+#     scen.bets.each do |b|
+#       b.scenario_score = 250
+#     end
+#   end
+# end

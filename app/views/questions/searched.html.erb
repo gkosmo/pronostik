@@ -1,0 +1,44 @@
+
+<!-- <SEARCH> -->
+<div class="container">
+   <div class="row">
+    <div class="col-sm-12">
+      <%= render "shared/search-engine" %>
+    </div>
+  </div>
+</div>
+
+<!-- <questions.all> -->
+
+<div class="wrapper" id="question-home-wrapper">
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-sm-9">
+              <% @searched_questions.each do |question| %>
+
+                <% if question.event_date < DateTime.now.to_date %>
+
+                    <%= render 'question-purple', question: question %>
+                <%else %>
+                <% if current_user %>
+                  <% if question.bets.where(user_id: current_user.id).empty?%>
+                  <%= render 'question-green', question: question %>
+                  <% else %>
+                  <%= render 'question-blue', question: question %>
+                  <% end %>
+                <%else%>
+                  <%= render 'question-green', question: question %>
+                <% end %>
+              <% end %>
+             <% end %>
+
+        </div>
+        <div class="col-sm-3 col-sm-3">
+          <div id="randque-home-page">
+            <%= render 'sidebar', randque: @randque %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<%= render 'shared/sub_foot'%>

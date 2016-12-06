@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   before_action :set_question, only: [:show]
-  before_action :set_randque, only: [:show]
+  before_action :set_randque, only: [:show, :searched, :new_index, :good_index]
   before_action :set_expired_question, only: [:new_index, :good_index]
 
   def new_index
@@ -13,6 +13,12 @@ class QuestionsController < ApplicationController
     group("tags.id").
     order("questions_count DESC").
     limit(7)
+    if  !params[:search_term].nil?
+    @questionskick = Question.search(params[:search_term] )
+     @limited_questions = @questionskick.response["hits"]["hits"].map do |answer|
+              Question.find(answer["_id"].to_i)
+     end
+    end
   end
 
   def good_index
@@ -27,25 +33,39 @@ class QuestionsController < ApplicationController
     #@searched.each do |x|
     #  @searched_questions << x if x.bets.count >= 5
     #end
+    if  !params[:search_term].nil?
+    @questionskick = Question.search(params[:search_term] )
+     @limited_questions = @questionskick.response["hits"]["hits"].map do |answer|
+              Question.find(answer["_id"].to_i)
+     end
+    end
   end
 
+  def searched
+     @questionskick = Question.search(params[:search_term] )
+     @searched_questions = @questionskick.response["hits"]["hits"].map do |answer|
+              Question.find(answer["_id"].to_i)
+              p Question.find(answer["_id"].to_i)
+     end
+
+  end
   def index
     #input van de search
     @search = params[:search_term] if  !params[:search_term].nil?
-    @category = params[:category]
-    @searched_questions = Question.all.order('id DESC')
-    @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
-    joins(:questions).
-    group("tags.id").
-    order("questions_count DESC").
-    limit(7)
+    # @category = params[:category]
+     @searched_questions = Question.all.order('id DESC')
+    # @top_tags = Tag.select("tags.title, COUNT(questions.id) AS questions_count").
+    # joins(:questions).
+    # group("tags.id").
+    # order("questions_count DESC").
+    # limit(7)
 
-    if @category.present?
-      @searched_questions = @searched_questions.where(category_id: params[:category]).uniq
-    end
-    if @search.present?
-      @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
-    end
+     if @category.present?
+       @searched_questions = @searched_questions.where(category_id: params[:category]).uniq
+     end
+    # if @search.present?
+    #   @searched_questions = @searched_questions.joins(:tags).where("tags.title ILIKE ?", "%#{@search}%").uniq
+    # end
     @unbetted_questions = []
     if current_user
       @searched_questions_only_new = []
@@ -61,7 +81,14 @@ class QuestionsController < ApplicationController
     end
 
 
-     @limited_questions = @searched_questions.limit(7)
+    #  @limited_questions = @searched_questions.limit(7)
+     if  !params[:search_term].nil?
+     @limited_questions = []
+     @questionskick = Question.search(params[:search_term] )
+     @limited_questions = @questionskick.response["hits"]["hits"].map do |answer|
+              Question.find(answer["_id"].to_i)
+     end
+   end
   end
 
   def make_pending

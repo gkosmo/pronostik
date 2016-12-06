@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+
+  searchkick
   has_many :scenarios, dependent: :destroy
   has_many :bets, through: :scenarios
   has_and_belongs_to_many :tags

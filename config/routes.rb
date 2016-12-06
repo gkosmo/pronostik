@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'faq', to: 'pages#faq'
   get 'questions/new_index'
   get 'questions/good_index'
+  get 'questions/searched'
   resources :questions, only: [:index, :show] do
     member do
       put 'tagquestion'

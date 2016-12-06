@@ -1,8 +1,7 @@
 <div id="search-engine" class="text-right">
 
   <div id="search-and-btn-display">
-
-        <%= form_tag questions_path, method: "get" do %>
+        <%= form_tag questions_searched_path, method: "get" do %>
 
    <!-- <input-field-for tags> -->
    <%= text_field_tag(:search_term, @search, placeholder: "topic?") %>

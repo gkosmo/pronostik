@@ -33,7 +33,6 @@ class QuestionsController < ApplicationController
      @questionskick = Question.search(params[:search_term] )
      @searched_questions = @questionskick.response["hits"]["hits"].map do |answer|
               Question.find(answer["_id"].to_i)
-              p Question.find(answer["_id"].to_i)
      end
 
   end

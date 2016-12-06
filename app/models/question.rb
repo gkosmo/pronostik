@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+ include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
   searchkick
   has_many :scenarios, dependent: :destroy

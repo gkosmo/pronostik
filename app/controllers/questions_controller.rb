@@ -71,7 +71,6 @@ class QuestionsController < ApplicationController
 
 
      @limited_questions = @searched_questions.limit(7)
-     @limited_questions = Question.search(@search)
   end
 
   def make_pending

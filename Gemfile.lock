@@ -314,6 +314,8 @@ DEPENDENCIES
   chartkick
   country_select
   devise!
+  elasticsearch-model
+  elasticsearch-rails
   faker
   figaro
   font-awesome-sass
